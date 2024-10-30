@@ -27,6 +27,9 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
+		
+		
+		
 	}
 	
 	@Override

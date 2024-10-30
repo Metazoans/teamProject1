@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
 <title>test main page</title>
 
 <meta name="description" content="">
@@ -24,14 +26,14 @@
 <link rel="stylesheet" href="assets/css/nice-select.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-</head>
+
 <body>
 	<header>
 		<jsp:include page="/WEB-INF/layouts/header.jsp"></jsp:include>
 	</header>
-	
+
 	<h1>index.jsp</h1>
-	<p>test</p>
+	<p>한글 테스트111</p>
 
 	<footer>
 		<jsp:include page="/WEB-INF/layouts/footer.jsp"></jsp:include>

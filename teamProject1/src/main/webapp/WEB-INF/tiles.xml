@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="team.home" template="/WEB-INF/layouts/template.jsp">
+    	<put-attribute name="title" value="템플릿 적용 테스트" />
+    	<put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+   		<put-attribute name="body" value="/WEB-INF/jsp/test.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+	
+	<definition name="WILDCARD:*/*" extends="team.home">
+		<put-attribute name="title" value="{2}" />
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

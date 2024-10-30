@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.control.TestPageControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -25,7 +26,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		//System.out.println("init호출");
-		//map.put("/memberList.do", new MemberListControl());
+		map.put("/testBuyer.do", new TestPageControl());
 	}
 	
 	@Override

@@ -3,4 +3,4 @@
 
 
 <h1>buyer.jsp test</h1>
-<p>branch test1</p>
+<p>branch test2 branchName buyer</p>

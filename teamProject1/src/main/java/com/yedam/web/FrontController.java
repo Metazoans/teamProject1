@@ -1,6 +1,7 @@
 package com.yedam.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+import com.yedam.control.seller.SellerControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -28,7 +30,8 @@ public class FrontController extends HttpServlet {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
 		
-		
+		// item  상품 등록, 수량/가격 변경, 판매 상품 삭제, 거래 완료 버튼 관련
+		map.put("/seller.do", new SellerControl());
 		
 	}
 	

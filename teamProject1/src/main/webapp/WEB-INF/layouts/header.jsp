@@ -31,33 +31,6 @@
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</nav>
-							<div class="single-element-widget mt-30">
-								<div class="default-select" id="default-select""="">
-									<select style="display: none;">
-										<option value=" 1">English</option>
-										<option value="2">Spanish</option>
-										<option value="3">Arabic</option>
-										<option value="4">Portuguise</option>
-										<option value="5">Bengali</option>
-									</select>
-									
-									<div class="nice-select" tabindex="0">
-										<span class="current">Spanish</span>
-										<ul class="list">
-											<li data-value=" 1" class="option focus">English</li>
-											<li data-value="1" class="option">Spanish</li>
-											<li data-value="1" class="option">Arabic</li>
-											<li data-value="1" class="option">Portuguise</li>
-											<li data-value="1" class="option">Bengali</li>
-										</ul>
-									</div>
-									 
-								</div>
-							</div>
-							<input type="text" name="first_name" placeholder="검색어를 입력해주세요."
-								onfocus="this.placeholder = ''"
-								onblur="this.placeholder = '검색어를 입력해주세요.'" required=""
-								class="single-input">
 						</div>
 						<!-- Header-btn -->
 						<div class="header-btn d-none f-right d-lg-block">

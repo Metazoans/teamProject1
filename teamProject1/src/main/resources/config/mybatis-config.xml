@@ -33,6 +33,8 @@
 
 
 	<mappers>
+			<mapper resource="com/yedam/mapper/account/MemberMapper.xml" />
+	
 	</mappers>
 	
 	

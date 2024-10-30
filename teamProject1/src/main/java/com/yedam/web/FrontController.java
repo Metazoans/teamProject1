@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+import com.yedam.control.account.LoginControl;
+import com.yedam.control.account.MemberAddFormControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -28,7 +30,8 @@ public class FrontController extends HttpServlet {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
 		
-		
+		map.put("/loginForm.do", new LoginControl());
+		map.put("/memberAddForm.do", new MemberAddFormControl());
 		
 	}
 	

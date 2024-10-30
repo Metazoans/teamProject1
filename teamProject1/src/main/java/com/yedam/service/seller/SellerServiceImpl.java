@@ -18,4 +18,9 @@ public class SellerServiceImpl implements SellerService{
 		return mapper.select();
 	}
 	
+	@Override
+	public boolean addItem(ItemVO item) {
+		return mapper.insertItem(item) == 1;
+	}
+	
 }

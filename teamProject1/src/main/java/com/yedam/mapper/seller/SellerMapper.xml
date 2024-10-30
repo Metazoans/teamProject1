@@ -8,6 +8,11 @@
 		select *
 		from team_item
 	</select>
+	
+	<insert id="insertItem" parameterType="item">
+		insert into team_item (item_number, game, categories, item_name, item_info, count, seller, price, servers, image)
+		values (ITEM_NO_SEQ.nextval, #{game}, #{categories}, #{itemName}, #{itemInfo}, #{count}, #{seller}, #{price}, #{servers}, #{image})
+	</insert>
 
 
 </mapper>

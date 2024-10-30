@@ -8,4 +8,6 @@ public interface SellerMapper {
 
 	List<ItemVO> select();
 	
+	int insertItem(ItemVO item);
+	
 }

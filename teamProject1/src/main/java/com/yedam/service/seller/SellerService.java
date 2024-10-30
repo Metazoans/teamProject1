@@ -8,4 +8,6 @@ public interface SellerService {
 
 	List<ItemVO> select();
 	
+	boolean addItem(ItemVO item);
+	
 }

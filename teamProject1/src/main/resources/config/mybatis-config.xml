@@ -15,6 +15,7 @@
 
 
 	<typeAliases>
+		<typeAlias alias="item" type="com.yedam.vo.ItemVO" />
 	</typeAliases>
 
 
@@ -33,6 +34,7 @@
 
 
 	<mappers>
+		<mapper resource="com/yedam/mapper/seller/SellerMapper.xml" />
 	</mappers>
 	
 	

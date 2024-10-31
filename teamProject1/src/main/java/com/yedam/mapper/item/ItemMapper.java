@@ -1,10 +1,10 @@
-package com.yedam.mapper.seller;
+package com.yedam.mapper.item;
 
 import java.util.List;
 
 import com.yedam.vo.ItemVO;
 
-public interface SellerMapper {
+public interface ItemMapper {
 
 	List<ItemVO> select();
 	

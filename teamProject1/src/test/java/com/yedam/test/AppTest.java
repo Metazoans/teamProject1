@@ -2,15 +2,15 @@ package com.yedam.test;
 
 import java.util.List;
 
-import com.yedam.service.seller.SellerService;
-import com.yedam.service.seller.SellerServiceImpl;
+import com.yedam.service.item.ItemService;
+import com.yedam.service.item.ItemServiceImpl;
 import com.yedam.vo.ItemVO;
 
 public class AppTest {
 
 	public static void main(String[] args) {
 		
-		SellerService svc = new SellerServiceImpl();
+		ItemService svc = new ItemServiceImpl();
 		ItemVO ivo = new ItemVO();
 		
 		ivo.setGame("서든어택");

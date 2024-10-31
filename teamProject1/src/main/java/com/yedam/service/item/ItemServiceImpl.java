@@ -1,17 +1,17 @@
-package com.yedam.service.seller;
+package com.yedam.service.item;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
-import com.yedam.mapper.seller.SellerMapper;
+import com.yedam.mapper.item.ItemMapper;
 import com.yedam.vo.ItemVO;
 
-public class SellerServiceImpl implements SellerService{
+public class ItemServiceImpl implements ItemService{
 
 	SqlSession sqlSession = DataSource.getInstance().openSession();
-	SellerMapper mapper = sqlSession.getMapper(SellerMapper.class);
+	ItemMapper mapper = sqlSession.getMapper(ItemMapper.class);
 	
 	@Override
 	public List<ItemVO> select() {

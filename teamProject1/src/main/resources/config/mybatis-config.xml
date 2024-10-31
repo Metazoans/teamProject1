@@ -34,7 +34,7 @@
 
 
 	<mappers>
-		<mapper resource="com/yedam/mapper/seller/SellerMapper.xml" />
+		<mapper resource="com/yedam/mapper/item/ItemMapper.xml" />
 	</mappers>
 	
 	

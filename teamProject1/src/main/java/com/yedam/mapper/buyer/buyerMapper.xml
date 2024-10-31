@@ -20,7 +20,7 @@
 	</select>
 	
 	<!-- 조건 정렬 및 검색 -->
-	<select id="" resultType="com.yedam.vo.ItemVO" parameterType="com.yedam.vo.ItemListVO">
+	<select id="sortItemList" resultType="com.yedam.vo.ItemVO" parameterType="com.yedam.vo.ItemListVO">
 		select *
 		from team_item
 		<where>

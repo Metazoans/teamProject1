@@ -15,5 +15,21 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO loginCheck(String id, String pwd) {
 		return mapper.loginMember(id, pwd);
 	}
+
+	@Override
+	public boolean addMember(MemberVO member) {
+		return mapper.insertMember(member)==1;
+	}
+
+	@Override
+	public MemberVO searchId(MemberVO member) {
+		return mapper.selectId(member);
+	}
+
+	@Override
+	public MemberVO searchPwd(MemberVO member) {
+
+		return mapper.selectPwd(member);
+	}
 	
 }

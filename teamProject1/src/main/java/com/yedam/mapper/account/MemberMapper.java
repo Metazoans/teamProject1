@@ -8,4 +8,8 @@ public interface MemberMapper {
 	public int insertMember(MemberVO member);
 	//아이디 비번 조회
 	public MemberVO loginMember(@Param("id") String id, @Param("pwd") String pwd);
+	
+	public MemberVO selectId(MemberVO member);
+	
+	public MemberVO selectPwd(MemberVO member); 
 }

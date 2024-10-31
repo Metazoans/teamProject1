@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class MemberAddFormControl implements Control {
+public class SearchIdFormControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("account/memberAddForm.tiles").forward(req, resp);
-
+		req.getRequestDispatcher("account/searchId.tiles").forward(req, resp);
+		
 	}
 
 }

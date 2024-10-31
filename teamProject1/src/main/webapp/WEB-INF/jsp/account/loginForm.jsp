@@ -26,7 +26,9 @@
 		</td>
 		<tr>
 		<td colspan="2" align='center'>
-			<button type="submit" class='btn btn-primary'>로그인</button>
+			<button type="submit" class='btn btn-primary'>로그인</button><br>
+			<button type="button" class='btn btn-primary' onclick = "location.href = 'searchIdForm.do' ">아이디찾기</button>
+			<button type="submit" class='btn btn-primary'>비밀번호찾기</button>
 		</td>
  
  </table>	

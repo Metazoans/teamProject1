@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
 import com.yedam.control.account.LoginControl;
+import com.yedam.control.account.MemberAddControl;
 import com.yedam.control.account.MemberAddFormControl;
+import com.yedam.control.account.SearchIdControl;
+import com.yedam.control.account.SearchIdFormControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -31,7 +34,11 @@ public class FrontController extends HttpServlet {
 		map.put("/testBuyer.do", new TestPageControl());
 		
 		map.put("/loginForm.do", new LoginControl());
-		map.put("/memberAddForm.do", new MemberAddFormControl());
+		map.put("/memberAddForm.do", new MemberAddFormControl()); //등록화면
+		map.put("/memberAdd.do", new MemberAddControl()); //등록처리
+		
+		map.put("/searchIdForm.do", new SearchIdFormControl());
+		map.put("/searchId.do", new SearchIdControl());
 		
 	}
 	

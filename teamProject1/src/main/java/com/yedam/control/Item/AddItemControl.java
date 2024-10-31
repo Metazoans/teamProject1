@@ -29,8 +29,8 @@ public class AddItemControl implements Control {
 		String count = req.getParameter("count");
 		String seller = "test1";
 		String image = req.getParameter("image");
+		String trade = req.getParameter("trade");
 		
-		System.out.println(game);
 		
 		ivo.setGame(game);
 		ivo.setCategories(categories);
@@ -41,16 +41,19 @@ public class AddItemControl implements Control {
 		ivo.setCount(Integer.parseInt(count));
 		ivo.setSeller(seller);
 		ivo.setImage(image);
+		ivo.setTrade(trade);
 		
 		
 		try {	
 			if(svc.addItem(ivo)) {				
-				System.out.println("성공");
-				resp.sendRedirect("itemList.do");
+				req.setAttribute("msg", "상품등록을 완료하였습니다");
+				req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
+			}else {
+				req.setAttribute("msg", "상품등록에 실패하였습니다");
+				req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
 			}
 		}catch(Exception e){		
-			System.out.println("실패");
-			req.getRequestDispatcher("seller/itemList.tiles").forward(req, resp);
+			req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
 		}
 		
 		

@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script>
+<%
+    String msg = (String) request.getAttribute("msg");
+    if (msg != null) {
+%>
+        alert("<%=msg %>");
+        location.href = "itemList.do";
+<% } %>
+</script>
 <form action="addItem.do" method="get" name="inputForm" onsubmit="return checkField();">
 <%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
 <table class="table">
@@ -38,20 +46,24 @@
 			<input class="form-control" type="text" name="price" placeholder="상품금액"></td>
 			<td><p>상품수량</p>
 			<input class="form-control" type="text" name="count" placeholder="상품수량(상품금액단위)"></td>
+			<td><p>판매/구매</p>
+			<input class="form-control" type="text" name="trade" placeholder="판매/구매"></td>
 			<td colspan="2" align="center">
-				<input  class="btn btn-success" type="submit" value="상품등록">
-				<input class="btn btn-warning" type="reset" value="취소">
+				<input  class="btn btn-success" type="submit" value="상품등록" >
+				<input class="btn btn-warning" type="button" value="취소" onclick="location.href='itemList.do'">
 			</td>
 		</tr>
 	</table>
 </form>
 
 <script>
+
+
 	function checkField(){
 		let inputs = document.inputForm;
-		if(!inputs.itemName.value){	// name속성이 id인 요소의 value가 없으면 true
+		if(!inputs.itemName.value){	
 			alert("제목을 입력하세요.");
-			return false;	// pro페이지로 이동 금지.
+			return false;
 		}
 		if(!inputs.game.value){	
 			alert("게임을 입력하세요.");
@@ -63,11 +75,18 @@
 		}
 		if(!inputs.price.value){
 			alert("상품금액을 입력하세요");
+			return false;
 		}
 		if(!inputs.count.value){
 			alert("상품수량을 입력하세요");
+			return false;
+		}
+		if(!inputs.trade.value){
+			alert("상품수량을 입력하세요");
 		}
 	}
+	
+	
 </script>
 
 

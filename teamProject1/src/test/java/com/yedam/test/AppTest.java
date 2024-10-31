@@ -20,6 +20,7 @@ public class AppTest {
 		ivo.setPrice(1000);
 		ivo.setCount(1);
 		ivo.setSeller("test1");
+		ivo.setTrade("sell");
 		
 		if(svc.addItem(ivo)) {
 			System.out.println("성공");

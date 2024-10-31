@@ -10,33 +10,8 @@
 	</select>
 	
 	<insert id="insertItem" parameterType="item">
-		insert into team_item (
-		item_number, game, categories, item_name, 
-		<if test="item_info != null">
-			item_info, 
-		</if>
-		count, seller, price, 
-		<if test=" servers != null">
-			servers, 
-		</if>
-		<if test="image != null">
-			image
-		</if>
-		)
-		values (
-		ITEM_NO_SEQ.nextval, 
-		#{game}, #{categories}, #{itemName}, 
-		<if test="itemInfo != null">
-			#{itemInfo},
-		</if>
-		 #{count}, #{seller}, #{price}, 
-		 <if test="servers != null">
-			 #{servers}, 
-		 </if>
-		 <if test="image != null">
-			 #{image}
-		 </if>
-		 )
+		insert into team_item (item_number, game, categories, item_name, item_info, count, seller, price, servers, image, trade)
+		values (ITEM_NO_SEQ.nextval, #{game}, #{categories}, #{itemName}, #{itemInfo}, #{count}, #{seller}, #{price}, #{servers}, #{image}, #{trade})
 	</insert>
 
 

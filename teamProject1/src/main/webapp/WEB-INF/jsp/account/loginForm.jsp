@@ -10,9 +10,13 @@
 <body>
 <%
  String msg = (String) request.getAttribute("msg");
+String logId = (String)session.getAttribute("logId");
  %>
  <%if(msg!= null){ %>
  <p style="color: red;"><%=msg %></p>
+ <%} %>
+ <%if(logId!=null){%>
+ alert("로그인이 되었습니다.")
  <%} %>
  
 

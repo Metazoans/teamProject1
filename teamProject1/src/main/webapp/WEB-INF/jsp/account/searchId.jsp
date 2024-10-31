@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <form action="searchId.do" name="inputForm" onsubmit="return checkField();">
-<% String mId = (String) request.getAttribute("mId");%>
+
 
  <table class="table" >
 	<tr>
@@ -44,11 +44,9 @@
 			if(!inputs.phone.value){
 				alert("휴대폰번호를 입력하세요.");
 				return false;
-			}	
-			if(${mId}!=null){
-				alert(${mId});
-				
 			}
+			
+
 
 		}
 	</script>

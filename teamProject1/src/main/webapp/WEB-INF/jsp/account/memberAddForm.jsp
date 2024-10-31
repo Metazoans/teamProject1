@@ -141,8 +141,13 @@
 .btn:hover {
   background-position: right;
 }
-</style>
 
+#joindiv {
+display:block;
+height:700px;
+}
+</style>
+<div id="joindiv">
 <form action="memberAdd.do"class="joinForm">
                                                                                                
       <h2>회원가입</h2>
@@ -164,3 +169,4 @@
       </div>
       <input type="submit" class="btn" value="저장"/>
     </form>
+</div>    

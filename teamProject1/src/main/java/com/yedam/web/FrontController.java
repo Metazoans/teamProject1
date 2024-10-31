@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+import com.yedam.control.account.LogOutControl;
 import com.yedam.control.account.LoginControl;
 import com.yedam.control.account.MemberAddControl;
 import com.yedam.control.account.MemberAddFormControl;
@@ -39,6 +40,8 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/searchIdForm.do", new SearchIdFormControl());
 		map.put("/searchId.do", new SearchIdControl());
+		
+		map.put("/logOut.do", new LogOutControl());
 		
 	}
 	

@@ -36,7 +36,7 @@ public class MemberAddControl implements Control {
 		MemberService svc = new MemberServiceImpl();
 		try {
 			svc.addMember(mvo);
-			resp.sendRedirect("");
+			resp.sendRedirect("testBuyer.do");
 		} catch(Exception e) {
 			resp.sendRedirect("memberAddForm.do");
 		}

@@ -35,23 +35,17 @@
 
 <body>
 	<header>
-		<div class="container-fluid">
-			<tiles:insertAttribute name="header" />
-		</div>
+		<tiles:insertAttribute name="header" />
 	</header>
 
 
 	<main>
-		<div class="container-fluid">
-			<tiles:insertAttribute name="body" />
-		</div>
+		<tiles:insertAttribute name="body" />
 	</main>
 
 
 	<footer>
-		<div class="container-fluid">
-			<tiles:insertAttribute name="footer" />
-		</div>
+		<tiles:insertAttribute name="footer" />
 	</footer>
 
 </body>

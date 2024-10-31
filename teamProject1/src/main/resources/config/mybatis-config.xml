@@ -33,6 +33,7 @@
 
 
 	<mappers>
+    	<package name="com.yedam.mapper.buyer"/>
 	</mappers>
 	
 	

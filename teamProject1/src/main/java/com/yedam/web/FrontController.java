@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
 import com.yedam.control.Item.AddItemForm;
+import com.yedam.control.Item.ItemListControl;
 import com.yedam.control.Item.AddItemControl;
 
 
@@ -36,6 +37,7 @@ public class FrontController extends HttpServlet {
 		// item  상품 등록, 수량/가격 변경, 판매 상품 삭제, 거래 완료 버튼 관련
 		map.put("/addItem.do", new AddItemControl());
 		map.put("/addItemForm.do", new AddItemForm());
+		map.put("/itemList.do", new ItemListControl());
 		
 	}
 	

@@ -8,35 +8,35 @@
 </head>
 <body>
 
-<form action="addItem.do" method="post" enctype="multipart/form-data">
+<form action="addItem.do" method="get" name="inputForm" onsubmit="return checkField();">
 <%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
 <table class="table">
 		<tr>
-			<td colspan="3"> 제목
+			<td colspan="3"><p>제목</p>
 			<input class="form-control" type="text" name="itemName" placeholder="제목"></td>
 		</tr>
 		<tr>
-			<td>게임명
+			<td><p>게임명</p>
 			<input class="form-control" type="text" name="game" placeholder="게임명"></td>
-			<td>서버
+			<td><p>서버</p>
 			<input class="form-control" type="text" name="servers" placeholder="서버"></td>
-			<td>카테고리
+			<td><p>카테고리</p>
 			<input class="form-control" type="text" name="categories" placeholder="카테고리"></td>
 		</tr>
 		<tr>
 			<td colspan="3">
-			상품설명
+			<p>상품설명</p>
 			<textarea class="form-control" id="exampleFormControlTextarea1" name="itemInfo" rows="3" cols="30" ></textarea>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="3">이미지
+			<td colspan="3"><p>이미지</p>
 			<input type="file" name="image" class="form-control"></td>
 		</tr>
 		<tr>
-			<td>상품금액
+			<td><p>상품금액</p>
 			<input class="form-control" type="text" name="price" placeholder="상품금액"></td>
-			<td>상품수량
+			<td><p>상품수량</p>
 			<input class="form-control" type="text" name="count" placeholder="상품수량(상품금액단위)"></td>
 			<td colspan="2" align="center">
 				<input  class="btn btn-success" type="submit" value="상품등록">
@@ -45,6 +45,31 @@
 		</tr>
 	</table>
 </form>
+
+<script>
+	function checkField(){
+		let inputs = document.inputForm;
+		if(!inputs.itemName.value){	// name속성이 id인 요소의 value가 없으면 true
+			alert("제목을 입력하세요.");
+			return false;	// pro페이지로 이동 금지.
+		}
+		if(!inputs.game.value){	
+			alert("게임을 입력하세요.");
+			return false;
+		}
+		if(!inputs.categories.value){
+			alert("카테고리를 입력하세요.");
+			return false;
+		}
+		if(!inputs.price.value){
+			alert("상품금액을 입력하세요");
+		}
+		if(!inputs.count.value){
+			alert("상품수량을 입력하세요");
+		}
+	}
+</script>
+
 
 <!-- <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="제목" aria-label="Username" aria-describedby="basic-addon1">

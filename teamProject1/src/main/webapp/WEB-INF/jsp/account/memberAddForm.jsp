@@ -120,7 +120,7 @@
   height:25px;
   background: none;
 }
-.btn {
+.btn1 {
   position:relative;
   left:40%;
   transform: translateX(-50%);
@@ -138,7 +138,7 @@
   display:inline;
 }
 
-.btn:hover {
+.btn1:hover {
   background-position: right;
 }
 
@@ -167,6 +167,6 @@ height:700px;
       <div class="textForm">
         <input name="phone" type="text" class="cellphoneNo" placeholder="전화번호">
       </div>
-      <input type="submit" class="btn" value="저장"/>
+      <input type="submit" class="btn1" value="저장"/>
     </form>
 </div>    

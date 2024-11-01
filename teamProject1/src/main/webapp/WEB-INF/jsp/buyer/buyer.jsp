@@ -11,7 +11,7 @@
 </style>
 
 <h1>buyer.jsp test</h1>
-<p>buyer test</p>
+<p>buyer test1</p>
 
 <a href="itemList.do"><p>아이템 목록 테스트1</p></a>
 <a href="itemList.do?categories=게임머니"><p>아이템 목록 게임머니</p></a>

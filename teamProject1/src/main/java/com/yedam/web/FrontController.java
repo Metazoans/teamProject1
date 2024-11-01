@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+import com.yedam.control.buyer.buyListCont;
+import com.yedam.control.buyer.itemDetailCont;
+import com.yedam.control.buyer.itemListChangeCont;
+import com.yedam.control.buyer.itemListCont;
 
 import com.yedam.control.Item.AddItemForm;
 import com.yedam.control.Item.ItemDeleteControl;
@@ -50,7 +54,13 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
-		
+
+		//ksy - 상품 목록, 상품 상세, 구매 내역
+		map.put("/itemList.do", new itemListCont());
+		map.put("/itemListChange.do", new itemListChangeCont());
+		map.put("/itemDetail.do", new itemDetailCont());
+		map.put("/buyList.do", new buyListCont());
+
 
 		
 		
@@ -79,6 +89,7 @@ public class FrontController extends HttpServlet {
 		
 		
 		
+
 		
 		
 		
@@ -178,7 +189,6 @@ public class FrontController extends HttpServlet {
 		// 판매내역
 		map.put("/sellerHistory.do", new SellerHistoryControl());
 		
-		//map.put("/itemList.do", new ItemListControl());
 		
 		
 		

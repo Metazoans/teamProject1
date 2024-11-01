@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.mapper.buyer.buyerMapper">
+	<!-- 상품 목록 -->
+	<!-- 전체 출력 -->
+	<select id="selectItemList" resultType="com.yedam.vo.ItemVO">
+		select item_number,
+		game,
+		categories,
+		servers,
+		item_name,
+		item_info,
+		price,
+		count,
+		up_date,
+		seller,
+		image,
+		trade
+		from team_item
+	</select>
+
+	<!-- 조건 정렬 및 검색 -->
+	<select id="sortItemList" resultType="com.yedam.vo.ItemVO"
+		parameterType="com.yedam.vo.ItemListVO">
+		select *
+		from team_item
+		<where>
+			<if test="categories != null">
+				categories = #{categories}
+				<if test="searchData != null"> and </if>
+			</if>
+			<if test="searchData != null">
+				${searchType} like '%'||#{searchData}||'%'
+			</if>
+		</where>
+		<if test="sort != null">
+			order by ${sort} ${order}
+		</if>
+	</select>
+
+	<!-- 상품 상세 -->
+	<select id="selectItem" resultType="com.yedam.vo.ItemVO"
+		parameterType="int">
+		select item_number,
+		game,
+		categories,
+		servers,
+		item_name,
+		item_info,
+		price,
+		count,
+		up_date,
+		seller,
+		image,
+		trade
+		from team_item
+		where item_number = #{itemNumber}
+	</select>
+
+
+	<!-- 구매 목록 -->
+	<select id="selectBuyList" resultType="com.yedam.vo.BillsVO"
+		parameterType="string">
+		select seller,
+		buyer,
+		item_number,
+		pay_date,
+		pay_step,
+		item_name,
+		count,
+		total,
+		image
+		from team_bills
+		where buyer = #{buyer}
+	</select>
+
+</mapper>

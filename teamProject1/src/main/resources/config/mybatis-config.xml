@@ -35,10 +35,14 @@
 
 	<mappers>
 
+    	<package name="com.yedam.mapper.buyer"/>
+
+
 		<mapper resource="com/yedam/mapper/item/ItemMapper.xml" />
 
 			<mapper resource="com/yedam/mapper/account/MemberMapper.xml" />
 	
+
 
 	</mappers>
 	

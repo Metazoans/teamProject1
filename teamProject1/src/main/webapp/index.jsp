@@ -126,8 +126,8 @@
 		<button type="button" class="btn head-btn1 col-md-2">검색</button>
 	</div>
 	<!-- content -->
-	
-	
+	<!-- 인기순위(데이터 등록순) -->
+	<!-- 랜덤으로 리스트 출력 -->
 	<!-- footer -->
 	<footer>
 		<jsp:include page="/WEB-INF/layouts/footer.jsp"></jsp:include>

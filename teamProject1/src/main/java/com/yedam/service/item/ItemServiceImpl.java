@@ -23,4 +23,29 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.insertItem(item) == 1;
 	}
 	
+	@Override
+	public List<ItemVO> mySellList(String mid, String sell) {
+		return mapper.mySellList(mid,sell);
+	}
+	
+//	@Override
+//	public List<ItemVO> ItemNumSelect(int itemNum) {
+//		return mapper.ItemNumSelect(itemNum);
+//	}
+	
+	@Override
+	public List<ItemVO> sellerHistory(String logId, String payStep) {
+		return mapper.sellerHistory(logId, payStep);
+	}
+	
+	@Override
+	public boolean itemUpdate(ItemVO item) {
+		return mapper.itemUpdate(item) == 1;
+	}
+	
+	@Override
+	public boolean itemDelete(ItemVO item) {
+		return mapper.itemDelete(item) == 1;
+	}
+	
 }

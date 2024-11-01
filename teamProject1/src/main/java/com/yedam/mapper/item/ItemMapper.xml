@@ -9,10 +9,53 @@
 		from team_item
 	</select>
 	
+	<select id="mySellList" resultType="item" parameterType="String">
+		select *
+		from team_item
+		where seller = #{mid}
+		and trade = #{sell}
+	</select>
+	
+	<select id="sellerHistory" resultType="item" parameterType="String">
+		select *
+		from team_bills
+		where seller = #{logId}
+		and pay_step = #{payStep}
+	</select>
+	
+	<!-- <select id="ItemNumSelect" resultType="item" parameterType="int">
+		select *
+		from team_item
+		where item_number = #{itemNum}
+	</select> -->
+	
 	<insert id="insertItem" parameterType="item">
 		insert into team_item (item_number, game, categories, item_name, item_info, count, seller, price, servers, image, trade)
 		values (ITEM_NO_SEQ.nextval, #{game}, #{categories}, #{itemName}, #{itemInfo}, #{count}, #{seller}, #{price}, #{servers}, #{image}, #{trade})
 	</insert>
+	
+	<update id="itemUpdate" parameterType="item">
+		update	team_item
+		set		item_name = #{itemName}
+				<if test="servers != null">
+					,servers = #{servers}
+				</if>
+				,item_info = #{itemInfo}
+				,price = #{price}
+				,count = #{count}
+				<if test="image != null">
+					,image = #{image}
+				</if>
+		where	item_number = #{itemNumber}
+					
+	</update>
+	
+	<delete id="itemDelete" parameterType="item">
+		delete from
+		team_item
+		where item_number = #{itemNumber}
+	</delete>
+	
 
 
 </mapper>

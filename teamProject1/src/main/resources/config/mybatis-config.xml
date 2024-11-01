@@ -33,7 +33,7 @@
 
 
 	<mappers>
-    	<package name="com.yedam.mapper.buyer"/>
+    	<mapper resource="com/yedam/mapper/buyer/buyerMapper.xml" />
 	</mappers>
 	
 	

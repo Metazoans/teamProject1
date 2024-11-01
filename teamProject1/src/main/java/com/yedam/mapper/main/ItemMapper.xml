@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.main.ItemMapper">
+	<select id="rankList" resultType="com.yedam.vo.RankVo" parameterType="int">
+	select *
+	from (select rownum rank, a.*
+	from (select game, count(item_number) count
+        from team_item
+        group by game
+        order by 2 desc) a) b
+	where b.rank > (#{page} - 1)*5
+	<![CDATA[
+	and b.rank <= #{page} * 5
+	]]>
+	</select>
+</mapper>

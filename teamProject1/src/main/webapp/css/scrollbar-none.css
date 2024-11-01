@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.table-name{
+	display:block; 
+	width: 70%; 
+	text-align:center; 
+	margin: 0 auto; 
+	font-size:20px; 
+	font-weight:bold
+}
+#rankingList{
+	margin: 0 auto; 
+	border: 1px,solid,black; 
+	width: 70%; 
+	overflow:hidden; 
+	margin-bottom: 10px;
+	-ms-overflow-style: none;
+}
+#rankingList::-webkit-scrollbar {
+  display: none;
+}
+.page-float{
+	float:left;
+	width:50%;
+	display:block;
+}
+.section-top-border{
+	padding: 10px 0;
+}
+.progress-table-wrap{
+	-ms-overflow-style: none;
+}	
+.progress-table-wrap::-webkit-scrollbar{
+  display:none;
+}
+
+.progress-table-wrap{
+	width: 100%;
+	min-width: 300px
+}
+
+.serial{
+	width: 20%;
+}
+.country{
+	width: 50%;
+}
+.percentage{
+	width: 30%;
+}

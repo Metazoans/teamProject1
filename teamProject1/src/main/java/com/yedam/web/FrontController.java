@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+
+import com.yedam.control.main.PopularControl;
+
 import com.yedam.control.buyer.buyListCont;
 import com.yedam.control.buyer.itemDetailCont;
 import com.yedam.control.buyer.itemListChangeCont;
@@ -62,119 +65,17 @@ public class FrontController extends HttpServlet {
 		map.put("/buyList.do", new buyListCont());
 
 
+
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		map.put("/popular.do", new PopularControl());
 		
 		
 		
 
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		
@@ -194,13 +95,7 @@ public class FrontController extends HttpServlet {
 		
 
 
-		
-		
 	
-		
-		
-		
-		
 		
 		
 		map.put("/loginForm.do", new LoginControl());

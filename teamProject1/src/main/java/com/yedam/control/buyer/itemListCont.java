@@ -17,26 +17,17 @@ public class itemListCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		// 상품 목록 페이지(item List 객체, 페이지, 정렬방식, )
 		String categories = req.getParameter("categories");
-		String searchType = req.getParameter("searchType");
-		String searchData = req.getParameter("searchData");
-		String sort = req.getParameter("sort");
-		String order = req.getParameter("order");
 		
 		ItemListVO itemList = new ItemListVO();
 		itemList.setCategories(categories);
-		itemList.setSearchType(searchType);
-		itemList.setSearchData(searchData);
-		itemList.setSort(sort);
-		itemList.setOrder(order);
-		
+
 		buyerService svc = new buyerServiceImpl();
 		List<ItemVO> list = svc.getSortItemList(itemList);
 		
 		req.setAttribute("itemList", list);
+		
 		req.getRequestDispatcher("buyer/itemList.tiles").forward(req, resp);
 	}
 

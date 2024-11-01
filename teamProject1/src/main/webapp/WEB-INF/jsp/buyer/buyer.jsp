@@ -12,18 +12,10 @@
 
 <h1>buyer.jsp test</h1>
 
-<div id='itemList'>
-	<div id='listOrder'>
-		<a href="#" class="genric-btn default radius">제목</a>
-		<a href="#" class="genric-btn default radius">가격</a>
-		<a href="#" class="genric-btn default radius">작성일</a>
-	</div>
-	
-	<div id='listContent'>
-		<p>내용</p>
-	</div>
-</div>
-
+<a href="itemList.do"><p>아이템 목록 테스트1</p></a>
+<a href="itemList.do?categories=게임머니"><p>아이템 목록 게임머니</p></a>
+<a href="itemList.do?categories=아이템"><p>아이템 목록 아이템</p></a>
+<a href="itemList.do?categories=계정"><p>아이템 목록 계정</p></a>
 
 
 

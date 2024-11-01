@@ -4,8 +4,14 @@
 
 
 <style>
+.borderCont {
+	border: 1px solid rgba(0, 0, 0, .1);
+	margin-right: 2px;
+}
+
 .progress-table-wrap {
 	overflow-x: hidden;
+	width: 100%;
 }
 
 .itemList {
@@ -36,7 +42,7 @@
 }
 
 .listTitle {
-	width: 60%;
+	width: 65%;
 }
 
 .listPrice {
@@ -52,50 +58,52 @@
 }
 </style>
 
-<h1>itemList.jsp test222</h1>
+<h1>itemList.jsp test1</h1>
 
-<!-- 정렬 메뉴 시작 -->
-<!-- Job List Area Start -->
-<form action="itemList.do" method="get">
+<!-- 검색 -->
 
 <div class="job-listing-area">
+
 	<div class="container">
 		<div class="row">
 
+			<!-- 검색창 -->
+			<div class="w-75 p-3 row center-location" id="searchDiv">
+			<div class="borderCont">
+				<div class="default-select col-md-2.5" id="default-select"
+					style="height: 100%">
+					<div class="nice-select" tabindex="0">
+						<span class="current col-md-2.5" data-value="item_name">제목</span>
+						<ul class="list">
+							<li data-value="item_name" class="option focus">제목</li>
+							<li data-value="item_info" class="option">내용</li>
+							<li data-value="seller" class="option">판매자</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				<input type="text" name="search" autofocus class="single-input col-md-7 borderCont">
+				<button type="button" class="btn head-btn1 col-md-2">검색</button>
+			</div>
+
+
 			<!-- Right content -->
-			<section class="featured-job-area">
-				<div class="container">
-
-					<!-- 리스트 내용 (제목/가격/판매자/작성일) -->
-					<div class="progress-table-wrap">
-						<div class="progress-table itemList">
-
-							<div class="table-head">
-								<div class="listTitle" data-value="item_name">제목</div>
-								<div class="listPrice" data-value="price">가격</div>
-								<div class="listSeller" data-value="seller">판매자</div>
-								<div class="listDate" data-value="up_date">작성일</div>
-							</div>
-
-							<c:forEach var="item" items="${itemList }">
-								<div class="table-row">
-									<div class="listTitle">
-										<img src="assets/img/elements/f1.jpg" alt="flag">${item.itemName }
-									</div>
-									<div class="listPrice">${item.price }</div>
-									<div class="listSeller">${item.seller }</div>
-									<div class="listDate">${item.upDate }</div>
-								</div>
-							</c:forEach>
-
-
-						</div>
+			<!-- 리스트 내용 (제목/가격/판매자/작성일) -->
+			<div class="progress-table-wrap center-location">
+				<div class="progress-table itemList" 
+					data-value="${itemList.get(0).categories}">
+					
+					<div class="table-head">
+						<div class="listTitle" data-value="item_name">제목</div>
+						<div class="listPrice" data-value="price">가격</div>
+						<div class="listSeller" data-value="seller">판매자</div>
+						<div class="listDate" data-value="up_date">작성일</div>
 					</div>
 
-
+					<!-- 목록 출력 -->
+					
 				</div>
-			</section>
-
+			</div>
 		</div>
 	</div>
 </div>
@@ -123,7 +131,7 @@
 </div>
 <!--Pagination End  -->
 
-</form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="js/itemListChange.js"></script>

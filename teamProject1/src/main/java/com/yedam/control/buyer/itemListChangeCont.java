@@ -38,6 +38,8 @@ public class itemListChangeCont implements Control {
 		buyerService svc = new buyerServiceImpl();
 		List<ItemVO> list = svc.getSortItemList(itemList);
 		
+		req.setAttribute("itemList", list);
+		
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list); // 자바 객체 => json문자열로 변경
 

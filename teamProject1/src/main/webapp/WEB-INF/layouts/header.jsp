@@ -37,32 +37,25 @@
 								</nav>
 							</div>
 						<!-- Header-btn -->
-<!-- 
-						<div class="header-btn d-none f-right d-lg-block">
-							<a href="memberAddForm.do" class="btn head-btn1">Register</a> <a href="loginForm.do"
-								class="btn head-btn2">Login</a>
- -->
-
 							<div class="header-btn d-none f-right d-lg-block">
 								<%String logId = (String) session.getAttribute("logId");
 								if(logId == null){%> 
-								<a href="memberAddForm.do" class="btn head-btn1">Register</a>
-								 <a href="loginForm.do" class="btn head-btn2">Login</a>
+								<a href="#" class="btn head-btn1">Register</a>
+								 <a href="#" class="btn head-btn2">Login</a>
 								<%} else { %>
 								 <ul id="hiddenBtn">
 								 <li class="float-left"><div id="myPage">
-									<a href="myPageForm.do" class="btn head-btn1" id="hiddenPage">MyPage</a>
+									<a href="#" class="btn head-btn1" id="hiddenPage">MyPage</a>
 									<ul id="hiddenList" style="display:none;" >
 										<li><a href="#" class="btn head-btn2">상품등록</a></li>
 										<li><a href="#" class="btn head-btn2">나의 상점</a></li>
 										<li><a href="#" class="btn head-btn2">내 정보</a></li>
 									</ul>
 								 </div> </li>
-									<li class="float-left"><a href="logOut.do" class="btn head-btn2">Logout</a><li>
+									<li class="float-left"><a href="#" class="btn head-btn2">Logout</a><li>
 								 </ul>
 								<%} %>
 							</div>
-
 						</div>
 					</div>
 				<!-- Mobile Menu -->

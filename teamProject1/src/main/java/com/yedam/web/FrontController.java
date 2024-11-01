@@ -38,6 +38,65 @@ public class FrontController extends HttpServlet {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		// item  상품 등록, 수량/가격 변경, 판매 상품 삭제, 거래 완료 버튼 관련
 		map.put("/addItem.do", new AddItemControl());
 		map.put("/addItemForm.do", new AddItemForm());
@@ -48,7 +107,7 @@ public class FrontController extends HttpServlet {
 		// 판매내역
 		map.put("/sellerHistory.do", new SellerHistoryControl());
 		
-		map.put("/itemList.do", new ItemListControl());
+		//map.put("/itemList.do", new ItemListControl());
 		
 		
 		

@@ -34,7 +34,12 @@
 
 
 	<mappers>
+
 		<mapper resource="com/yedam/mapper/item/ItemMapper.xml" />
+
+			<mapper resource="com/yedam/mapper/account/MemberMapper.xml" />
+	
+
 	</mappers>
 	
 	

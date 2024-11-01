@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.account.MemberMapper">
+	<!-- 아이디확인 -->
+	<select id="loginMember" resultType="com.yedam.vo.MemberVO">
+		select *
+		from team_member
+		where member_id = #{id}
+		and password = #{pwd}		
+	</select>
+	
+	<insert id="insertMember" parameterType="com.yedam.vo.MemberVO">
+		insert into team_member(member_id, password, member_name, birth, phone)
+		values(#{memberId}, #{password}, #{memberName}, #{birth}, #{phone})
+	</insert>
+	
+	<select id="selectId" resultType="com.yedam.vo.MemberVO" parameterType="com.yedam.vo.MemberVO">
+		select member_id
+		from team_member		
+		where member_name=#{memberName}		
+		and birth = #{birth}		
+		and phone = #{phone}	
+	
+	</select>
+	
+	<select id="selectPwd" resultType="com.yedam.vo.MemberVO" parameterType="com.yedam.vo.MemberVO">
+		select password
+		from team_member
+		where member_id=#{memberId}
+		and member_name=#{memberName}
+		and birth = #{birth}
+		and phone = #{phone}
+	</select>
+	
+	<select id="members" resultType="com.yedam.vo.MemberVO" parameterType="string">
+		select * 
+		from team_member
+		where member_id=#{logId}
+	</select>
+	
+	<update id="updateProfile" parameterType="com.yedam.vo.MemberVO">
+		update team_member
+		<if test="member_id != null">
+		set member_id = #{memberId}
+		</if>
+		<if test="password != null">
+			,password = #{password}
+			</if>
+		where member_name = #{memberName}
+		
+	</update>
+</mapper>

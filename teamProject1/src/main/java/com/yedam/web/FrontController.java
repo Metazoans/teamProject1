@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+
 import com.yedam.control.Item.AddItemForm;
 import com.yedam.control.Item.ItemDeleteControl;
 import com.yedam.control.Item.ItemListControl;
@@ -21,6 +22,18 @@ import com.yedam.control.Item.ItemUpdateControl;
 import com.yedam.control.Item.MySellListControl;
 import com.yedam.control.Item.SellerHistoryControl;
 import com.yedam.control.Item.AddItemControl;
+
+
+import com.yedam.control.account.LogOutControl;
+import com.yedam.control.account.LoginControl;
+import com.yedam.control.account.MemberAddControl;
+import com.yedam.control.account.MemberAddFormControl;
+import com.yedam.control.account.MyPageControl;
+import com.yedam.control.account.MyPageFormControl;
+import com.yedam.control.account.SearchIdControl;
+import com.yedam.control.account.SearchIdFormControl;
+import com.yedam.control.account.SearchPwdControl;
+import com.yedam.control.account.SearchPwdFormControl;
 
 
 //@WebServlet("*.do")
@@ -38,6 +51,7 @@ public class FrontController extends HttpServlet {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
 		
+
 		
 		
 		
@@ -48,6 +62,63 @@ public class FrontController extends HttpServlet {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 		
 		
 		
@@ -111,6 +182,34 @@ public class FrontController extends HttpServlet {
 		
 		
 		
+
+
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		map.put("/loginForm.do", new LoginControl());
+		map.put("/memberAddForm.do", new MemberAddFormControl()); //등록화면
+		map.put("/memberAdd.do", new MemberAddControl()); //등록처리
+		
+		map.put("/searchIdForm.do", new SearchIdFormControl());
+		map.put("/searchId.do", new SearchIdControl());
+		
+		map.put("/logOut.do", new LogOutControl());
+		
+		map.put("/searchPwdForm.do", new SearchPwdFormControl());
+		map.put("/searchPwd.do", new SearchPwdControl());
+		
+		map.put("/myPageForm.do", new MyPageFormControl());
+		map.put("/myPage.do", new MyPageControl());//마이페이지 
+		
+	
+
 	}
 	
 	@Override

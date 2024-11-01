@@ -17,4 +17,5 @@ public class ItemVO {
 	private Date upDate;		//등록일자
 	private String seller;		//판매자
 	private String image;		//이미지
+	private String trade;		//거래구분
 }

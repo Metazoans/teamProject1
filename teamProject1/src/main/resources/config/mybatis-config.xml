@@ -33,6 +33,7 @@
 
 
 	<mappers>
+	<mapper resource="com/yedam/mapper/main/ItemMapper.xml" />
 	</mappers>
 	
 	

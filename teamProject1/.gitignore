@@ -1,2 +1,7 @@
 /build/
 /target/
+/workspace/
+/.settings/
+/bin/
+/.classpath
+/.project

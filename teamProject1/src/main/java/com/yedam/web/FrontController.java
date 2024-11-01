@@ -14,6 +14,7 @@ import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
 import com.yedam.control.buyer.buyListCont;
 import com.yedam.control.buyer.itemDetailCont;
+import com.yedam.control.buyer.itemListChangeCont;
 import com.yedam.control.buyer.itemListCont;
 
 //@WebServlet("*.do")
@@ -33,6 +34,7 @@ public class FrontController extends HttpServlet {
 		
 		//ksy - 상품 목록, 상품 상세, 구매 내역
 		map.put("/itemList.do", new itemListCont());
+		map.put("/itemListChange.do", new itemListChangeCont());
 		map.put("/itemDetail.do", new itemDetailCont());
 		map.put("/buyList.do", new buyListCont());
 		

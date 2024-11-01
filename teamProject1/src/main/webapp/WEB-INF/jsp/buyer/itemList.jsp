@@ -125,13 +125,5 @@
 
 </form>
 
-<script>
-
-document.querySelectorAll('.table-head div').forEach(div => {
-	div.addEventListener('click', function(e) {
-		console.log('test1');
-		console.log(e.target.dataset.value);
-	});
-})
-
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="js/itemListChange.js"></script>

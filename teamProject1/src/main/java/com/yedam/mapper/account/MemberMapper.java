@@ -1,5 +1,7 @@
 package com.yedam.mapper.account;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.yedam.vo.MemberVO;
@@ -11,5 +13,9 @@ public interface MemberMapper {
 	
 	public MemberVO selectId(MemberVO member);
 	
-	public MemberVO selectPwd(MemberVO member); 
+	public MemberVO selectPwd(MemberVO member);
+	
+	public List<MemberVO> members(@Param("logId") String id);
+	
+	public int updateProfile(MemberVO member);
 }

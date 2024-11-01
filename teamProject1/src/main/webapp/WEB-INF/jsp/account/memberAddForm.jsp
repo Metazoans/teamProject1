@@ -124,7 +124,7 @@
   position:relative;
   left:40%;
   transform: translateX(-50%);
-  margin-bottom: 40px;
+  margin: 10px 0;
   width:80%;
   height:40px;
   background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
@@ -139,6 +139,23 @@
 }
 
 .btn1:hover {
+  background-position: right;
+}
+.btn2 {
+  margin: 10px 0;
+  width: 80%;
+  height: 40px;
+  background: linear-gradient(125deg, #81ecec, #6c5ce7, #81ecec);
+  background-position: left;
+  background-size: 200%;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn2:hover {
   background-position: right;
 }
 
@@ -168,5 +185,7 @@ height:700px;
         <input name="phone" type="text" class="cellphoneNo" placeholder="전화번호">
       </div>
       <input type="submit" class="btn1" value="저장"/>
+      <input type="button" class="btn2 btn-primary" onclick="location.href='loginForm.do'" value="취소">
+      
     </form>
 </div>    

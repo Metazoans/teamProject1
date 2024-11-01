@@ -186,7 +186,7 @@ String logId = (String)session.getAttribute("logId");
       </div>
       <input type="submit" class="btn2" value="로그인"/><br>
       <input type="button" class='btn2 btn-primary' onclick = "location.href = 'searchIdForm.do'" value="아이디찾기">
-      <input type="button" class='btn2 btn-primary' onclick = "#" value="비밀번호찾기">
+      <input type="button" class='btn2 btn-primary' onclick = "location.href = 'searchPwdForm.do'" value="비밀번호찾기">
       
-    </form>
+</form>
 </div>    

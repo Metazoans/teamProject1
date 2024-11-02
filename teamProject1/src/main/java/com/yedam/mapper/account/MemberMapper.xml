@@ -48,7 +48,7 @@
 		<if test="password != null">
 			,password = #{password}
 			</if>
-		where member_name = #{memberName}
+		where member_id = #{memberId}
 		
 	</update>
 </mapper>

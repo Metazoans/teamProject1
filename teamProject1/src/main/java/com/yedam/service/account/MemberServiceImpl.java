@@ -10,7 +10,7 @@ import com.yedam.vo.MemberVO;
 
 public class MemberServiceImpl implements MemberService{
 
-	SqlSession sqlSession = DataSource.getInstance().openSession();
+	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 	
 	@Override

@@ -93,6 +93,7 @@ div {
 
 
 <!-- Modal -->
+       	<form action="myPageForm.do" class="joinForm" method="post">
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -104,7 +105,6 @@ div {
       <%
 	for (MemberVO mvo : list) {
 	%>
-       	<form action="myPageForm.do" class="joinForm" method="post">
 		<table class="table">
 			<tbody>
 				<tr>
@@ -167,13 +167,14 @@ div {
     </div>
   </div>
 </div>
+		</form>
 	
 
 	
+	<form action="myPageForm.do" class="joinForm" method="post">
 	<%
 	for (MemberVO mvo : list) {
 	%>
-	<form action="myPageForm.do" class="joinForm" method="post">
 		<table class="table">
 			<tbody>
 				<tr>
@@ -229,12 +230,12 @@ div {
 			</tbody>
 		</table>
 
-	</form>
 </div>
 	<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   수정
 </button>
+	</form>
 
 
 <div></div>

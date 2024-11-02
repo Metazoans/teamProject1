@@ -36,7 +36,8 @@
 	<mappers>
 	<mapper resource="com/yedam/mapper/main/ItemMapper.xml" />
 
-    	<package name="com.yedam.mapper.buyer"/>
+    	<!-- <mapper resource="com/yedam/mapper/buyer/buyerMapper.xml"/>
+    	<mapper resource="com/yedam/mapper/buyer/buyerMapper3.xml"/> -->
 
 
 		<mapper resource="com/yedam/mapper/item/ItemMapper.xml" />

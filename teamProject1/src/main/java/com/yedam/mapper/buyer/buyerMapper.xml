@@ -27,12 +27,11 @@
 			  from ( select *
 			  		 from team_item
 				     <where>
-					     <if test="categories != null">
-						     categories = #{categories}
-						     <if test="searchData != null"> and </if>
-					     </if>
+					     categories = #{categories} 
+					     and trade = #{trade} 
+					     
 					     <if test="searchData != null">
-						     ${searchType} like '%'||#{searchData}||'%'
+						     and ${searchType} like '%'||#{searchData}||'%'
 					     </if>
 				     </where>
 				     <if test="sort != null">

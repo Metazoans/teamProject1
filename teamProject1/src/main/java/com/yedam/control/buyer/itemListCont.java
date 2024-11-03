@@ -17,10 +17,12 @@ public class itemListCont implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 상품 목록 페이지(item List 객체, 페이지, 정렬방식, )
 		String categories = req.getParameter("categories");
+		String trade = req.getParameter("trade");
 		String page = req.getParameter("page");
 		
 		ItemListVO ilvo = new ItemListVO();
 		ilvo.setCategories(categories);
+		ilvo.setTrade(trade);
 		
 		if(page == null) {
 			ilvo.setPage(1);

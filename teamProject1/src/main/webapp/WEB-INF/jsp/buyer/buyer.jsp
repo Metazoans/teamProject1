@@ -13,10 +13,12 @@
 <h1>buyer.jsp test</h1>
 <p>buyer test</p>
 
-<a href="itemList.do"><p>아이템 목록 테스트1</p></a>
-<a href="itemList.do?categories=게임머니"><p>아이템 목록 게임머니</p></a>
-<a href="itemList.do?categories=아이템"><p>아이템 목록 아이템</p></a>
-<a href="itemList.do?categories=계정"><p>아이템 목록 계정</p></a>
+<a href="itemList.do?categories=게임머니&trade=buy"><p>아이템 목록 게임머니 사기</p></a>
+<a href="itemList.do?categories=게임머니&trade=sell"><p>아이템 목록 게임머니 팔기</p></a>
+<a href="itemList.do?categories=아이템&trade=buy"><p>아이템 목록 아이템 사기</p></a>
+<a href="itemList.do?categories=아이템&trade=sell"><p>아이템 목록 아이템 팔기</p></a>
+<a href="itemList.do?categories=계정&trade=buy"><p>아이템 목록 계정 사기</p></a>>
+<a href="itemList.do?categories=계정&trade=sell"><p>아이템 목록 계정 팔기</p></a>
 
 
 

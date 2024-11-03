@@ -24,6 +24,7 @@ public class itemListChangeCont implements Control {
 		// 상품 목록 페이지(item List 객체, 페이지, 정렬방식, )
 		String page = req.getParameter("page");
 		String categories = req.getParameter("categories");
+		String trade = req.getParameter("trade");
 		String searchType = req.getParameter("searchType");
 		String searchData = req.getParameter("searchData");
 		String sort = req.getParameter("sort");
@@ -32,6 +33,7 @@ public class itemListChangeCont implements Control {
 		ItemListVO ilvo = new ItemListVO();
 		ilvo.setPage(Integer.parseInt(page));
 		ilvo.setCategories(categories);
+		ilvo.setTrade(trade);
 		ilvo.setSearchType(searchType);
 		ilvo.setSearchData(searchData);
 		ilvo.setSort(sort);

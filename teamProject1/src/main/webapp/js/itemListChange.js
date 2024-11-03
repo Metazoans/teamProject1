@@ -2,15 +2,17 @@
  *
  */
 
-let page, categories, searchType, searchData, sort, order;
+let page, categories, trade, searchType, searchData, sort, order;
 
 categories = document.querySelector('.itemList').dataset.value;
 if(categories == '') categories = undefined;
+trade = document.querySelector('#listDataDiv #trade').dataset.value;
 page = document.querySelector('.pagination-area').dataset.value;
 
 let listData = {
 	page: page,
 	categories: categories,
+	trade: trade,
 	searchType: searchType,
 	searchData: searchData,
 	sort: sort,
@@ -47,8 +49,9 @@ function itemListPrt(listData) {
 	})
 		.done(function(result) {
 			result.forEach(item => {
+				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
 				$('<div />').addClass('table-row').append(
-					$('<div />').addClass('listTitle').text(item.itemName),
+					$('<div />').addClass('listTitle').append(link),
 					$('<div />').addClass('listPrice').text(item.price),
 					$('<div />').addClass('listSeller').text(item.seller),
 					$('<div />').addClass('listDate').text(item.upDate)

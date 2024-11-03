@@ -74,7 +74,11 @@
 	width: 15%;
 }
 </style>
-
+<h1>test</h1>
+<p>${ilvo.trade }</p>
+<div id="listDataDiv">
+	<div id="trade" data-value="${ilvo.trade }"></div>
+</div>
 <!-- 검색 -->
 <div class="job-listing-area">
 

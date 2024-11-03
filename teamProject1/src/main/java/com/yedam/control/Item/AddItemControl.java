@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yedam.common.Control;
 import com.yedam.service.item.ItemService;
 import com.yedam.service.item.ItemServiceImpl;
@@ -19,18 +21,27 @@ public class AddItemControl implements Control {
 		req.setCharacterEncoding("utf-8");
 		ItemService svc = new ItemServiceImpl();
 		ItemVO ivo = new ItemVO();
+		String savePath = req.getServletContext().getRealPath("images");
+		int maxSize = 1024 * 1025 * 100;
 		
-		String game = req.getParameter("game");
-		String categories = req.getParameter("categories");
-		String servers = req.getParameter("servers");
-		String itemName = req.getParameter("itemName");
-		String itemInfo = req.getParameter("itemInfo");
-		String price = req.getParameter("price");
-		String count = req.getParameter("count");
-		String seller = "test1";
-		String image = req.getParameter("image");
-		String trade = req.getParameter("trade");
+		MultipartRequest mr = new MultipartRequest(
+				req
+				,savePath
+				,maxSize
+				,"utf-8"
+				,new DefaultFileRenamePolicy()
+				);
 		
+		String game = mr.getParameter("game");
+		String categories = mr.getParameter("categories");
+		String servers = mr.getParameter("servers");
+		String itemName = mr.getParameter("itemName");
+		String itemInfo = mr.getParameter("itemInfo");
+		String price = mr.getParameter("price");
+		String count = mr.getParameter("count");
+		String seller = mr.getParameter("logId");
+		String image = mr.getFilesystemName("image");
+		String trade = mr.getParameter("trade");
 		
 		ivo.setGame(game);
 		ivo.setCategories(categories);
@@ -47,9 +58,6 @@ public class AddItemControl implements Control {
 		try {	
 			if(svc.addItem(ivo)) {				
 				req.setAttribute("msg", "상품등록을 완료하였습니다");
-				req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
-			}else {
-				req.setAttribute("msg", "상품등록에 실패하였습니다");
 				req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
 			}
 		}catch(Exception e){		

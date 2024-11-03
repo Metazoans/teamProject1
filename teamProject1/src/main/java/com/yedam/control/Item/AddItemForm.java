@@ -13,6 +13,8 @@ public class AddItemForm implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
+		
 		req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
 		
 	}

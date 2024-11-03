@@ -9,6 +9,7 @@
 <body>
 <script>
 <%
+	String logId = (String) session.getAttribute("logId");
     String msg = (String) request.getAttribute("msg");
     if (msg != null) {
 %>
@@ -16,9 +17,10 @@
         location.href = "itemList.do";
 <% } %>
 </script>
-<form action="addItem.do" method="get" name="inputForm" onsubmit="return checkField();">
+<form action="addItem.do" method="post" onsubmit="return checkField();" enctype="multipart/form-data">
 <%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
 <table class="table">
+		<input type="hidden" name="logId" value="${logId}">
 		<tr>
 			<td colspan="3"><p>제목</p>
 			<input class="form-control" type="text" name="itemName" placeholder="제목"></td>
@@ -48,6 +50,8 @@
 			<input class="form-control" type="text" name="count" placeholder="상품수량(상품금액단위)"></td>
 			<td><p>판매/구매</p>
 			<input class="form-control" type="text" name="trade" placeholder="판매/구매"></td>
+		</tr>
+		<tr>
 			<td colspan="2" align="center">
 				<input  class="btn btn-success" type="submit" value="상품등록" >
 				<input class="btn btn-warning" type="button" value="취소" onclick="location.href='itemList.do'">

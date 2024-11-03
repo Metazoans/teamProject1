@@ -12,7 +12,7 @@ public interface ItemService {
 	
 	List<ItemVO> sellerHistory(String logId, String payStep);
 	
-	//List<ItemVO> ItemNumSelect(int itemNum);
+//	List<ItemVO> ItemNumSelect(String itemNum);
 	
 	boolean addItem(ItemVO item);
 	

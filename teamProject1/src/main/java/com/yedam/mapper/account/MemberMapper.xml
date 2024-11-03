@@ -40,15 +40,32 @@
 		where member_id=#{logId}
 	</select>
 	
-	<update id="updateProfile" parameterType="com.yedam.vo.MemberVO">
+	<!-- <update id="updateProfile" parameterType="com.yedam.vo.MemberVO">
 		update team_member
 		<if test="member_id != null">
-		set member_id = #{memberId}
+		set member_id=#{memberId}
 		</if>
 		<if test="password != null">
-			,password = #{password}
+			  , password=#{password}
 			</if>
-		where member_id = #{memberId}
-		
+		where member_name=#{memberName}		
+	</update>
+	 -->
+	<update id="updateProfile" parameterType="com.yedam.vo.MemberVO">
+    update team_member
+    set<if test="memberId != null">
+    member_id=#{memberId},
+        </if>
+        <if test="password != null">
+    password=#{password}
+        </if>
+    where member_name=#{memberName}
+</update>
+	
+	<update id="updateMileage" parameterType="com.yedam.vo.MemberVO">
+		update team_member
+		set
+		mileage=#{mileage}
+		where member_name=#{memberName}
 	</update>
 </mapper>

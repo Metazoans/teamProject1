@@ -23,24 +23,29 @@ public class MyPageControl implements Control {
 		String id = req.getParameter("member_id");
 		String name = req.getParameter("member_name");
 		String pwd = req.getParameter("password");
+
 		
 		MemberService svc = new MemberServiceImpl();
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);
 		mvo.setMemberName(name);
 		mvo.setPassword(pwd);
-
 		
-		if(id==null||name==null||pwd==null) {
+		if(id==null||pwd==null) {
 			out.println("<script>alert('모든 필드를 입력해 주세요.'); history.back();</script>");
 			return;
 		}
 		
 		if(svc.modifyMember(mvo)) {
 			out.println("<script>alert('변경성공');</script> ");
+		
+			//req.getRequestDispatcher("account/myPage.tiles").forward(req, resp);
 			resp.sendRedirect("myPageForm.do");
+
+			
 		}else {
 			out.println("<script>alert('변경 실패'); history.back();</script>");
+			
 		}
 		
 		

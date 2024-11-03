@@ -12,4 +12,5 @@ public interface MemberService {
 	MemberVO searchPwd(MemberVO member);
 	List<MemberVO> memberList(String logId);
 	boolean modifyMember(MemberVO member);
+	boolean modifyMileage(MemberVO member);
 }

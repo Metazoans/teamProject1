@@ -12,8 +12,10 @@ public interface buyerService {
 	//상품 디테일
 	ItemVO getItem(int itemNumber);
 	
-	//상품 검색 및 정렬
+	//검색*정렬 상품 목록 출력
 	List<ItemVO> getSortItemList(ItemListVO itemList);
+	//검색*정렬 상품 목록 숫자
+	int getSortItemListCnt(ItemListVO itemList);
 	
 	//구매 목록
 	List<BillsVO> getBuyList(String buyer);

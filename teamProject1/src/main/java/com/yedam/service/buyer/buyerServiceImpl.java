@@ -30,6 +30,10 @@ public class buyerServiceImpl implements buyerService {
 	public List<ItemVO> getSortItemList(ItemListVO itemList) {
 		return buyMapper.sortItemList(itemList);
 	}
+	@Override
+	public int getSortItemListCnt(ItemListVO itemList) {
+		return buyMapper.sortItemListCnt(itemList);
+	}
 	
 	//구매 목록
 	@Override

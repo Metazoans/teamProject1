@@ -20,10 +20,34 @@
 		from team_item
 	</select>
 
-	<!-- 조건 정렬 및 검색 -->
-	<select id="sortItemList" resultType="com.yedam.vo.ItemVO"
-		parameterType="com.yedam.vo.ItemListVO">
-		select *
+	<!-- 검색&정렬 상품 목록 출력 -->
+	<select id="sortItemList" resultType="com.yedam.vo.ItemVO" parameterType="com.yedam.vo.ItemListVO">
+		select a.*
+		from (select rownum rn, r.*
+			  from ( select *
+			  		 from team_item
+				     <where>
+					     <if test="categories != null">
+						     categories = #{categories}
+						     <if test="searchData != null"> and </if>
+					     </if>
+					     <if test="searchData != null">
+						     ${searchType} like '%'||#{searchData}||'%'
+					     </if>
+				     </where>
+				     <if test="sort != null">
+					     order by ${sort} ${order}
+				     </if>
+				   ) r
+			 ) a
+		where a.rn > (#{page} - 1) * 10
+		<![CDATA[
+			and   a.rn <= #{page} * 10
+		]]>
+	</select>
+	<!-- 검색&정렬 상품 목록 숫자 -->
+	<select id="sortItemListCnt" resultType="int" parameterType="com.yedam.vo.ItemListVO">
+		select count(item_number)
 		from team_item
 		<where>
 			<if test="categories != null">

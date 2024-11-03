@@ -2,9 +2,6 @@
  * mainPage.js
  */
 
-
-
-
 function rankLeft() {
 	// jQuery 방식의 Ajax 호출
 	$.ajax('popular.do?page=' + ((page * 2) - 1))

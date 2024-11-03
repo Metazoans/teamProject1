@@ -9,12 +9,12 @@ let hiddenList = document.querySelector("#hiddenList");
 let myPage = document.querySelector("#myPage");
 let floatLeft = document.querySelectorAll(".float-left");
 
-document.querySelectorAll('a').forEach((a)=>{
+document.querySelectorAll('div.menu-wrapper a').forEach((a)=>{
 	a.style.width = "170px"
 	a.style.height = "54px"
 	a.style.fontWeight = "bold"
+	
 })
-
 
 floatLeft.forEach((fl) => {
 	fl.style.cssText = "float: left";

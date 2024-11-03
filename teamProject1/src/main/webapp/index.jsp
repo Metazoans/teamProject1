@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="assets/css/slick.css">
 <link rel="stylesheet" href="assets/css/nice-select.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="css/scrollbar-none.css">
+<link rel="stylesheet" href="css/ranking-chart.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -66,8 +66,18 @@
 										<li><a href="#">계정</a>
 											<ul class="submenu">
 												<li><a href="#">계정 구매</a></li>
-												<li><a href="#">계정 판매</a></li>
+												<li><a href="#">계정 판매</a>
+													<div class="gamemenu">
+														<table>
+															<tr>
+																<td><a href="#">test1</a></td>
+																<td><a href="#">test2</a></td>
+															</tr>
+														</table>
+													</div>
 											</ul></li>
+									</ul>
+									</li>
 									</ul>
 								</nav>
 							</div>
@@ -136,7 +146,11 @@
 	-->
 	<!-- content -->
 	<!-- 인기순위(데이터 등록순) -->
-	<h3 class="btn head-btn1 table-name">인기순위</h3>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h3 class="	table-name">인기순위</h3>
 	<div id="rankingList" class="col-lg-12">
 		<div class="page-float">
 			<div class="section-top-border">

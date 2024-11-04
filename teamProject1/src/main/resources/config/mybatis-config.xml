@@ -34,18 +34,23 @@
 
 
 	<mappers>
+<<<<<<< HEAD
 	<mapper resource="com/yedam/mapper/main/ItemMapper.xml" />
 
     	<mapper resource="com/yedam/mapper/buyer/buyerMapper.xml"/>
     	<!-- <mapper resource="com/yedam/mapper/buyer/buyerMapper3.xml"/> -->
 
+=======
+		<mapper resource="com/yedam/mapper/main/ItemMapper.xml" />
+		<!-- 
+    	<package name="com.yedam.mapper.buyer"/>
+		 -->
+>>>>>>> refs/heads/shun
 
 		<mapper resource="com/yedam/mapper/item/ItemMapper.xml" />
 
-			<mapper resource="com/yedam/mapper/account/MemberMapper.xml" />
+		<mapper resource="com/yedam/mapper/account/MemberMapper.xml" />
 	
-
-
 	</mappers>
 	
 	

@@ -8,7 +8,9 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 
 <link rel="manifest" href="site.webmanifest">
+ -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="assets/img/favicon.ico">
 
@@ -25,7 +27,8 @@
 <link rel="stylesheet" href="assets/css/slick.css">
 <link rel="stylesheet" href="assets/css/nice-select.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="css/scrollbar-none.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/ranking-chart.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -55,18 +58,48 @@
 									<ul id="navigation">
 										<li><a href="#">게임머니</a>
 											<ul class="submenu">
-												<li><a href="#">게임머니 구매</a></li>
-												<li><a href="#">게임머니 판매</a></li>
+												<li><a href="#">게임머니 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">게임머니 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 										<li><a href="#">아이템</a>
 											<ul class="submenu">
-												<li><a href="#">아이템 구매</a></li>
-												<li><a href="#">아이템 판매</a></li>
+												<li><a href="#">아이템 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">아이템 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 										<li><a href="#">계정</a>
 											<ul class="submenu">
-												<li><a href="#">계정 구매</a></li>
-												<li><a href="#">계정 판매</a></li>
+												<li><a href="#">계정 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">계정 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 									</ul>
 								</nav>
@@ -136,7 +169,7 @@
 	-->
 	<!-- content -->
 	<!-- 인기순위(데이터 등록순) -->
-	<h3 class="btn head-btn1 table-name">인기순위</h3>
+	<h3 class="	table-name">인기순위</h3>
 	<div id="rankingList" class="col-lg-12">
 		<div class="page-float">
 			<div class="section-top-border">
@@ -158,7 +191,9 @@
 		</div>
 	</div>
 	<!-- 랜덤으로 리스트 출력 -->
-	<div id="randomList"></div>
+	<div id="randomList">
+	
+	</div>
 	<!-- footer -->
 	<footer>
 		<jsp:include page="/WEB-INF/layouts/footer.jsp"></jsp:include>

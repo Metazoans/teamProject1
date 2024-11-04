@@ -17,5 +17,13 @@ public List<RankVo> ranking(int page) {
 	// TODO Auto-generated method stub
 	return mapper.rankList(page);
 }
+@Override
+public List<String> gameList() {
+	return mapper.gameList();
+}
+@Override
+public List<String> serverList(String game) {
+	return mapper.serverList(game);
+}
 
 }

@@ -28,10 +28,6 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.mySellList(mid,sell);
 	}
 	
-//	@Override
-//	public List<ItemVO> ItemNumSelect(int itemNum) {
-//		return mapper.ItemNumSelect(itemNum);
-//	}
 	
 	@Override
 	public List<ItemVO> sellerHistory(String logId, String payStep) {

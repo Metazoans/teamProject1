@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 import com.yedam.service.item.ItemService;
@@ -21,7 +22,10 @@ public class MySellListControl implements Control {
 		
 		ItemService svc = new ItemServiceImpl();
 		
-		List<ItemVO> list = (List<ItemVO>)svc.mySellList("test1","sell");
+		HttpSession session = req.getSession();
+		String logId = (String) session.getAttribute("logId");
+		
+		List<ItemVO> list = (List<ItemVO>)svc.mySellList(logId,"sell");
 		
 		req.setAttribute("mySellList", list);
 		

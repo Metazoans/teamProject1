@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- Header Start -->
-<div class="header-area header-transparrent">
-	<div class="headder-top header-sticky">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-3 col-md-2">
-					<!-- Logo -->
-					<div class="logo">
-						<a href="index.jsp"><img src="assets/img/logo/logo.png"
-							alt=""></a>
+<!-- header -->
+	<div class="header-area header-transparrent">
+		<div class="headder-top header-sticky">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-3 col-md-2">
+						<!-- Logo -->
+						<div class="logo">
+							<a href="index.jsp"><img src="assets/img/logo/logo.png"
+								alt=""></a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-9 col-md-9">
+					<div class="col-lg-9 col-md-9">
 						<div class="menu-wrapper">
 							<!-- Main-menu -->
 							<div class="main-menu">
@@ -20,29 +20,53 @@
 									<ul id="navigation">
 										<li><a href="#">게임머니</a>
 											<ul class="submenu">
-												<li><a href="#">게임머니 구매</a></li>
-												<li><a href="#">게임머니 판매</a></li>
+												<li><a href="#">게임머니 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">게임머니 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 										<li><a href="#">아이템</a>
 											<ul class="submenu">
-												<li><a href="#">아이템 구매</a></li>
-												<li><a href="#">아이템 판매</a></li>
+												<li><a href="#">아이템 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">아이템 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 										<li><a href="#">계정</a>
 											<ul class="submenu">
-												<li><a href="#">계정 구매</a></li>
-												<li><a href="#">계정 판매</a></li>
+												<li><a href="#">계정 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">계정 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 									</ul>
 								</nav>
 							</div>
-						<!-- Header-btn -->
-<!-- 
-						<div class="header-btn d-none f-right d-lg-block">
-							<a href="memberAddForm.do" class="btn head-btn1">Register</a> <a href="loginForm.do"
-								class="btn head-btn2">Login</a>
- -->
-
+							<!-- Header-btn -->
 							<div class="header-btn d-none f-right d-lg-block">
 								<%String logId = (String) session.getAttribute("logId");
 								if(logId == null){%> 
@@ -62,17 +86,16 @@
 								 </ul>
 								<%} %>
 							</div>
-
 						</div>
 					</div>
-				<!-- Mobile Menu -->
-				<div class="col-12">
-					<div class="mobile_menu d-block d-lg-none"></div>
+					<!-- Mobile Menu -->
+					<div class="col-12">
+						<div class="mobile_menu d-block d-lg-none"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 <!-- Header End -->
 

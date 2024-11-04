@@ -17,7 +17,7 @@
 	<%
 		for(ItemVO ivo : list){
 	%>
-	
+	<form action="post">
 	<div class="progress-table">
 		<div class="table-head">
 			<div class="serial">이미지</div>
@@ -34,8 +34,12 @@
 		</div>
 	</div>
 	
-	
 	<% } %>
 
+	<button type="submit" class="btn btn head-btn2" formaction="payStepUpdate.do">아이템전송확인</button>
+	<button type="submit" class="btn btn head-btn1">취소</button>
+	</form>
+	
+	
 </body>
 </html>

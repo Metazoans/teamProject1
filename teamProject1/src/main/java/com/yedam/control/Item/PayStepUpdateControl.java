@@ -8,14 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class AddItemForm implements Control {
+public class PayStepUpdateControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		
-		
-		req.getRequestDispatcher("seller/addItemForm.tiles").forward(req, resp);
 		
 	}
 

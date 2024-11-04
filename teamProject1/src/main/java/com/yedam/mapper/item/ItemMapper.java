@@ -14,13 +14,15 @@ public interface ItemMapper {
 	
 	List<ItemVO> sellerHistory(@Param("logId")String logId, @Param("payStep")String payStep);
 	
-	//List<ItemVO> ItemNumSelect(int itemNum);
+	List<ItemVO> ItemNumSelect(String itemNum);
 
 	int insertItem(ItemVO item);
 	
 	int itemUpdate(ItemVO item);
 	
 	int itemDelete(ItemVO item);
+	
+	int payStepUpdate();
 	
 	
 }

@@ -16,11 +16,10 @@
 		and trade = #{sell}
 	</select>
 	
-	<select id="sellerHistory" resultType="item" parameterType="String">
+	<select id="sellerHistory" resultType="com.yedam.vo.BillsVO" parameterType="String">
 		select *
 		from team_bills
 		where seller = #{logId}
-		and pay_step = #{payStep}
 	</select>
 	
 	

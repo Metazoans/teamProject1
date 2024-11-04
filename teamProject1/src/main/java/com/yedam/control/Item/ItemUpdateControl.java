@@ -1,13 +1,15 @@
 package com.yedam.control.Item;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yedam.common.Control;
 import com.yedam.service.item.ItemService;
 import com.yedam.service.item.ItemServiceImpl;
@@ -23,13 +25,23 @@ public class ItemUpdateControl implements Control {
 		
 		ItemService svc = new ItemServiceImpl();
 		ItemVO ivo = new ItemVO();
+		String savePath = req.getServletContext().getRealPath("images");
+		int maxSize = 1024 * 1025 * 100;
 		
-		String itemNum = req.getParameter("itemNum");
-		String itemName = req.getParameter("itemName");
-		String itemInfo = req.getParameter("itemInfo");
-		String count = req.getParameter("count");
-		String price = req.getParameter("price");
-		String image = req.getParameter("image");
+		MultipartRequest mr = new MultipartRequest(
+				req
+				,savePath
+				,maxSize
+				,"utf-8"
+				,new DefaultFileRenamePolicy()
+				);
+		
+		String itemNum = mr.getParameter("itemNum");
+		String itemName = mr.getParameter("itemName");
+		String itemInfo = mr.getParameter("itemInfo");
+		String count = mr.getParameter("count");
+		String price = mr.getParameter("price");
+		String image = mr.getParameter("image");
 		
 		System.out.println(itemNum);
 		

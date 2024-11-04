@@ -23,22 +23,25 @@
 		<input type="hidden" name="logId" value="${logId}">
 		<tr>
 			<td colspan="3"><p>제목</p>
-			<input class="form-control" type="text" name="itemName" placeholder="제목"></td>
+			<input class="form-control" type="text" name="itemName" placeholder="제목" id="itemName"></td>
 		</tr>
 		<tr>
 			<td><p>게임명</p>
-			<select class="form-select" aria-label="Default select example" onchange="categoryChange(this)" name="game"> 
+			<select class="form-select" aria-label="Default select example" onchange="categoryChange(this)" name="game" id="game"> 
   				<option selected>게임선택</option>
   				<option value="메이플스토리">메이플스토리</option>
  				<option value="던전엔파이터">던전엔파이터</option>
   				<option value="서든어택">서든어택</option>
 			</select></td>
 			<td><p>서버</p>
-			<select class="form-select" aria-label="Default select example" id="server" name="servers">
+			<select class="form-select" aria-label="Default select example" id="server" name="servers" id="servers">
 				<option>서버선택</option>
 			</select></td>
 			<td><p>카테고리</p>
-			<input class="form-control" type="text" name="categories" placeholder="카테고리"></td>
+			<select class="form-select" aria-label="Default select example" name="categories" id="categories">
+				<option value="게임머니">게임머니</option>
+				<option value="아이템">아이템</option>
+			</select></td>
 		</tr>
 		<tr>
 			<td colspan="3">
@@ -52,11 +55,11 @@
 		</tr>
 		<tr>
 			<td><p>상품금액</p>
-			<input class="form-control" type="text" name="price" placeholder="상품금액"></td>
+			<input class="form-control" type="text" name="price" placeholder="상품금액" id="price"></td>
 			<td><p>상품수량</p>
-			<input class="form-control" type="text" name="count" placeholder="상품수량(상품금액단위)"></td>
+			<input class="form-control" type="text" name="count" placeholder="상품수량(상품금액단위)" id="count"></td>
 			<td><p>판매/구매</p>
-			<select class="form-select" aria-label="Default select example" name="trade">
+			<select class="form-select" aria-label="Default select example" name="trade" id="trade">
 				<option value="sell">판매</option>
 				<option value="buy">구매</option>
 			</select></td>
@@ -97,30 +100,32 @@
 	}
 
 	function checkField(){
-		let inputs = document.inputForm;
-		if(!inputs.itemName.value){	
-			alert("제목을 입력하세요.");
-			return false;
-		}
-		if(!inputs.game.value){	
-			alert("게임을 입력하세요.");
-			return false;
-		}
-		if(!inputs.categories.value){
-			alert("카테고리를 입력하세요.");
-			return false;
-		}
-		if(!inputs.price.value){
-			alert("상품금액을 입력하세요");
-			return false;
-		}
-		if(!inputs.count.value){
-			alert("상품수량을 입력하세요");
-			return false;
-		}
-		if(!inputs.trade.value){
-			alert("상품수량을 입력하세요");
-		}
+		let itemName = document.getElementById("itemName");
+		let game = document.getElementById("game");
+		let price = document.getElementById("price");
+		let count = document.getElementById("count");
+
+		if (!itemName.value) { 
+	        alert("제목을 입력하세요.");
+	        itemName.focus();
+	        return false;
+	    }
+	    if (game.value === "게임선택") { 
+	        alert("게임을 선택하세요.");
+	        game.focus();
+	        return false;
+	    }
+	    if (!price.value) { 
+	        alert("상품금액을 입력하세요.");
+	        price.focus();
+	        return false;
+	    }
+	    if (!count.value) { 
+	        alert("상품수량을 입력하세요.");
+	        count.focus();
+	        return false;
+	    }
+		return true;
 	}
 	
 	

@@ -18,4 +18,12 @@ public interface MemberMapper {
 	public List<MemberVO> members(@Param("logId") String id);
 	
 	public int updateProfile(MemberVO member);
+	
+	public int updateMileage(MemberVO member);
+	
+	public int deleteMember(MemberVO member);
+	
+	public int selectCount(MemberVO member);
+	
+	public int updateGrade(@Param("grade")String grade, @Param("name")String name);
 }

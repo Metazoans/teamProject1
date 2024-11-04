@@ -10,15 +10,12 @@
  <form action="loginForm.do" method ="post">
 <body>
 <%
- String msg = (String) request.getAttribute("msg");
+String msg = (String) request.getAttribute("msg");
 String logId = (String)session.getAttribute("logId");
  %>
- <%if(msg!= null){ %>
- <p style="color: red;"><%=msg %></p>
- <%} %>
- <%if(logId!=null){%>
- alert("로그인이 되었습니다.")
- <%} %>
+
+
+ 
  
 
  <table class="table">
@@ -177,9 +174,11 @@ String logId = (String)session.getAttribute("logId");
 <form action="loginForm.do"class="joinForm" method ="post">
                                                                                                
       <h2>로그인</h2>
+       <%if(msg!= null){ %>
+ <p style="color: red;"><%=msg %></p>
+ <%} %>
       <div class="textForm">
         <input name="logId" type="text" class="id" placeholder="아이디">
-        </input>
       </div>
       <div class="textForm">
         <input name=logPw type="password" class="pw" placeholder="비밀번호">

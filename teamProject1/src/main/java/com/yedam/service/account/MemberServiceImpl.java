@@ -10,7 +10,7 @@ import com.yedam.vo.MemberVO;
 
 public class MemberServiceImpl implements MemberService{
 
-	SqlSession sqlSession = DataSource.getInstance().openSession();
+	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 	
 	@Override
@@ -46,6 +46,21 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public boolean modifyMileage(MemberVO member) {
 		return mapper.updateMileage(member)==1;
+	}
+
+	@Override
+	public boolean removeMember(MemberVO member) {
+		return mapper.deleteMember(member)==1;
+	}
+
+	@Override
+	public int grade(MemberVO member) {
+		return mapper.selectCount(member);
+	}
+
+	@Override
+	public boolean updateGrade(String grade, String name) {
+		return mapper.updateGrade(grade, name)==1;
 	}
 	
 }

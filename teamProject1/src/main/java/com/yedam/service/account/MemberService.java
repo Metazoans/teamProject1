@@ -13,4 +13,7 @@ public interface MemberService {
 	List<MemberVO> memberList(String logId);
 	boolean modifyMember(MemberVO member);
 	boolean modifyMileage(MemberVO member);
+	boolean removeMember(MemberVO member);
+	int grade(MemberVO member);
+	boolean updateGrade(String grade, String name);
 }

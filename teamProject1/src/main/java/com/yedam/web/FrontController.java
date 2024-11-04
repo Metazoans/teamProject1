@@ -29,12 +29,12 @@ import com.yedam.control.Item.ItemUpdateControl;
 import com.yedam.control.Item.MySellListControl;
 import com.yedam.control.Item.SellerHistoryControl;
 import com.yedam.control.Item.AddItemControl;
-
-
+import com.yedam.control.account.GradeControl;
 import com.yedam.control.account.LogOutControl;
 import com.yedam.control.account.LoginControl;
 import com.yedam.control.account.MemberAddControl;
 import com.yedam.control.account.MemberAddFormControl;
+import com.yedam.control.account.MemberDeleteControl;
 import com.yedam.control.account.MileageControl;
 import com.yedam.control.account.MyPageControl;
 import com.yedam.control.account.MyPageFormControl;
@@ -115,6 +115,11 @@ public class FrontController extends HttpServlet {
 		map.put("/myPage.do", new MyPageControl());//마이페이지 
 		
 		map.put("/mileage.do", new MileageControl());
+		
+		map.put("/memberDelete.do", new MemberDeleteControl());
+		
+		map.put("/grade.do", new GradeControl());
+		
 		
 	
 

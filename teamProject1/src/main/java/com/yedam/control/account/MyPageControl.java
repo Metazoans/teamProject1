@@ -37,12 +37,8 @@ public class MyPageControl implements Control {
 		}
 		
 		if(svc.modifyMember(mvo)) {
-			out.println("<script>alert('변경성공');</script> ");
+			out.println("<script>alert('변경성공'); location.href='loginForm.do';</script> ");		
 		
-			//req.getRequestDispatcher("account/myPage.tiles").forward(req, resp);
-			resp.sendRedirect("myPageForm.do");
-
-			
 		}else {
 			out.println("<script>alert('변경 실패'); history.back();</script>");
 			

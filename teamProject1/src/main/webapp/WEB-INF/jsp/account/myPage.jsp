@@ -4,7 +4,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
 
+</head>
 <body>
 	<%
 	List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");

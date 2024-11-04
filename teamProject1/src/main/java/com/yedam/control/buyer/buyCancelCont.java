@@ -1,7 +1,6 @@
 package com.yedam.control.buyer;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,19 +11,29 @@ import com.yedam.service.buyer.buyerService;
 import com.yedam.service.buyer.buyerServiceImpl;
 import com.yedam.vo.BillsVO;
 
-public class buyListCont implements Control {
+public class buyCancelCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 구매 목록(사용자에 따라 구매내역 검색 후 출력)
-		String buyer = req.getParameter("loginId"); //세션에서 로그인 계정 가져오기로 변경 예정
+		// 구매 취소
+		
+		String billsNumber = req.getParameter("billsNumber");
 		
 		buyerService svc = new buyerServiceImpl();
-		List<BillsVO> buyList = svc.getBuyList(buyer);
+		BillsVO bills = svc.getBills(Integer.parseInt(billsNumber));
 		
-		req.setAttribute("buyList", buyList);
-
-		req.getRequestDispatcher("buyer/buyList.tiles").forward(req, resp);
+		boolean check1 = svc.resetItemCount(bills);
+		boolean check2 = svc.removeBills(bills);
+		
+		
+		if(check1 && check2) {
+			resp.getWriter().print("{\"retCode\": \"OK\"}");
+		}
+		else {
+			resp.getWriter().print("{\"retCode\": \"FAIL\"}");
+		}
+		
+		
 	}
 
 }

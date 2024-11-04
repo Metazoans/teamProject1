@@ -9,6 +9,9 @@ if(categories == '') categories = undefined;
 trade = document.querySelector('#listDataDiv #trade').dataset.value;
 page = document.querySelector('.pagination-area').dataset.value;
 
+let game, servers;
+
+
 let listData = {
 	page: page,
 	categories: categories,
@@ -96,7 +99,7 @@ $('#searchDiv button').on('click', function() {
 //페이지 버튼 출력
 let listCnt = document.querySelector('.pagination').dataset.value
 
-let endPage = Math.ceil(page / 5.0) * 5;
+let endPage = Math.ceil(page / 10.0) * 5;
 let startPage = endPage - 4;
 let realEnd = Math.ceil(listCnt / 10.0);
 endPage = endPage > realEnd ? realEnd : endPage;

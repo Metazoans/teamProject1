@@ -5,18 +5,7 @@
 	<!-- 상품 목록 -->
 	<!-- 전체 출력 -->
 	<select id="selectItemList" resultType="com.yedam.vo.ItemVO">
-		select item_number,
-		game,
-		categories,
-		servers,
-		item_name,
-		item_info,
-		price,
-		count,
-		up_date,
-		seller,
-		image,
-		trade
+		select *
 		from team_item
 	</select>
 
@@ -29,6 +18,8 @@
 				     <where>
 					     categories = #{categories} 
 					     and trade = #{trade} 
+<!-- 					     and game = #{game} -->
+<!-- 					     and servers = #{servers} -->
 					     
 					     <if test="searchData != null">
 						     and ${searchType} like '%'||#{searchData}||'%'
@@ -49,12 +40,10 @@
 		select count(item_number)
 		from team_item
 		<where>
-			<if test="categories != null">
-				categories = #{categories}
-				<if test="searchData != null"> and </if>
-			</if>
+			categories = #{categories}
+			and trade = #{trade}
 			<if test="searchData != null">
-				${searchType} like '%'||#{searchData}||'%'
+				and ${searchType} like '%'||#{searchData}||'%'
 			</if>
 		</where>
 		<if test="sort != null">
@@ -65,37 +54,69 @@
 	<!-- 상품 상세 -->
 	<select id="selectItem" resultType="com.yedam.vo.ItemVO"
 		parameterType="int">
-		select item_number,
-		game,
-		categories,
-		servers,
-		item_name,
-		item_info,
-		price,
-		count,
-		up_date,
-		seller,
-		image,
-		trade
+		select *
 		from team_item
 		where item_number = #{itemNumber}
 	</select>
 
 
+	<!-- 상품 구매 - item count 변경 -->
+	<update id="updateItemCount" parameterType="com.yedam.vo.BillsVO">
+		update team_item 
+		set count=count-#{count} 
+		where item_number=#{itemNumber}
+	</update>
+	<!-- 상품 구매 - bills 추가 -->
+	<insert id="insertBillsItem" parameterType="com.yedam.vo.BillsVO">
+		insert into team_bills ( bills_number, seller, buyer, item_number, item_name, count, total, image )
+		values ( bills_seq.nextval, #{seller}, #{buyer}, #{itemNumber}, #{itemName}, #{count}, #{total}, #{image} )
+	</insert>
+	
+	
 	<!-- 구매 목록 -->
 	<select id="selectBuyList" resultType="com.yedam.vo.BillsVO"
 		parameterType="string">
-		select seller,
-		buyer,
-		item_number,
-		pay_date,
-		pay_step,
-		item_name,
-		count,
-		total,
-		image
+		select *
 		from team_bills
 		where buyer = #{buyer}
 	</select>
+	<!-- 구매 목록 단건 조회 -->
+	<select id="selectBills" resultType="com.yedam.vo.BillsVO" parameterType="int">
+		select *
+		from team_bills
+		where bills_number = #{billsNumber}
+	</select>
+	
+	<!-- 구매 확인 : 마일리지 감소 -->
+	<update id="updateBuyConfirm" parameterType="com.yedam.vo.BillsVO">
+		update team_member
+		set mileage = mileage - #{total}
+		where member_id = #{buyer}
+	</update>
+	<!-- 구매 확인 : 마일리지 증가 -->
+	<update id="updateSellConfirm" parameterType="com.yedam.vo.BillsVO">
+		update team_member
+		set mileage = mileage + #{total}
+		where member_id = #{seller}
+	</update>
+	<!-- 구매 확인 : 거래 완료 -->
+	<update id="updateBillsConfirm" parameterType="com.yedam.vo.BillsVO">
+		update team_bills
+		set pay_step = 'completed'
+		where bills_number = #{billsNumber}
+	</update>
+	
+	<!-- 구매 취소 : 아이템 카운트 초기화 -->
+	<update id="cancelItemCount" parameterType="com.yedam.vo.BillsVO">
+		update team_item
+		set count = count + #{count}
+		where item_number = #{itemNumber}
+	</update>
+	<!-- 구매 취소 : bills 삭제 -->
+	<delete id="deleteBills" parameterType="com.yedam.vo.BillsVO">
+		delete team_bills
+		where bills_number = #{billsNumber}
+	</delete>
+
 
 </mapper>

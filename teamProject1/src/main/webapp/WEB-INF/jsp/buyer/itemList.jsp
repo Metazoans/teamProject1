@@ -78,6 +78,10 @@
 <p>${ilvo.trade }</p>
 <div id="listDataDiv">
 	<div id="trade" data-value="${ilvo.trade }"></div>
+	
+	
+<%-- 	<input type="hidden" name="game" value="${ilvo.game }"> --%>
+<%-- 	<input type="hidden" name="servers" value="${ilvo.servers }"> --%>
 </div>
 <!-- 검색 -->
 <div class="job-listing-area">

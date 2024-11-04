@@ -30,6 +30,9 @@ public class itemListChangeCont implements Control {
 		String sort = req.getParameter("sort");
 		String order = req.getParameter("order");
 		
+//		String game = req.getParameter("game");
+//		String servers = req.getParameter("servers");
+		
 		ItemListVO ilvo = new ItemListVO();
 		ilvo.setPage(Integer.parseInt(page));
 		ilvo.setCategories(categories);
@@ -38,6 +41,9 @@ public class itemListChangeCont implements Control {
 		ilvo.setSearchData(searchData);
 		ilvo.setSort(sort);
 		ilvo.setOrder(order);
+		
+//		ilvo.setGame(game);
+//		ilvo.setServers(servers);
 		
 		buyerService svc = new buyerServiceImpl();
 		List<ItemVO> list = svc.getSortItemList(ilvo);

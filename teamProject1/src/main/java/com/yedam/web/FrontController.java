@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
+import com.yedam.control.buyer.buyCancelCont;
+import com.yedam.control.buyer.buyConfirmCont;
+import com.yedam.control.buyer.buyItemCont;
 import com.yedam.control.buyer.buyListCont;
 import com.yedam.control.buyer.itemDetailCont;
 import com.yedam.control.buyer.itemListChangeCont;
@@ -32,12 +35,16 @@ public class FrontController extends HttpServlet {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
 		
-		//ksy - 상품 목록, 상품 상세, 구매 내역
-		map.put("/itemList.do", new itemListCont());
-		map.put("/itemListChange.do", new itemListChangeCont());
-		map.put("/itemDetail.do", new itemDetailCont());
-		map.put("/buyList.do", new buyListCont());
+		//ksy - 상품 목록, 상품 상세, 상품 구매, 구매 내역
+		map.put("/itemList.do", new itemListCont()); //상품 목록
+		map.put("/itemListChange.do", new itemListChangeCont()); //상품 목록 출력 변화
 		
+		map.put("/itemDetail.do", new itemDetailCont()); //상품 상세
+		map.put("/buyItem.do", new buyItemCont()); //상품 구매
+		
+		map.put("/buyList.do", new buyListCont()); //구매 내역
+		map.put("/buyConfirm.do", new buyConfirmCont()); //구매 확정
+		map.put("/buyCancel.do", new buyCancelCont()); //구매 취소
 		
 		
 		

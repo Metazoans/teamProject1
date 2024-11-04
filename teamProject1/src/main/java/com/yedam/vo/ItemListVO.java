@@ -11,4 +11,7 @@ public class ItemListVO {
 	private String searchData; //검색 내용
 	private String sort; //정렬 타입
 	private String order; //역순 정렬
+	
+//	private String game;
+//	private String servers;
 }

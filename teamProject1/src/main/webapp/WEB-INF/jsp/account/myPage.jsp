@@ -35,7 +35,14 @@
 					<h4 class="my-0 fw-normal">인증상태</h4>
 				</div>
 				<div class="card-body">
-					<h3 class="card-title pricing-card-title">인증완료</h3>
+					<h3 class="card-title pricing-card-title">
+						<%
+						if (mvo.getPhone() == null) {
+						%>미인증
+					</h3>
+					<%}else{%>
+					<p>인증완료</p>
+					<%} %>
 
 				</div>
 			</div>
@@ -91,8 +98,7 @@
 					<a href="job_listing.html" style="color: black">판매내역</a>
 
 				</div>
-				<div class="card-body">
-				</div>
+				<div class="card-body"></div>
 			</div>
 		</div>
 
@@ -306,10 +312,10 @@
 	<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 		data-bs-target="#deleteModal">회원탈퇴</button>
 	<form action="memberDelete.do" class="joinForm" method="get">
+		</div>
 		<%
 		for (MemberVO mvo : list) {
 		%>
-		</div>
 		<!-- 회원탈퇴 Modal -->
 		<div class="modal fade" id="deleteModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">

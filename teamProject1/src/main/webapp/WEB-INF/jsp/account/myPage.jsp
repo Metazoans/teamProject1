@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="css/menu.css">
 </head>
 <body>
 	<%
@@ -342,7 +342,7 @@
 
 
 
+<script src="js/menuStyle.js"></script>
 </body>
 </html>
-
 

@@ -27,6 +27,7 @@ import com.yedam.control.Item.ItemDeleteControl;
 import com.yedam.control.Item.ItemListControl;
 import com.yedam.control.Item.ItemUpdateControl;
 import com.yedam.control.Item.MySellListControl;
+import com.yedam.control.Item.PayStepUpdateControl;
 import com.yedam.control.Item.SellerHistoryControl;
 import com.yedam.control.Item.myItemUpdateList;
 import com.yedam.control.Item.AddItemControl;
@@ -90,6 +91,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myItemDelete.do", new ItemDeleteControl());
 		// 판매내역
 		map.put("/sellerHistory.do", new SellerHistoryControl());
+		map.put("/payStepUpdate.do", new PayStepUpdateControl());
 		
 		
 		

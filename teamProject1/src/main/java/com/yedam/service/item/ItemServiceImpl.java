@@ -10,7 +10,7 @@ import com.yedam.vo.ItemVO;
 
 public class ItemServiceImpl implements ItemService{
 
-	SqlSession sqlSession = DataSource.getInstance().openSession(true);
+	SqlSession sqlSession = DataSource.getInstance().openSession();
 	ItemMapper mapper = sqlSession.getMapper(ItemMapper.class);
 	
 	@Override
@@ -28,10 +28,6 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.mySellList(mid,sell);
 	}
 	
-//	@Override
-//	public List<ItemVO> ItemNumSelect(String itemNum) {
-//		return mapper.ItemNumSelect(itemNum);
-//	}
 	
 	@Override
 	public List<ItemVO> sellerHistory(String logId, String payStep) {

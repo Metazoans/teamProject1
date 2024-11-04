@@ -12,7 +12,6 @@ public interface ItemService {
 	
 	List<ItemVO> sellerHistory(String logId, String payStep);
 	
-//	List<ItemVO> ItemNumSelect(String itemNum);
 	
 	boolean addItem(ItemVO item);
 	

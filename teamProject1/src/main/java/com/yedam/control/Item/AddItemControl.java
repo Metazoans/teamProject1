@@ -42,6 +42,11 @@ public class AddItemControl implements Control {
 		String seller = mr.getParameter("logId");
 		String image = mr.getFilesystemName("image");
 		String trade = mr.getParameter("trade");
+
+		
+		System.out.println(game);
+		System.out.println(servers);
+		System.out.println(trade);
 		
 		ivo.setGame(game);
 		ivo.setCategories(categories);

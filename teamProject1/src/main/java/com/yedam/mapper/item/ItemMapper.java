@@ -22,5 +22,7 @@ public interface ItemMapper {
 	
 	int itemDelete(ItemVO item);
 	
+	int payStepUpdate();
+	
 	
 }

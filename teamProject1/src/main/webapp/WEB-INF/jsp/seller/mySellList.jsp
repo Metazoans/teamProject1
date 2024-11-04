@@ -9,14 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%
-	List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
-	%>
-
-	<%
-	for (ItemVO ivo : list) {
-	%>
 	<script>
 		<%
 			String msg = (String)request.getAttribute("msg");
@@ -25,7 +17,16 @@
 			alert(msg);-
 		<% } %>
 	</script>
+
+	<%
+	List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
+	%>
+
+	<%
+	for (ItemVO ivo : list) {
+	%>
 <div class="main">
+<div class="section-top-border">
 	<div class="progress-table">
 		<div class="table-head">
 			<div class="serial">이미지</div>
@@ -51,16 +52,17 @@
 						Default checkbox </label>
 				</div>
 			</div>
-	</div>
-</div>
-
 	<%
 	}
 	%>
+		</div>
+	</div>
+</div>
+
 	<button type="button" class="btn btn head-btn2" data-bs-toggle="modal"
-		data-bs-target="#exampleModal" data-bs-whatever="@fat">수정</button>
+		data-bs-target="#exampleModal" data-bs-whatever="@fat" onClick="return check();">수정</button>
 	<button type="submit" class="btn btn head-btn1"
-		formaction="myItemDelete.do">삭제</button>
+		formaction="myItemDelete.do" onClick="return check();">삭제</button>
 	</form>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -97,9 +99,8 @@
 								name="price" placeholder="">
 						</div>
 						<div class="mb-3">
-							<label for="modalImage" class="col-form-label">이미지</label> <input
-								type="text" class="form-control" id="modalImage" name="image"
-								placeholder="">
+							<label for="modalImage" class="col-form-label">이미지</label>
+							<input type="file" name="image" class="form-control" id="modalImage"> 
 						</div>
 
 				</div>
@@ -112,6 +113,9 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
 
 	<script>
 		function Modal(itemNumber, itemName, itemInfo, count, price, image) {
@@ -123,13 +127,27 @@
 			document.getElementById("modalImage").value = image;
 		}
 		
+		
+		function check(){
+			var arrSelect = document.getElementsByName("itemNum");
+			
+			for(var i = 0; i < arrSelect.length; i++){
+				if(arrSelect[i].checked){
+					return true;
+				}
+			}
+			alert("하나의 항목을 선택하세요");
+			return false;
+		}
+		
+		
 		function checkOnlyOne(element){
 			const checkboxes = document.getElementsByName("itemNum");
 			checkboxes.forEach((cb) => {
 				cb.checked = false;
 			})
 			element.checked = true;
-		}
+		} 
 	</script>
 
 </body>

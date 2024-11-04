@@ -27,9 +27,16 @@
 		</tr>
 		<tr>
 			<td><p>게임명</p>
-			<input class="form-control" type="text" name="game" placeholder="게임명"></td>
+			<select class="form-select" aria-label="Default select example" onchange="categoryChange(this)" name="game"> 
+  				<option selected>게임선택</option>
+  				<option value="메이플스토리">메이플스토리</option>
+ 				<option value="던전엔파이터">던전엔파이터</option>
+  				<option value="서든어택">서든어택</option>
+			</select></td>
 			<td><p>서버</p>
-			<input class="form-control" type="text" name="servers" placeholder="서버"></td>
+			<select class="form-select" aria-label="Default select example" id="server" name="servers">
+				<option>서버선택</option>
+			</select></td>
 			<td><p>카테고리</p>
 			<input class="form-control" type="text" name="categories" placeholder="카테고리"></td>
 		</tr>
@@ -49,7 +56,10 @@
 			<td><p>상품수량</p>
 			<input class="form-control" type="text" name="count" placeholder="상품수량(상품금액단위)"></td>
 			<td><p>판매/구매</p>
-			<input class="form-control" type="text" name="trade" placeholder="판매/구매"></td>
+			<select class="form-select" aria-label="Default select example" name="trade">
+				<option value="sell">판매</option>
+				<option value="buy">구매</option>
+			</select></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
@@ -58,10 +68,33 @@
 			</td>
 		</tr>
 	</table>
-</form>
 
+
+
+
+
+</form>
 <script>
 
+	function categoryChange(e){
+		var sMstory = ["루나","스카니아","엘리시움","크로아","오로라","베라","레드","유니온","제니스","이노시스","아케인","노바"];
+		var sDnf = ["카인","디레지에","시로코","프레이","카시아스","힐더","안톤","바칼"];
+		var target = document.getElementById("server");
+		
+		if(e.value == "메이플스토리") var d = sMstory;
+		else if(e.value == "던전엔파이터") var d = sDnf;
+		
+		target.options.length = 0;
+
+		
+		for(x in d){
+			var opt = document.createElement("option");
+			opt.value = d[x];
+			opt.innerHTML = d[x];
+			target.appendChild(opt);
+		}
+		
+	}
 
 	function checkField(){
 		let inputs = document.inputForm;

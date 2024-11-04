@@ -87,7 +87,7 @@
 									<li class="float-left"><div id="myPage">
 											<a href="#" class="btn head-btn1" id="hiddenPage">MyPage</a>
 											<ul id="hiddenList" style="display: none;">
-												<li><a href="addItemForm.do" class="btn head-btn2">상품등록</a></li>
+												<li><a href="#" class="btn head-btn2">상품등록</a></li>
 												<li><a href="#" class="btn head-btn2">나의 상점</a></li>
 												<li><a href="#" class="btn head-btn2">내 정보</a></li>
 											</ul>

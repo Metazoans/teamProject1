@@ -23,11 +23,6 @@
 		and pay_step = #{payStep}
 	</select>
 	
-	<!-- <select id="ItemNumSelect" resultType="item" parameterType="int">
-		select *
-		from team_item
-		where item_number = #{itemNum}
-	</select> -->
 	
 	<insert id="insertItem" parameterType="item">
 		insert into team_item (item_number, game, categories, item_name, item_info, count, seller, price, servers, image, trade)

@@ -8,12 +8,77 @@ let hiddenPage = document.querySelector("#hiddenPage");
 let hiddenList = document.querySelector("#hiddenList");
 let myPage = document.querySelector("#myPage");
 let floatLeft = document.querySelectorAll(".float-left");
+let subMenuLi = document.querySelectorAll(".submenu li");
 
+
+gameMenuList();
+function gameMenuList() {
+	$.ajax('gameList.do')
+		.done(function(result) {
+			$('div.gamemenu ul li').remove();
+			result.forEach((item) => {
+				let game = item;
+				$('<li/>').addClass('game-' + game).append($('<a/>').text(game),
+					$('<div/>').addClass('servermenu').append($('<ul/>')
+					.append($('<li/>').append($('<a/>').text('전체').attr("href", "https://www.daum.net/"))))
+				).appendTo($('div.gamemenu>ul'));
+				serverMenuList(game);
+			});
+		})
+		.fail(function(err) {
+			console.log(err);
+		})
+}
+
+function serverMenuList(game) {
+	$.ajax('serverList.do?game=' + game)
+		.done(function(result) {
+			result.forEach((item) => {
+				$('li.game-' + game + '>div.servermenu>ul').append($('<li/>')
+				.append($('<a/>').text(item).attr("href", "https://www.daum.net/")));
+			});
+		})
+		.fail(function(err) {
+			console.log(err);
+		})
+}
+
+
+subMenuLi.forEach((li) => {
+	li.addEventListener('mouseover', function(e) {
+		li.querySelector(".gamemenu").style.cssText = "display: block";
+		li.querySelectorAll(".gamemenu>ul>li").forEach((inLi) => {
+			inLi.addEventListener('mouseover', function(e) {
+				inLi.querySelector(".servermenu").style.cssText = "display: block";
+			})
+			inLi.addEventListener('mouseout', function(e) {
+				inLi.querySelector(".servermenu").style.cssText = "display: none";
+			})
+		})
+	})
+	li.addEventListener('mouseout', function(e) {
+		li.querySelector(".gamemenu").style.cssText = "display: none";
+	})
+})
+
+
+
+myPage.addEventListener('mouseover', function(e) {
+	hiddenList.style.cssText = "display: block";
+
+})
+myPage.addEventListener('mouseout', function(e) {
+	hiddenList.style.cssText = "display: none";
+})
+
+
+
+/*
 document.querySelectorAll('div.menu-wrapper a').forEach((a)=>{
 	a.style.width = "170px"
 	a.style.height = "54px"
 	a.style.fontWeight = "bold"
-	
+
 })
 
 floatLeft.forEach((fl) => {
@@ -25,13 +90,8 @@ hiddenBtn.querySelectorAll("li a").forEach((a) => {
 })
 
 hiddenPage.style.margin = "0 10px 0 0"
-myPage.addEventListener('mouseover', function(e){
-	hiddenList.style.cssText = "display: block";
-	
-})
-myPage.addEventListener('mouseout', function(e){
-	hiddenList.style.cssText = "display: none";
-})
+*/
+
 
 // 검색창 스크립트
 /* 

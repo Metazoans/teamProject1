@@ -4,9 +4,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="css/menu.css">
-</head>
+
 <body>
 	<%
 	List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
@@ -342,7 +340,7 @@
 
 
 
-<script src="js/menuStyle.js"></script>
+
 </body>
 </html>
 

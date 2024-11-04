@@ -8,7 +8,9 @@
 
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 
 <link rel="manifest" href="site.webmanifest">
+ -->
 <link rel="shortcut icon" type="image/x-icon"
 	href="assets/img/favicon.ico">
 
@@ -25,6 +27,9 @@
 <link rel="stylesheet" href="assets/css/slick.css">
 <link rel="stylesheet" href="assets/css/nice-select.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/ranking-chart.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -53,44 +58,79 @@
 									<ul id="navigation">
 										<li><a href="#">게임머니</a>
 											<ul class="submenu">
-												<li><a href="#">게임머니 구매</a></li>
-												<li><a href="#">게임머니 판매</a></li>
+												<li><a href="#">게임머니 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">게임머니 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 										<li><a href="#">아이템</a>
 											<ul class="submenu">
-												<li><a href="#">아이템 구매</a></li>
-												<li><a href="#">아이템 판매</a></li>
+												<li><a href="#">아이템 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">아이템 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 										<li><a href="#">계정</a>
 											<ul class="submenu">
-												<li><a href="#">계정 구매</a></li>
-												<li><a href="#">계정 판매</a></li>
+												<li><a href="#">계정 구매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
+												<li><a href="#">계정 판매</a>
+													<div class="gamemenu">
+														<ul>
+															<!-- 게임리스트 -->
+														</ul>
+													</div></li>
 											</ul></li>
 									</ul>
 								</nav>
 							</div>
 							<!-- Header-btn -->
-
 							<div class="header-btn d-none f-right d-lg-block">
-								<%String logId = (String) session.getAttribute("logId");
-								if(logId == null){%> 
-								<%} else { %>
-								<%} %>
-								<!-- 
-								<a href="#" class="btn head-btn1">Register</a>
-								 <a href="#" class="btn head-btn2">Login</a>
-								 -->
-								 <ul id="hiddenBtn">
-								 <li class="float-left"><div id="myPage">
-									<a href="#" class="btn head-btn1" id="hiddenPage">MyPage</a>
-									<ul id="hiddenList" style="display:none;" >
-										<li><a href="#" class="btn head-btn2">상품등록</a></li>
-										<li><a href="#" class="btn head-btn2">나의 상점</a></li>
-										<li><a href="#" class="btn head-btn2">내 정보</a></li>
-									</ul>
-								 </div> </li>
-									<li class="float-left"><a href="#" class="btn head-btn2">Logout</a><li>
-								 </ul>
+								<%
+								String logId = (String) session.getAttribute("logId");
+								logId = "asd";
+								if (logId == null) {
+								%>
+								<a href="#" class="btn head-btn1">Register</a> <a href="#"
+									class="btn head-btn2">Login</a>
+								<%
+								} else {
+								%>
+								<ul id="hiddenBtn">
+									<li class="float-left"><div id="myPage">
+											<a href="#" class="btn head-btn1" id="hiddenPage">MyPage</a>
+											<ul id="hiddenList" style="display: none;">
+												<li><a href="#" class="btn head-btn2">상품등록</a></li>
+												<li><a href="#" class="btn head-btn2">나의 상점</a></li>
+												<li><a href="#" class="btn head-btn2">내 정보</a></li>
+											</ul>
+										</div></li>
+									<li class="float-left"><a href="#" class="btn head-btn2">Logout</a>
+									<li>
+								</ul>
+								<%
+								}
+								%>
 							</div>
 						</div>
 					</div>
@@ -103,6 +143,7 @@
 		</div>
 	</div>
 	<!-- search -->
+	<!--
 	<div class="w-75 p-3 row" id="center-location">
 		<div class="default-select col-md-2.5" id="default-select"">
 			<select style="display: none;">
@@ -125,61 +166,42 @@
 			border="1" class="single-input col-md-7">
 		<button type="button" class="btn head-btn1 col-md-2">검색</button>
 	</div>
+	-->
 	<!-- content -->
 	<!-- 인기순위(데이터 등록순) -->
+	<h3 class="	table-name">인기순위</h3>
+	<div id="rankingList" class="col-lg-12">
+		<div class="page-float">
+			<div class="section-top-border">
+				<div class="progress-table-wrap">
+					<div class="progress-table">
+						<!-- 내용 들어갈부분 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-float">
+			<div class="section-top-border">
+				<div class="progress-table-wrap">
+					<div class="progress-table">
+						<!-- 내용 들어갈부분 -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- 랜덤으로 리스트 출력 -->
+	<div id="randomList">
+	
+	</div>
 	<!-- footer -->
 	<footer>
 		<jsp:include page="/WEB-INF/layouts/footer.jsp"></jsp:include>
 	</footer>
+	<script type="text/javascript">
+		let page = "1";
+	</script>
+	<script src="js/menuStyle.js"></script>
+	<script src="js/mainPage.js"></script>
 </body>
-<script>
-let selectBox = document.querySelector("div.nice-select");
-let ulList = document.querySelector("ul.list");
-let divCenter = document.querySelector("div#center-location");
-let searchBtn = divCenter.querySelector("button");
-
-let hiddenBtn = document.querySelector("#hiddenBtn");
-let hiddenPage = document.querySelector("#hiddenPage");
-let hiddenList = document.querySelector("#hiddenList");
-let myPage = document.querySelector("#myPage");
-let floatLeft = document.querySelectorAll(".float-left");
-
-document.querySelectorAll('a').forEach((a)=>{
-	a.style.width = "170px"
-	a.style.height = "54px"
-	a.style.fontWeight = "bold"
-})
-divCenter.style.margin = "0 auto"
-floatLeft.forEach((fl) => {
-	fl.style.cssText = "float: left";
-})
-hiddenBtn.querySelectorAll("li a").forEach((a) => {
-	a.style.cssText = 'width: 170px; height: 54px; font-size: 14px; font-weight: bold; line-height: 27px;';
-})
-hiddenPage.style.margin = "0 10px 0 0"
-myPage.addEventListener('mouseover', function(e){
-	hiddenList.style.cssText = "display: block";
-	
-})
-myPage.addEventListener('mouseout', function(e){
-	hiddenList.style.cssText = "display: none";
-})
-
-
-selectBox.addEventListener('click', function(e){
-	selectBox.classList.toggle('open');
-	ulList.querySelectorAll("li").forEach((li) =>{
-		li.addEventListener('click', function(e){
-			document.querySelector("span.current").innerText = li.innerText;
-			document.querySelector('div#default-select select').value = e.target.dataset.value
-		})
-	})
-})
-	
-searchBtn.addEventListener('click', function(e){
-	console.log('화면 옮겨지기');
-})	
-
-</script>
 </html>

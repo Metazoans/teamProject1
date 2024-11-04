@@ -6,4 +6,6 @@ import com.yedam.vo.RankVo;
 
 public interface ItemService {
 	List<RankVo> ranking(int page);
+	List<String> gameList();
+	List<String> serverList(String game);
 }

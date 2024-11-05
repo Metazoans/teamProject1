@@ -75,7 +75,7 @@
 	</insert>
 	
 	
-	<!-- 구매 목록 -->
+	<!-- 구매 목록 -> 거래 신청 목록 -->
 	<select id="selectBuyList" resultType="com.yedam.vo.BillsVO"
 		parameterType="string">
 		select *
@@ -89,16 +89,30 @@
 		where bills_number = #{billsNumber}
 	</select>
 	
+	<!-- trade:sell -> buyer(구매 신청자) 마일리지 감소 -->
+	<!-- trade:buy -> buyer(판매 신청자) 마일리지 증가 -->
 	<!-- 구매 확인 : 마일리지 감소 -->
 	<update id="updateBuyConfirm" parameterType="com.yedam.vo.BillsVO">
 		update team_member
-		set mileage = mileage - #{total}
+		<if test='trade.equals("sell")'>
+			set mileage = mileage - #{total}
+		</if>
+		<if test='trade.equals("buy")'>
+			set mileage = mileage + #{total}
+		</if>
 		where member_id = #{buyer}
 	</update>
+	<!-- trade:sell -> seller(판매 작성자) 마일리지 증가 -->
+	<!-- trade:buy -> seller(구매 작성자) 마일리지 감소 -->
 	<!-- 구매 확인 : 마일리지 증가 -->
 	<update id="updateSellConfirm" parameterType="com.yedam.vo.BillsVO">
 		update team_member
-		set mileage = mileage + #{total}
+		<if test='trade.equals("sell")'>
+			set mileage = mileage + #{total}
+		</if>
+		<if test='trade.equals("buy")'>
+			set mileage = mileage - #{total}
+		</if>
 		where member_id = #{seller}
 	</update>
 	<!-- 구매 확인 : 거래 완료 -->

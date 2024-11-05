@@ -32,7 +32,14 @@
 						<ul class="list">
 							<li data-value="item_name" class="option focus">제목</li>
 							<li data-value="item_info" class="option">내용</li>
-							<li data-value="seller" class="option">판매자</li>
+							
+							<!-- 판매자 및 구매자를 작성자로 변경해야 할듯? -->
+							<c:if test="${ilvo.trade == 'sell' }">
+								<li data-value="seller" class="option">판매자</li>
+							</c:if>
+							<c:if test="${ilvo.trade == 'buy' }">
+								<li data-value="seller" class="option">구매자</li>
+							</c:if>
 						</ul>
 					</div>
 				</div>

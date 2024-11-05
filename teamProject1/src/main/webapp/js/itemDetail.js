@@ -3,16 +3,15 @@
  */
 
 
-//buyBtn 동작 -> OK=count 변경, CFAIL=구매 갯수 오류, RFAIL=bills 추가 실패
-$('#buyBtn').on('click', function(e) {
+$('#dealBtn').on('click', function(e) {
 	console.log('buyBtn click');
 	
 	//최대값 이상의 숫자 입력시 취소 기능
 	$.ajax({
-		url: 'buyItem.do',
+		url: 'dealItem.do',
 		data: {
 			itemNumber: $('#itemNumber').val(),
-			buyCount: $('#buyCount').val(),
+			buyCount: $('#dealCount').val(),
 			logId: $('#logId').val()
 		},
 		method: 'GET',
@@ -21,9 +20,9 @@ $('#buyBtn').on('click', function(e) {
 		.done(function(result) {
 			if(result.retCode == 'OK') {
 				console.log('성공');
-				$('#buyCount').val('');
-				$('#buyCount').focus();
-				$('#buyCount').attr('placeholder', '최대 : ' + result.newCnt);
+				$('#dealCount').val('');
+				$('#dealCount').focus();
+				$('#dealCount').attr('placeholder', '최대 : ' + result.newCnt);
 				
 			}
 			else if(result.retCode == 'CFAIL') {
@@ -38,9 +37,6 @@ $('#buyBtn').on('click', function(e) {
 			console.log(err);
 		})
 })
-
-//판매 버튼 만들기
-
 
 
 

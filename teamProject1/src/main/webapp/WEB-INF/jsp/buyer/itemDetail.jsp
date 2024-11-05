@@ -21,6 +21,7 @@
 <div id="itemDetailData">
 	<input type="hidden" id="logId" value="${logId }">
 	<input type="hidden" id="itemNumber" value="${item.itemNumber }">
+	<input type="hidden" id="trade" value="${item.trade }">
 </div>
 
 <!-- 템플릿 -->
@@ -82,10 +83,10 @@
 		<div class="form-group">
 			<c:if test="${logId != null }">
 				<c:if test="${item.trade == 'sell' }">
-					<a id="buyBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+					<a id="dealCount" href="#" class="genric-btn danger-border circle" >구입</a>
 				</c:if>
 				<c:if test="${item.trade == 'buy' }">
-					<a id="sellBtn" href="#" class="genric-btn danger-border circle" >판매</a>
+					<a id="dealCount" href="#" class="genric-btn danger-border circle" >판매</a>
 				</c:if>
 			</c:if>
 		</div>

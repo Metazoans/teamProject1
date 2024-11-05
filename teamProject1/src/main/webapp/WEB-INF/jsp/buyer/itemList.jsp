@@ -2,78 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<style>
-#searchDiv {
-	width: 100%;
-}
-.searchHeight {
-	height: 100% !important;
-	display: flex;
-	justify-content: center;
-	align-items: center;;
-}
+<link rel="stylesheet" href="css/buyer.css">
 
-.default-select {
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-
-.borderCont {
-	border: 1px solid rgba(0, 0, 0, .1);
-	margin-right: 2px;
-}
-
-.progress-table-wrap {
-	overflow-x: hidden;
-	width: 100%;
-}
-
-.itemList {
-	min-width: 100%;
-}
-
-.itemList .table-head, .table-row {
-	width: 100%;
-	color: #415094;
-	line-height: 40px;
-	text-transform: uppercase;
-	font-weight: 500;
-	color: #415094
-}
-
-.itemList .table-head div, .table-row div {
-	overflow-x: hidden;
-	overflow-y: hidden;
-	padding: 0 5px;
-}
-
-.table-head {
-	height: 41px;
-}
-
-.table-row {
-	height: 71px;
-}
-
-.listTitle {
-	width: 65%;
-}
-
-.listPrice {
-	width: 10%;
-}
-
-.listSeller {
-	width: 10%;
-}
-
-.listDate {
-	width: 15%;
-}
-</style>
 <p>login ID : ${logId }</p>
 <div id="dataPrt">
 	<p>page : ${ilvo.page }</p>

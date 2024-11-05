@@ -8,8 +8,6 @@ $('#buyBtn').on('click', function(e) {
 	console.log('buyBtn click');
 	
 	//최대값 이상의 숫자 입력시 취소 기능
-	
-
 	$.ajax({
 		url: 'buyItem.do',
 		data: {
@@ -41,7 +39,7 @@ $('#buyBtn').on('click', function(e) {
 		})
 })
 
-
+//판매 버튼 만들기
 
 
 

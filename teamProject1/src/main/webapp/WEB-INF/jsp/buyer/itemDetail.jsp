@@ -66,7 +66,7 @@
 		
 		<div class="col-sm-3">
 			<div class="form-group">
-				<p class="form-control valid">${item.seller }</p>
+				<p id="seller" class="form-control valid">${item.seller }</p>
 			</div>
 		</div>
 		<div class="col-sm-3">
@@ -81,7 +81,12 @@
 		</div>
 		<div class="form-group">
 			<c:if test="${logId != null }">
-				<a id="buyBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+				<c:if test="${item.trade == 'sell' }">
+					<a id="buyBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+				</c:if>
+				<c:if test="${item.trade == 'buy' }">
+					<a id="sellBtn" href="#" class="genric-btn danger-border circle" >판매</a>
+				</c:if>
 			</c:if>
 		</div>
 	</div>

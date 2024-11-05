@@ -51,6 +51,7 @@
 	<footer>
 		<tiles:insertAttribute name="footer" />
 	</footer>
+
 <script src="js/menuStyle.js"></script>
 </body>
 </html>

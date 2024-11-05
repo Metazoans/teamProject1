@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.yedam.common.Control;
 import com.yedam.service.account.MemberService;
 import com.yedam.service.account.MemberServiceImpl;
+import com.yedam.vo.BillsVO;
 import com.yedam.vo.MemberVO;
 
 public class MyPageFormControl implements Control {
@@ -28,8 +29,14 @@ public class MyPageFormControl implements Control {
 		
 		
 		req.setAttribute("memberList", list);
+		
+		List<BillsVO> sellList = svc.sellList(logId);
+		req.setAttribute("sellList", sellList);
+		
+		List<BillsVO> purchaseList = svc.purchaseList(logId);
+		req.setAttribute("purchaseList", purchaseList);
+		
 		req.getRequestDispatcher("account/myPage.tiles").forward(req, resp);
-
 	}
 
 }

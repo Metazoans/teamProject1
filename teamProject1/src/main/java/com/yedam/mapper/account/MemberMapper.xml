@@ -69,15 +69,16 @@
 		where member_name=#{memberName}
 	</update>
 	
-	<delete id="deleteMember" parameterType="com.yedam.vo.MemberVO">
+	<delete id="deleteMember" parameterType="string">
 		delete from team_member
-		where member_name=#{memberName}
+		where member_id=#{logId}
 	</delete>
 	
 	<select id="selectCount" resultType="int">
 		select count(*) 
 		from team_bills
 		where seller=#{memberId}
+		and pay_date=completed
 	</select>
 	
 	<update id="updateGrade" parameterType="string" >
@@ -86,4 +87,30 @@
 		grade=#{grade}
 		where member_id = #{name}
 	</update>
+	
+	<select id="selectSell" parameterType="string" resultType="com.yedam.vo.BillsVO">
+		SELECT *
+  	FROM (
+         SELECT *
+           FROM team_bills
+          ORDER BY pay_date DESC
+       )
+       <![CDATA[
+ 	WHERE ROWNUM <= 2
+ 	]]>
+	and seller=#{logId}
+	</select>
+	
+	<select id="selectPurchase" parameterType="string" resultType="com.yedam.vo.BillsVO">
+		SELECT *
+  	FROM (
+         SELECT *
+           FROM team_bills
+          ORDER BY pay_date DESC
+       )
+       <![CDATA[
+ 	WHERE ROWNUM <= 2
+ 	]]>
+	and buyer=#{logId}
+	</select>
 </mapper>

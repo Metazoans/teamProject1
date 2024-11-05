@@ -2,6 +2,7 @@ package com.yedam.control.account;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ public class MyPageControl implements Control {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
+		
 		
 		String id = req.getParameter("member_id");
 		String name = req.getParameter("member_name");

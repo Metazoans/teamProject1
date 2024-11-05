@@ -28,44 +28,19 @@
 <link rel="stylesheet" href="assets/css/nice-select.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="css/menu.css">
-<link rel="stylesheet" href="css/ranking-chart.css">
+<link rel="stylesheet" href="css/mainPage.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
 	<header>
 		<jsp:include page="/WEB-INF/layouts/header.jsp"></jsp:include>
 	</header>
-	
-	<!-- search -->
-	<!--
-	<div class="w-75 p-3 row" id="center-location">
-		<div class="default-select col-md-2.5" id="default-select"">
-			<select style="display: none;">
-				<option value="M" focus>게임머니</option>
-				<option value="I">아이템</option>
-				<option value="A">계정</option>
-			</select>
-			<div class="nice-select" tabindex="0">
-				<span class="current col-md-2.5">게임머니</span>
-				<ul class="list">
-					<li data-value="M" class="option focus">게임머니</li>
-					<li data-value="I" class="option">아이템</li>
-					<li data-value="A" class="option">계정</li>
-				</ul>
-			</div>
-		</div>
-		<input type="text" name="search" placeholder="게임명 또는 서버를 입력하세요."
-			onfocus="this.placeholder = ''"
-			onblur="this.placeholder = '게임명 또는 서버를 입력하세요.'" required=""
-			border="1" class="single-input col-md-7">
-		<button type="button" class="btn head-btn1 col-md-2">검색</button>
-	</div>
-	-->
 	<!-- content -->
 	<!-- 인기순위(데이터 등록순) -->
-	<h3 class="	table-name">인기순위</h3>
+	<h3 class="table-name1">인기순위</h3>
 	<div id="rankingList" class="col-lg-12">
 		<div class="page-float">
 			<div class="section-top-border">
@@ -87,8 +62,34 @@
 		</div>
 	</div>
 	<!-- 랜덤으로 리스트 출력 -->
+	<h3 class="table-name2">추천목록</h3>
 	<div id="randomList">
-	
+		<div class="section-top-border">
+			<div class="progress-table-wrap">
+				<div class="progress-table">
+					<div class="table-head">
+						<div class="percentage">Percentages</div>
+						<div class="serial">#</div>
+						<div class="country">Countries</div>
+						<div class="visit">Visits</div>
+					</div>
+					<div class="table-row">
+						<div class="percentage">
+							<div class="progress">
+								<div class="progress-bar color-1" role="progressbar"
+									style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+									aria-valuemax="100"></div>
+							</div>
+						</div>
+						<div class="serial">01</div>
+						<div class="country">
+							<img src="assets/img/elements/f1.jpg" alt="flag">Canada
+						</div>
+						<div class="visit">645032</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- footer -->
 	<footer>

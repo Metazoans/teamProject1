@@ -16,6 +16,7 @@ import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
 import com.yedam.control.main.GameListControl;
 import com.yedam.control.main.PopularControl;
+import com.yedam.control.main.RandomListControl;
 import com.yedam.control.main.serverListControl;
 import com.yedam.control.buyer.buyListCont;
 import com.yedam.control.buyer.itemDetailCont;
@@ -75,7 +76,7 @@ public class FrontController extends HttpServlet {
 		map.put("/popular.do", new PopularControl());
 		map.put("/gameList.do", new GameListControl());
 		map.put("/serverList.do", new serverListControl());
-		
+		map.put("/randomList.do", new RandomListControl());
 		
 		
 

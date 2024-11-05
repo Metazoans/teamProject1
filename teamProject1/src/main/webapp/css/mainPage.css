@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.table-name{
+.table-name1{
 	display:block; 
 	width: 70%; 
 	text-align:center; 
@@ -21,8 +21,8 @@
 }
 #rankingList{
 	margin: 0 auto; 
-	border: 1px,solid,black; 
 	width: 70%; 
+	padding: 0;
 	overflow:hidden; 
 	margin-bottom: 10px;
 	-ms-overflow-style: none;
@@ -58,4 +58,29 @@
 }
 .percentage{
 	width: 30%;
+}
+.table-name2{
+	display:block; 
+	width: 70%; 
+	text-align:center; 
+	margin: 0 auto; 
+	font-size:20px; 
+	font-weight:bold;
+	background: none;
+	color: #fb246a;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+	line-height: 0;
+	padding: 27px 44px;
+    border-radius: 0px;
+    position: relative;
+    z-index: -1;
+    border: 1px solid #fb246a;
+    overflow: hidden;
+}
+#randomList{
+	margin: 0 auto; 
+	width: 70%;
+	padding: 0;
+	margin-bottom: 10px;
 }

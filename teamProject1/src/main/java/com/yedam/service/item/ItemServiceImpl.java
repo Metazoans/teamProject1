@@ -45,4 +45,9 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.itemDelete(item) == 1;
 	}
 	
+	@Override
+	public boolean payStepUpdate(String payStep, String itemNum) {
+		return mapper.payStepUpdate(payStep, itemNum) == 1;
+	}
+	
 }

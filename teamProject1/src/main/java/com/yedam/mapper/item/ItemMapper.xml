@@ -20,6 +20,7 @@
 		select *
 		from team_bills
 		where seller = #{logId}
+		and pay_step = processing
 	</select>
 	
 	
@@ -50,6 +51,11 @@
 		where item_number = #{itemNumber}
 	</delete>
 	
+	<update id="payStepUpdate" parameterType="String">
+		update 	team_bills
+		set		pay_step = #{payStep}
+		where	item_number = #{itemNum}
+	</update>
 
 
 </mapper>

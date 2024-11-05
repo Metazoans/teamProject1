@@ -35,19 +35,16 @@
 			<div class="serial">판매금액(수량1개당가격)</div>
 			<div class="serial">등록시간</div>
 		</div>
-		<form method="post" id="testbtn" name="testbtn">
+		<form method="post" id="myListModify">
 			<div class="table-row">
-				
 				<div class="serial"><img src="images/<%=ivo.getImage() %>" width="100px"></div>
 				<div class="serial"><%=ivo.getItemName()%></div>
 				<div class="serial"><%=ivo.getCount()%></div>
 				<div class="serial"><%=ivo.getPrice()%></div>
 				<div class="serial"><%=ivo.getUpDate()%></div>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox"
-						value="<%=ivo.getItemNumber()%>" id="inlineCheckbox2"
-						name="itemNum"
-						onclick="Modal('<%=ivo.getItemNumber()%>','<%=ivo.getItemName()%>', '<%=ivo.getItemInfo()%>', '<%=ivo.getCount()%>', '<%=ivo.getPrice()%>', '<%=ivo.getImage()%>');" >
+					<input class="form-check-input" type="checkbox" value="<%=ivo.getItemNumber()%>" id="inlineCheckbox2" name="itemNum"
+					onclick="Modal('<%=ivo.getItemNumber()%>','<%=ivo.getItemName()%>', '<%=ivo.getItemInfo()%>', '<%=ivo.getCount()%>', '<%=ivo.getPrice()%>', '<%=ivo.getImage()%>');" >
 					<label class="form-check-label" for="inlineCheckbox2"></label>
 				</div>
 			</div>
@@ -73,7 +70,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form action="myItemUpdate.do" method="post" enctype="multipart/form-data">
+					<form action="myItemUpdate.do" method="post" enctype="multipart/form-data" id="test">
 						<input type="hidden" id="modalItemNumber" name="itemNum" value="">
 						<div class="mb-3">
 							<label for="modalItemName" class="col-form-label">아이템이름</label> <input
@@ -145,7 +142,7 @@
 				 const model = new bootstrap.Modal("#exampleModal");
 				 model.show();
 				}else if(a==2 && ck==true){
-					var test = document.getElementById("testbtn");
+					var test = document.getElementById("myListModify");
 					test.action ="myItemDelete.do";
 					test.submit();
 				}else{

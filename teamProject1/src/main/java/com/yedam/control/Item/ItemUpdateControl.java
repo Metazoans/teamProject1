@@ -41,10 +41,10 @@ public class ItemUpdateControl implements Control {
 		String itemInfo = mr.getParameter("itemInfo");
 		String count = mr.getParameter("count");
 		String price = mr.getParameter("price");
-		String image = mr.getParameter("image");
+		String image = mr.getFilesystemName("image");
 		
 		System.out.println(itemNum);
-		
+		System.out.println(image);
 		
 		ivo.setItemName(itemName);
 		ivo.setItemInfo(itemInfo);

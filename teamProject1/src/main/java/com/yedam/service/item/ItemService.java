@@ -20,4 +20,6 @@ public interface ItemService {
 	
 	boolean itemDelete(ItemVO num);
 	
+	boolean payStepUpdate(String payStep, String itemNum);
+	
 }

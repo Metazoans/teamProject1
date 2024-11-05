@@ -23,7 +23,7 @@ public interface ItemMapper {
 	
 	int itemDelete(ItemVO item);
 	
-	int payStepUpdate();
+	int payStepUpdate(@Param("payStep")String payStep, @Param("itemNum")String itemNum);
 	
 	
 }

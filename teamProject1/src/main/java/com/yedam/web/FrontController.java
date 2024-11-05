@@ -1,8 +1,6 @@
 package com.yedam.web;
 
 import java.io.IOException;
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,23 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 import com.yedam.control.TestPageControl;
-import com.yedam.control.main.GameListControl;
-import com.yedam.control.main.PopularControl;
-import com.yedam.control.main.serverListControl;
-import com.yedam.control.buyer.buyListCont;
-import com.yedam.control.buyer.itemDetailCont;
-import com.yedam.control.buyer.itemListChangeCont;
-import com.yedam.control.buyer.itemListCont;
-
+import com.yedam.control.Item.AddItemControl;
 import com.yedam.control.Item.AddItemForm;
 import com.yedam.control.Item.ItemDeleteControl;
-import com.yedam.control.Item.ItemListControl;
 import com.yedam.control.Item.ItemUpdateControl;
 import com.yedam.control.Item.MySellListControl;
 import com.yedam.control.Item.PayStepUpdateControl;
 import com.yedam.control.Item.SellerHistoryControl;
-import com.yedam.control.Item.myItemUpdateList;
-import com.yedam.control.Item.AddItemControl;
 import com.yedam.control.account.GradeControl;
 import com.yedam.control.account.LogOutControl;
 import com.yedam.control.account.LoginControl;
@@ -44,6 +32,16 @@ import com.yedam.control.account.SearchIdControl;
 import com.yedam.control.account.SearchIdFormControl;
 import com.yedam.control.account.SearchPwdControl;
 import com.yedam.control.account.SearchPwdFormControl;
+import com.yedam.control.buyer.BuyCancelCont;
+import com.yedam.control.buyer.BuyConfirmCont;
+import com.yedam.control.buyer.BuyItemCont;
+import com.yedam.control.buyer.BuyListCont;
+import com.yedam.control.buyer.ItemDetailCont;
+import com.yedam.control.buyer.ItemListChangeCont;
+import com.yedam.control.buyer.ItemListCont;
+import com.yedam.control.main.GameListControl;
+import com.yedam.control.main.PopularControl;
+import com.yedam.control.main.serverListControl;
 
 
 //@WebServlet("*.do")
@@ -61,12 +59,19 @@ public class FrontController extends HttpServlet {
 		//System.out.println("init호출");
 		map.put("/testBuyer.do", new TestPageControl());
 
-		//ksy - 상품 목록, 상품 상세, 구매 내역
-		map.put("/itemList.do", new itemListCont());
-		map.put("/itemListChange.do", new itemListChangeCont());
-		map.put("/itemDetail.do", new itemDetailCont());
-		map.put("/buyList.do", new buyListCont());
 
+		//ksy - 상품 목록, 상품 상세, 상품 구매, 구매 내역
+		map.put("/itemList.do", new ItemListCont()); //상품 목록
+		map.put("/itemListChange.do", new ItemListChangeCont()); //상품 목록 출력 변화
+		
+		map.put("/itemDetail.do", new ItemDetailCont()); //상품 상세
+		map.put("/buyItem.do", new BuyItemCont()); //상품 구매
+		
+		map.put("/buyList.do", new BuyListCont()); //구매 내역
+		map.put("/buyConfirm.do", new BuyConfirmCont()); //구매 확정
+		map.put("/buyCancel.do", new BuyCancelCont()); //구매 취소
+		
+		
 
 
 		

@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
-import com.yedam.service.buyer.buyerService;
-import com.yedam.service.buyer.buyerServiceImpl;
+import com.yedam.service.buyer.BuyerService;
+import com.yedam.service.buyer.BuyerServiceImpl;
 import com.yedam.vo.ItemListVO;
 import com.yedam.vo.ItemVO;
 
-public class itemListChangeCont implements Control {
+public class ItemListChangeCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,7 +45,7 @@ public class itemListChangeCont implements Control {
 //		ilvo.setGame(game);
 //		ilvo.setServers(servers);
 		
-		buyerService svc = new buyerServiceImpl();
+		BuyerService svc = new BuyerServiceImpl();
 		List<ItemVO> list = svc.getSortItemList(ilvo);
 		
 		req.setAttribute("itemList", list);

@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.service.buyer.buyerService;
-import com.yedam.service.buyer.buyerServiceImpl;
+import com.yedam.service.buyer.BuyerService;
+import com.yedam.service.buyer.BuyerServiceImpl;
 import com.yedam.vo.ItemListVO;
 
-public class itemListCont implements Control {
+public class ItemListCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class itemListCont implements Control {
 			ilvo.setPage(Integer.parseInt(page));
 		}
 		
-		buyerService svc = new buyerServiceImpl();
+		BuyerService svc = new BuyerServiceImpl();
 		int listCnt = svc.getSortItemListCnt(ilvo);
 		
 		req.setAttribute("ilvo", ilvo);

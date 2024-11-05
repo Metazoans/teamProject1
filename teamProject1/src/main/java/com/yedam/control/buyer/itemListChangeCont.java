@@ -22,21 +22,31 @@ public class itemListChangeCont implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 		
 		// 상품 목록 페이지(item List 객체, 페이지, 정렬방식, )
+		String page = req.getParameter("page");
 		String categories = req.getParameter("categories");
+		String trade = req.getParameter("trade");
 		String searchType = req.getParameter("searchType");
 		String searchData = req.getParameter("searchData");
 		String sort = req.getParameter("sort");
 		String order = req.getParameter("order");
 		
-		ItemListVO itemList = new ItemListVO();
-		itemList.setCategories(categories);
-		itemList.setSearchType(searchType);
-		itemList.setSearchData(searchData);
-		itemList.setSort(sort);
-		itemList.setOrder(order);
+//		String game = req.getParameter("game");
+//		String servers = req.getParameter("servers");
+		
+		ItemListVO ilvo = new ItemListVO();
+		ilvo.setPage(Integer.parseInt(page));
+		ilvo.setCategories(categories);
+		ilvo.setTrade(trade);
+		ilvo.setSearchType(searchType);
+		ilvo.setSearchData(searchData);
+		ilvo.setSort(sort);
+		ilvo.setOrder(order);
+		
+//		ilvo.setGame(game);
+//		ilvo.setServers(servers);
 		
 		buyerService svc = new buyerServiceImpl();
-		List<ItemVO> list = svc.getSortItemList(itemList);
+		List<ItemVO> list = svc.getSortItemList(ilvo);
 		
 		req.setAttribute("itemList", list);
 		

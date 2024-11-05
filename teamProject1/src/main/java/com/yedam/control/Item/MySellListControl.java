@@ -25,7 +25,7 @@ public class MySellListControl implements Control {
 		HttpSession session = req.getSession();
 		String logId = (String) session.getAttribute("logId");
 		
-		List<ItemVO> list = (List<ItemVO>)svc.mySellList(logId,"sell");
+		List<ItemVO> list = (List<ItemVO>)svc.mySellList(logId);
 		
 		req.setAttribute("mySellList", list);
 		

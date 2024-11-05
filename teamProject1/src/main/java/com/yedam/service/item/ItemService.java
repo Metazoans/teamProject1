@@ -9,10 +9,9 @@ public interface ItemService {
 
 	List<ItemVO> select();
 	
-	List<ItemVO> mySellList(String mid, String sell);
+	List<ItemVO> mySellList(String mid);
 	
 	List<BillsVO> sellerHistory(String logId);
-	
 	
 	boolean addItem(ItemVO item);
 	
@@ -21,5 +20,8 @@ public interface ItemService {
 	boolean itemDelete(ItemVO num);
 	
 	boolean payStepUpdate(String payStep, String itemNum);
+	
+	boolean payStepDelete(String itemNum);
+
 	
 }

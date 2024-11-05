@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.main.ChatMapper">
+	<select id="select" resultType="com.yedam.vo.ChatVO" parameterType="String">
+	select *
+	from team_chat
+	where from_id in (#{buyer}, #{seller})
+	and to_id in (#{buyer}, #{seller})
+	order by timeline
+	</select>
+	<insert id="insert" parameterType="com.yedam.vo.ChatVO">
+	insert into team_chat(from_id, to_id, message)
+	values (#{fromId}, #{toId}, #{message})
+	</insert>
+</mapper>

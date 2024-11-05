@@ -2,21 +2,21 @@
 	pageEncoding="UTF-8"%>
 
 <style>
-#itemList div{
-	display:inline-block;
+#itemList div {
+	display: inline-block;
 }
+
 #listOrder a {
 	display: block;
 }
 </style>
 
 <h1>buyer.jsp test</h1>
-<p>buyer test111</p>
+<p>buyer test</p>
 
-<a href="itemList.do"><p>아이템 목록 테스트1</p></a>
-<a href="itemList.do?categories=게임머니"><p>아이템 목록 게임머니</p></a>
-<a href="itemList.do?categories=아이템"><p>아이템 목록 아이템</p></a>
-<a href="itemList.do?categories=계정"><p>아이템 목록 계정</p></a>
+<a href="itemList.do?categories=게임머니&trade=sell&game=메이플스토리&servers=오로라">
+	<p>test</p>
+</a>
 
-
+</div>
 

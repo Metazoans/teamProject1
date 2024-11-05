@@ -30,33 +30,33 @@
 #rankingList::-webkit-scrollbar {
   display: none;
 }
-.page-float{
+#rankingList .page-float{
 	float:left;
 	width:50%;
 	display:block;
 }
 .section-top-border{
-	padding: 10px 0;
+	padding: 0;
 }
-.progress-table-wrap{
+#rankingList .progress-table-wrap{
 	-ms-overflow-style: none;
 }	
-.progress-table-wrap::-webkit-scrollbar{
+#rankingList .progress-table-wrap::-webkit-scrollbar{
   display:none;
 }
 
-.progress-table-wrap{
+#rankingList .progress-table-wrap{
 	width: 100%;
 	min-width: 300px
 }
 
-.serial{
+#rankingList .serial{
 	width: 20%;
 }
-.country{
+#rankingList .country{
 	width: 50%;
 }
-.percentage{
+#rankingList .percentage{
 	width: 30%;
 }
 .table-name2{
@@ -84,3 +84,52 @@
 	padding: 0;
 	margin-bottom: 10px;
 }
+
+#randomList .progress-table-wrap {
+	overflow-x: hidden;
+	width: 100%;
+}
+
+#randomList .itemList {
+	min-width: 100%;
+}
+
+#randomList .itemList .table-head, .table-row {
+	width: 100%;
+	color: #415094;
+	line-height: 40px;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: #415094
+}
+
+#randomList .itemList .table-head div, .table-row div {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding: 0 5px;
+}
+
+#randomList .table-head {
+	height: 41px;
+}
+
+#randomList .table-row {
+	height: 71px;
+}
+
+#randomList .listTitle {
+	width: 65%;
+}
+
+#randomList .listPrice {
+	width: 10%;
+}
+
+#randomList .listSeller {
+	width: 10%;
+}
+
+#randomList .listDate {
+	width: 15%;
+}
+

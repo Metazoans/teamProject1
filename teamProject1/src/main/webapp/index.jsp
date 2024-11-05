@@ -68,25 +68,12 @@
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
-						<div class="percentage">Percentages</div>
-						<div class="serial">#</div>
-						<div class="country">Countries</div>
-						<div class="visit">Visits</div>
+						<div class="listTitle">제목</div>
+						<div class="listPrice">가격</div>
+						<div class="listSeller">판매자</div>
+						<div class="listDate">작성일</div>
 					</div>
-					<div class="table-row">
-						<div class="percentage">
-							<div class="progress">
-								<div class="progress-bar color-1" role="progressbar"
-									style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-									aria-valuemax="100"></div>
-							</div>
-						</div>
-						<div class="serial">01</div>
-						<div class="country">
-							<img src="assets/img/elements/f1.jpg" alt="flag">Canada
-						</div>
-						<div class="visit">645032</div>
-					</div>
+					<!-- 내용 들어갈부분 -->
 				</div>
 			</div>
 		</div>

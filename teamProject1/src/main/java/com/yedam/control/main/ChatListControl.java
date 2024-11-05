@@ -26,8 +26,6 @@ public class ChatListControl implements Control {
 		ChatService svc = new ChatServiceImpl();
 		List<ChatVO> list = svc.chatList(fromId, toId);
 		
-		req.setAttribute(fromId, toId)
-		req.getRequestDispatcher(toId).forward(req, resp)
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list); // 자바객체 -> json문자열로 변경

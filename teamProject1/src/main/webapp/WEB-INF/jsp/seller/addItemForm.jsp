@@ -5,22 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-#container{
-	padding-top: 50px;
-	margin: 0 auto;
-	width: 80%;	
-	padding-bottom: 50px;
-}
-</style>
 </head>
 <body>
 <script>
-
+<%
+	String logId = (String) session.getAttribute("logId");
+    String msg = (String) request.getAttribute("msg");
+    if (msg != null) {
+%>
+        alert("<%=msg %>");
+        location.href = "itemList.do";
+<% } %>
 </script>
-<div id="containner">
 <form action="addItem.do" method="post" onsubmit="return checkField();" enctype="multipart/form-data">
-
+<%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
 <table class="table">
 		<input type="hidden" name="logId" value="${logId}">
 		<tr>
@@ -66,16 +64,19 @@
 				<option value="buy">구매</option>
 			</select></td>
 		</tr>
-		<tr style="text-align: center;">
-			<td colspan="2" align="center" >
+		<tr>
+			<td colspan="2" align="center">
 				<input  class="btn btn-success" type="submit" value="상품등록" >
 				<input class="btn btn-warning" type="button" value="취소" onclick="location.href='itemList.do'">
 			</td>
 		</tr>
 	</table>
 
+
+
+
+
 </form>
-</div>
 <script>
 
 	function categoryChange(e){

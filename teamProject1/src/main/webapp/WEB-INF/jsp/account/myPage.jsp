@@ -55,183 +55,189 @@
 	opacity: 1;
 	visibility: visible;
 }
- #container{
 
+#container {
+	margin: 0 auto !important;
+	width:80% !important;
+	
 }
 </style>
 </head>
 <body>
-<div id="container">
-	<%
-	List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
-	List<BillsVO> sellList = (List<BillsVO>) request.getAttribute("sellList");
-	List<BillsVO> purchaseList = (List<BillsVO>) request.getAttribute("purchaseList");
+	<div id="container" >
+		<%
+		List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
+		List<BillsVO> sellList = (List<BillsVO>) request.getAttribute("sellList");
+		List<BillsVO> purchaseList = (List<BillsVO>) request.getAttribute("purchaseList");
 
-	System.out.println(list);
-	%>
-	<%
-	for (MemberVO mvo : list) {
-	%>
-	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center"
-		style="margin-left: 2px; margin-right: 2px;">
-		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm" style="border-color: gray">
-				<div class="card-header py-3" style="background: #fb246a;">
-					<h4 class="my-0 fw-normal">등급</h4>
-				</div>
-				<div class="card-body" style="padding: 0;">
-					<ul class="list-unstyled mt-3 mb-4">
-						<li><%=mvo.getMemberName()%>님의 등급은</li>
-					</ul>
-					<h2 class="card-title pricing-card-title"><%=mvo.getGrade()%>등급
-					</h2>
-					<!-- <div onmouseover="$('#credit_condition').show();"
+		System.out.println(list);
+		%>
+		<%
+		for (MemberVO mvo : list) {
+		%>
+		<div class="row row-cols-1 row-cols-md-3 mb-3 text-center"
+			style="margin-left: 2px; margin-right: 2px;">
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm"
+					style="border-color: gray">
+					<div class="card-header py-3" style="background: #fb246a;">
+						<h4 class="my-0 fw-normal">등급</h4>
+					</div>
+					<div class="card-body" style="padding: 0;">
+						<ul class="list-unstyled mt-3 mb-4">
+							<li><%=mvo.getMemberName()%>님의 등급은</li>
+						</ul>
+						<h2 class="card-title pricing-card-title"><%=mvo.getGrade()%>등급
+						</h2>
+						<!-- <div onmouseover="$('#credit_condition').show();"
 						onmouseout="$('#credit_condition').hide();">승급조건</div> -->
-					<span class="hovertext"
-						data-hover="
+						<span class="hovertext"
+							data-hover="
 							거래건수 5건 C등급<br />
 							거래건수 10건 B등급<br />
 							거래건수 15건 A급<br />
 							거래건수 20건 S등급">승급조건
-					</span>
+						</span>
+					</div>
 				</div>
 			</div>
-		</div>
 
 
-		<div class="content-box" id="credit_condition"
-			style="display: none; z-index: 2;">
-			<span class="credit_up_silver">거래건수 5건 C등급.<br>거래건수 10건
-				B등급<br>거래건수 15건 A급<br>거래건수 20건 S등급 
-		</div>
+			<div class="content-box" id="credit_condition"
+				style="display: none; z-index: 2;">
+				<span class="credit_up_silver">거래건수 5건 C등급.<br>거래건수 10건
+					B등급<br>거래건수 15건 A급<br>거래건수 20건 S등급 
+			</div>
 
 
 
-		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm" style="border-color: gray">
-				<div class="card-header py-3">
-					<h4 class="my-0 fw-normal">인증상태</h4>
-				</div>
-				<div class="card-body" style="padding: 0;">
-					<h3 class="card-title pricing-card-title">
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm"
+					style="border-color: gray">
+					<div class="card-header py-3">
+						<h4 class="my-0 fw-normal">인증상태</h4>
+					</div>
+					<div class="card-body" style="padding: 0;">
+						<h3 class="card-title pricing-card-title">
+							<%
+							if (mvo.getPhone() == null) {
+							%>미인증
+						</h3>
 						<%
-						if (mvo.getPhone() == null) {
-						%>미인증
-					</h3>
-					<%
-					} else {
-					%>
-					<p>인증완료</p>
-					<%
-					}
-					%>
+						} else {
+						%>
+						<p>인증완료</p>
+						<%
+						}
+						%>
 
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm" style="border-color: gray">
-				<div class="card-header py-3">
-					<h4 class="my-0 fw-normal">마일리지</h4>
-				</div>
-				<div class="card-body" style="padding: 0;">
-					<h3 class="card-title pricing-card-title"><%=mvo.getMileage()%></h3>
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm"
+					style="border-color: gray">
+					<div class="card-header py-3">
+						<h4 class="my-0 fw-normal">마일리지</h4>
+					</div>
+					<div class="card-body" style="padding: 0;">
 					<ul class="list-unstyled mt-3 mb-4">
-						<li>30 users included</li>
-						<li>15 GB of storage</li>
-						<li>Phone and email support</li>
-						<li>Help center access</li>
-					</ul>
-					<button type="button" class="w-100 btn btn-lg btn-primary"
-						data-bs-toggle="modal" data-bs-target="#mileageModal">충전
-					</button>
+							<li><%=mvo.getMemberName()%>님의 사용가능 마일리지는</li>
+						</ul>
+						<h3 class="card-title pricing-card-title"><%=mvo.getMileage()%>원</h3>
 
-				</div>
-			</div>
-		</div>
-	</div>
-	<%
-	}
-	%>
+						<button type="button" class="w-100 btn btn-lg btn-primary"
+							data-bs-toggle="modal" data-bs-target="#mileageModal">충전
+						</button>
 
-
-	<div>
-		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm" >
-				<div class="card-header py-3" style="background: #fb246a;">
-					<a href="job_listing.html" style="color: black">최근구매내역</a>
-
-				</div>
-				<div class="card-body" style="padding: 0;">
-
-					<%
-					for (BillsVO bvo : purchaseList) {
-					%>
-					<div class="progress-table">
-						<div class="table-head">
-							<div class="serial">이미지</div>
-							<div class="serial" style="width: 300px;">아이템 이름</div>
-							<div class="serial">결제금액</div>
-							<div class="serial">처리 경과</div>
-
-						</div>
-						<div class="table-row">
-							<div class="serial">
-								<img src="image/<%=bvo.getImage()%>" />
-							</div>
-							<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
-							<div class="serial"><%=bvo.getTotal()%></div>
-							<div class="serial1" style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
-
-
-						</div>
 					</div>
-					<%
-					}
-					%>
 				</div>
 			</div>
 		</div>
+		<%
+		}
+		%>
 
 
+		<div>
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm">
+					<div class="card-header py-3" style="background: #fb246a;">
+						<a href="job_listing.html" style="color: black">최근구매내역</a>
 
-		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm">
-				<div class="card-header py-3">
-					<a href="job_listing.html" style="color: black">판매내역</a>
-
-				</div>
-				<div class="card-body" style="padding: 0;">
-					<%
-					for (BillsVO bvo : sellList) {
-					%>
-					<div class="progress-table">
-						<div class="table-head">
-							<div class="serial">이미지</div>
-							<div class="serial" style="width: 300px;">아이템 이름</div>
-							<div class="serial">결제금액</div>
-							<div class="serial">처리경과</div>
-
-						</div>
-						<div class="table-row">
-							<div class="serial">
-								<img src="image/<%=bvo.getImage()%>" />
-							</div>
-							<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
-							<div class="serial"><%=bvo.getTotal()%></div>
-							<div class="serial1" style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
-
-
-						</div>
 					</div>
-					<%
-					}
-					%>
+					<div class="card-body" style="padding: 0;">
+
+						<%
+						for (BillsVO bvo : purchaseList) {
+						%>
+						<div class="progress-table">
+							<div class="table-head">
+								<div class="serial">이미지</div>
+								<div class="serial" style="width: 300px;">아이템 이름</div>
+								<div class="serial">결제금액</div>
+								<div class="serial">처리 경과</div>
+
+							</div>
+							<div class="table-row">
+								<div class="serial">
+									<img src="image/<%=bvo.getImage()%>" />
+								</div>
+								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
+								<div class="serial"><%=bvo.getTotal()%></div>
+								<div class="serial1"
+									style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
+
+
+							</div>
+						</div>
+						<%
+						}
+						%>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm">
+					<div class="card-header py-3">
+						<a href="job_listing.html" style="color: black">판매내역</a>
+
+					</div>
+					<div class="card-body" style="padding: 0;">
+						<%
+						for (BillsVO bvo : sellList) {
+						%>
+						<div class="progress-table">
+							<div class="table-head">
+								<div class="serial">이미지</div>
+								<div class="serial" style="width: 300px;">아이템 이름</div>
+								<div class="serial">결제금액</div>
+								<div class="serial">처리경과</div>
+
+							</div>
+							<div class="table-row">
+								<div class="serial">
+									<img src="image/<%=bvo.getImage()%>" />
+								</div>
+								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
+								<div class="serial"><%=bvo.getTotal()%></div>
+								<div class="serial1"
+									style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
+
+
+							</div>
+						</div>
+						<%
+						}
+						%>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
+	
 
 
 
@@ -358,7 +364,7 @@
 										<p>
 									</td>
 									<td>
-										<p><%=mvo.getBirth().substring(0,10)%>
+										<p><%=mvo.getBirth().substring(0, 10)%>
 										<p>
 									</td>
 								</tr>
@@ -424,7 +430,7 @@
 						<div class="table-row">
 							<div class="serial">생년월일</div>
 							<div class="country">
-								<%=mvo.getBirth().substring(0,10)%></div>
+								<%=mvo.getBirth().substring(0, 10)%></div>
 
 						</div>
 						<div class="table-row">
@@ -452,7 +458,7 @@
 	<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 		data-bs-target="#deleteModal">회원탈퇴</button>
 	<form action="memberDelete.do" class="joinForm" method="get">
-		</div>
+		
 		<%
 		for (MemberVO mvo : list) {
 		%>
@@ -483,10 +489,14 @@
 		}
 		%>
 	</form>
+	
+		<a href="#" style="position: fixed; bottom: 5px; right: 5px;" class="btn btn-primary" >맨위로</a>
+		
 
 
 	<script>
 		const paystep = document.querySelectorAll(".serial1")
+		const topBtn = document.querySeletor(".moveTopBtn")
 	</script>
 	<script src="js/mypage.js"></script>
 	</div>

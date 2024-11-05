@@ -40,9 +40,9 @@ public class LoginControl implements Control {
 			HttpSession session = req.getSession();
 			session.setAttribute("logId",id);
 			if(member.getPermission().equals("User"))
-				resp.sendRedirect("testBuyer.do");
-				else if(member.getPermission().equals("Admin"))
-					resp.sendRedirect("");
+				resp.sendRedirect("index.jsp");
+//				else if(member.getPermission().equals("Admin"))
+//					resp.sendRedirect("");
 			
 
 		}

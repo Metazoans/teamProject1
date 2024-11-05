@@ -12,3 +12,8 @@
 		})
 		
 	}
+	
+	topBtn.addEventListener('click', function(){
+		console.log(topBtn);
+		window.scrollTo({top:0});
+	})

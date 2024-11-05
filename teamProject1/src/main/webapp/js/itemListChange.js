@@ -2,20 +2,21 @@
  *
  */
 
-let page, categories, trade, searchType, searchData, sort, order;
+let page, categories, trade, game, servers;
+let searchType, searchData, sort, order;
 
-categories = document.querySelector('.itemList').dataset.value;
-if(categories == '') categories = undefined;
-trade = document.querySelector('#listDataDiv #trade').dataset.value;
-page = document.querySelector('.pagination-area').dataset.value;
-
-let game, servers;
-
+page = $('#page').val();
+categories = $('#categories').val();
+trade = $('#trade').val();
+game = $('#game').val();
+servers = $('#servers').val();
 
 let listData = {
 	page: page,
 	categories: categories,
 	trade: trade,
+	game: game,
+	servers: servers,
 	searchType: searchType,
 	searchData: searchData,
 	sort: sort,

@@ -30,8 +30,8 @@ public class ItemListChangeCont implements Control {
 		String sort = req.getParameter("sort");
 		String order = req.getParameter("order");
 		
-//		String game = req.getParameter("game");
-//		String servers = req.getParameter("servers");
+		String game = req.getParameter("game");
+		String servers = req.getParameter("servers");
 		
 		ItemListVO ilvo = new ItemListVO();
 		ilvo.setPage(Integer.parseInt(page));
@@ -42,13 +42,11 @@ public class ItemListChangeCont implements Control {
 		ilvo.setSort(sort);
 		ilvo.setOrder(order);
 		
-//		ilvo.setGame(game);
-//		ilvo.setServers(servers);
+		ilvo.setGame(game);
+		ilvo.setServers(servers);
 		
 		BuyerService svc = new BuyerServiceImpl();
 		List<ItemVO> list = svc.getSortItemList(ilvo);
-		
-		req.setAttribute("itemList", list);
 		
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list); // 자바 객체 => json문자열로 변경

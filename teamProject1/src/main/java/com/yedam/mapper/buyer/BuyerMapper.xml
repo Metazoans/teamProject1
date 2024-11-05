@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.yedam.mapper.buyer.buyerMapper">
+<mapper namespace="com.yedam.mapper.buyer.BuyerMapper">
 	<!-- 상품 목록 -->
 	<!-- 전체 출력 -->
 	<select id="selectItemList" resultType="com.yedam.vo.ItemVO">
@@ -18,8 +18,8 @@
 				     <where>
 					     categories = #{categories} 
 					     and trade = #{trade} 
-<!-- 					     and game = #{game} -->
-<!-- 					     and servers = #{servers} -->
+					     and game = #{game}
+					     and servers = #{servers}
 					     
 					     <if test="searchData != null">
 						     and ${searchType} like '%'||#{searchData}||'%'
@@ -42,6 +42,8 @@
 		<where>
 			categories = #{categories}
 			and trade = #{trade}
+		    and game = #{game}
+		    and servers = #{servers}
 			<if test="searchData != null">
 				and ${searchType} like '%'||#{searchData}||'%'
 			</if>

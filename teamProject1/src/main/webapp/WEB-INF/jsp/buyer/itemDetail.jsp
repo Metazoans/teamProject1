@@ -8,6 +8,21 @@
 	구매 버튼 클릭시 buyCount 초기화 및 재출력
  -->
 
+<style>
+#buyCount::-webkit-inner-spin-button {
+  -webkit-appearance:none;
+  margin: 0;
+}
+
+</style>
+
+<p>login : ${logId }</p>
+
+<div id="itemDetailData">
+	<input type="hidden" id="logId" value="${logId }">
+	<input type="hidden" id="itemNumber" value="${item.itemNumber }">
+</div>
+
 <!-- 템플릿 -->
 <div class="col-lg-12">
 	<div class="row">
@@ -38,7 +53,7 @@
 		<!-- 내용 -->
 		<div class="col-sm-12">
 			<div class="form-group">
-				<textarea class="form-control w-100" cols="30" rows="15">${item.itemInfo }</textarea>
+				<p class="form-control w-100">${item.itemInfo }</p>
 			</div>
 		</div>
 
@@ -61,73 +76,19 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group">
-				<p class="form-control valid">${item.count }</p>
+				<input class="form-control" type="number" id="buyCount" max="${item.count }" placeholder="최대 : ${item.count }">
 			</div>
 		</div>
-		
-		<div class="col-sm-2">
-			<a href="#" class="genric-btn danger circle">Danger</a>
+		<div class="form-group">
+			<c:if test="${logId != null }">
+				<a id="buyBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+			</c:if>
 		</div>
-
+	</div>
 </div>
 
-
-<!-- 임시 -->
-<!-- <div id="itemDetail"> -->
-<%-- 	<h3 class="single-input">test ${item.itemName }</h3> --%>
-
-<!-- 	<div> -->
-<%-- 		<span>${item.game }</span> <span>${item.servers }</span> <span>${item.categories }</span> --%>
-<!-- 	</div> -->
-
-<!-- 	<div> -->
-<%-- 		<span class="single-textarea">${item.itemInfo }</span> <span>img</span> --%>
-<!-- 	</div> -->
-
-<!-- 	<div id="buyDiv"> -->
-<%-- 		<span>${item.seller }</span> <span>${item.price }</span> <span><input --%>
-<%-- 			id="buyCount">${item.count }</span> --%>
-<!-- 		<button id="buyBtn">구매</button> -->
-<!-- 	</div> -->
-<!-- </div> -->
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-//buyBtn 동작 -> OK=count 변경, CFAIL=구매 갯수 오류, RFAIL=bills 추가 실패
-$('#buyBtn').on('click', function(e) {
-	console.log('buyBtn click');
-	console.log(${item.itemNumber});
-	console.log($('#buyCount').val());
-	$.ajax({
-		url: 'buyItem.do',
-		data: {
-			itemNumber: ${item.itemNumber},
-			buyCount: $('#buyCount').val(),
-			loginId: '1111' //세션으로 변경 예정
-		},
-		method: 'GET',
-		dataType: 'json'
-	}) 
-		.done(function(result) {
-			if(result.retCode == 'OK') {
-				//count tag change
-				console.log('성공');
-			}
-			else if(result.retCode == 'CFAIL') {
-				console.log('구매 갯수 오류');
-			}
-			else if(result.retCode == 'RFAIL') {
-				console.log('bills 추가 실패');
-			}
-		})
-		.fail(function(err) {
-			console.log('err 발생');
-			console.log(err);
-		})
-})
-
-
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
+<script src="js/itemDetail.js"></script>
 
 

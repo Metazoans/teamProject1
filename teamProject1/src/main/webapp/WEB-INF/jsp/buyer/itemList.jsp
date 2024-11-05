@@ -74,14 +74,18 @@
 	width: 15%;
 }
 </style>
-<h1>test</h1>
-<p>${ilvo.trade }</p>
+<p>login ID : ${logId }</p>
+<div id="dataPrt">
+	<p>page : ${ilvo.page }</p>
+
+</div>
+
 <div id="listDataDiv">
-	<div id="trade" data-value="${ilvo.trade }"></div>
-	
-	
-<%-- 	<input type="hidden" name="game" value="${ilvo.game }"> --%>
-<%-- 	<input type="hidden" name="servers" value="${ilvo.servers }"> --%>
+	<input type="hidden" id="page" value="${ilvo.page }">
+	<input type="hidden" id="categories" value="${ilvo.categories }">
+	<input type="hidden" id="trade" value="${ilvo.trade }">
+	<input type="hidden" id="game" value="${ilvo.game }">
+	<input type="hidden" id="servers" value="${ilvo.servers }">
 </div>
 <!-- 검색 -->
 <div class="job-listing-area">
@@ -111,7 +115,7 @@
 			<!-- Right content -->
 			<!-- 리스트 내용 (제목/가격/판매자/작성일) -->
 			<div class="progress-table-wrap center-location">
-				<div class="progress-table itemList" data-value="${ilvo.categories }">
+				<div class="progress-table itemList">
 					
 					<div class="table-head">
 						<div class="listTitle" data-value="item_name">제목</div>
@@ -130,7 +134,7 @@
 <!-- Job List Area End -->
 
 <!--Pagination Start  -->
-<div class="pagination-area pb-115 text-center" data-value="${ilvo.page }">
+<div class="pagination-area pb-115 text-center">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-12">

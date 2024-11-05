@@ -23,56 +23,13 @@
 			<div>${list.total }total</div>
 			<div>${list.payStep }pay_step</div>
 			<div>
-				<button disabled id="confirmBtn">구매 확정</button>
+				<button class="genric-btn primary-border" id="confirmBtn">구매 확정</button>
 			</div>
 			<div>
-				<button id="cancelBtn">구매 취소</button>
+				<button class="genric-btn danger-border" id="cancelBtn">구매 취소</button>
 			</div>
 		</div>
 	</c:forEach>
 </div>
 
-<script>
-	//구매 확정
-	$('#confirmBtn').on('click', function(e) {
-		let billsNumber = $(e.target).parent().parent().find('input').val();
-		console.log(billsNumber);
-		$.ajax({
-			url : 'buyConfirm.do',
-			data : {
-				billsNumber : billsNumber
-			},
-			method : 'GET',
-			dataType : 'json'
-		}).done(function(result) {
-			if (result.retCode == 'OK') {
-				console.log('구매 확정 성공');
-			} else if (result.retCode == 'FAIL') {
-				console.log('구매 확정 실패');
-			}
-		}).fail(function(err) {
-			console.log(err);
-		})
-	})
-
-	//구매 취소
-	$('#cancelBtn').on('click', function(e) {
-		let billsNumber = $(e.target).parent().parent().find('input').val();
-		$.ajax({
-			url : 'buyCancel.do',
-			data : {
-				billsNumber : billsNumber
-			},
-			method : 'GET',
-			dataType : 'json'
-		}).done(function(result) {
-			if (result.retCode == 'OK') {
-				console.log('구매 취소 성공');
-			} else if (result.retCode == 'FAIL') {
-				console.log('구매 취소 실패');
-			}
-		}).fail(function(err) {
-			console.log(err);
-		})
-	})
-</script>
+<script src="js/buyList.js"></script>

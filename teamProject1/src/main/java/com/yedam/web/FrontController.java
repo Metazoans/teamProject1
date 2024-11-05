@@ -35,6 +35,7 @@ import com.yedam.control.account.SearchPwdFormControl;
 import com.yedam.control.buyer.BuyCancelCont;
 import com.yedam.control.buyer.BuyConfirmCont;
 import com.yedam.control.buyer.BuyItemCont;
+import com.yedam.control.buyer.BuyListChangeCont;
 import com.yedam.control.buyer.BuyListCont;
 import com.yedam.control.buyer.ItemDetailCont;
 import com.yedam.control.buyer.ItemListChangeCont;
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet {
 		map.put("/buyItem.do", new BuyItemCont()); //상품 구매
 		
 		map.put("/buyList.do", new BuyListCont()); //구매 내역
+		map.put("/buyListChange.do", new BuyListChangeCont());
 		map.put("/buyConfirm.do", new BuyConfirmCont()); //구매 확정
 		map.put("/buyCancel.do", new BuyCancelCont()); //구매 취소
 		

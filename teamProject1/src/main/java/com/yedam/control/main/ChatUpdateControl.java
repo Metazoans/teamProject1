@@ -12,8 +12,9 @@ import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
 import com.yedam.service.main.ItemService;
 import com.yedam.service.main.ItemServiceImpl;
+import com.yedam.vo.ItemVO;
 
-public class serverListControl implements Control {
+public class ChatUpdateControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +22,7 @@ public class serverListControl implements Control {
 		String game = req.getParameter("game");
 
 		ItemService svc = new ItemServiceImpl();
-		List<String> list = svc.serverList(game);
+		List<ItemVO> list = svc.randomList();
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list); // 자바객체 -> json문자열로 변경

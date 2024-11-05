@@ -36,8 +36,9 @@
 	<mappers>
 
 		<mapper resource="com/yedam/mapper/main/ItemMapper.xml" />
-	
-	
+		<mapper resource="com/yedam/mapper/main/ChatMapper.xml" />
+
+
 		
 		<mapper resource="com/yedam/mapper/buyer/BuyerMapper.xml" />
 	

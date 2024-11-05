@@ -1,58 +1,140 @@
+<%@page import="com.yedam.vo.BillsVO"%>
 <%@page import="com.yedam.vo.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+.card-header py-3 {
+	background-color: #fb246a;
+}
 
+.content-box {
+	position: relative;
+	border: 5px solid #4993a0;
+}
+
+.content-box:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-top: 15px solid #4993a0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+}
+
+.hovertext {
+	position: relative;
+	border-bottom: 1px dotted black;
+}
+
+.hovertext:before {
+	content: attr(data-hover);
+	visibility: hidden;
+	opacity: 0;
+	width: max-content;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px 5px;
+	transition: opacity 1s ease-in-out;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 110%;
+}
+
+.hovertext:hover:before {
+	opacity: 1;
+	visibility: visible;
+}
+ #container{
+
+}
+</style>
+</head>
 <body>
+<div id="container">
 	<%
 	List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
+	List<BillsVO> sellList = (List<BillsVO>) request.getAttribute("sellList");
+	List<BillsVO> purchaseList = (List<BillsVO>) request.getAttribute("purchaseList");
+
 	System.out.println(list);
 	%>
 	<%
 	for (MemberVO mvo : list) {
 	%>
-	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center"
+		style="margin-left: 2px; margin-right: 2px;">
 		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm">
-				<div class="card-header py-3">
+			<div class="card mb-4 rounded-3 shadow-sm" style="border-color: gray">
+				<div class="card-header py-3" style="background: #fb246a;">
 					<h4 class="my-0 fw-normal">등급</h4>
 				</div>
-				<div class="card-body">
+				<div class="card-body" style="padding: 0;">
 					<ul class="list-unstyled mt-3 mb-4">
-						<li><%=mvo.getMemberId()%>님</li>
+						<li><%=mvo.getMemberName()%>님의 등급은</li>
 					</ul>
 					<h2 class="card-title pricing-card-title"><%=mvo.getGrade()%>등급
 					</h2>
-
+					<!-- <div onmouseover="$('#credit_condition').show();"
+						onmouseout="$('#credit_condition').hide();">승급조건</div> -->
+					<span class="hovertext"
+						data-hover="
+							거래건수 5건 C등급<br />
+							거래건수 10건 B등급<br />
+							거래건수 15건 A급<br />
+							거래건수 20건 S등급">승급조건
+					</span>
 				</div>
 			</div>
 		</div>
+
+
+		<div class="content-box" id="credit_condition"
+			style="display: none; z-index: 2;">
+			<span class="credit_up_silver">거래건수 5건 C등급.<br>거래건수 10건
+				B등급<br>거래건수 15건 A급<br>거래건수 20건 S등급 
+		</div>
+
+
+
 		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm">
+			<div class="card mb-4 rounded-3 shadow-sm" style="border-color: gray">
 				<div class="card-header py-3">
 					<h4 class="my-0 fw-normal">인증상태</h4>
 				</div>
-				<div class="card-body">
+				<div class="card-body" style="padding: 0;">
 					<h3 class="card-title pricing-card-title">
 						<%
 						if (mvo.getPhone() == null) {
 						%>미인증
 					</h3>
-					<%}else{%>
+					<%
+					} else {
+					%>
 					<p>인증완료</p>
-					<%} %>
+					<%
+					}
+					%>
 
 				</div>
 			</div>
 		</div>
 		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm border-primary">
-				<div class="card-header py-3 text-bg-primary border-primary">
+			<div class="card mb-4 rounded-3 shadow-sm" style="border-color: gray">
+				<div class="card-header py-3">
 					<h4 class="my-0 fw-normal">마일리지</h4>
 				</div>
-				<div class="card-body">
+				<div class="card-body" style="padding: 0;">
 					<h3 class="card-title pricing-card-title"><%=mvo.getMileage()%></h3>
 					<ul class="list-unstyled mt-3 mb-4">
 						<li>30 users included</li>
@@ -73,41 +155,85 @@
 	%>
 
 
-	<%
-	for (MemberVO mvo : list) {
-	%>
-	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+	<div>
 		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm">
-				<div class="card-header py-3">
-					<a href="job_listing.html" style="color: black">구매내역</a>
+			<div class="card mb-4 rounded-3 shadow-sm" >
+				<div class="card-header py-3" style="background: #fb246a;">
+					<a href="job_listing.html" style="color: black">최근구매내역</a>
 
 				</div>
-				<div class="card-body">
-					<ul class="list-unstyled mt-3 mb-4">
-						<li></li>
-					</ul>
+				<div class="card-body" style="padding: 0;">
+
+					<%
+					for (BillsVO bvo : purchaseList) {
+					%>
+					<div class="progress-table">
+						<div class="table-head">
+							<div class="serial">이미지</div>
+							<div class="serial" style="width: 300px;">아이템 이름</div>
+							<div class="serial">결제금액</div>
+							<div class="serial">처리 경과</div>
+
+						</div>
+						<div class="table-row">
+							<div class="serial">
+								<img src="image/<%=bvo.getImage()%>" />
+							</div>
+							<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
+							<div class="serial"><%=bvo.getTotal()%></div>
+							<div class="serial1" style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
 
 
+						</div>
+					</div>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
+
+
+
 		<div class="col">
 			<div class="card mb-4 rounded-3 shadow-sm">
 				<div class="card-header py-3">
 					<a href="job_listing.html" style="color: black">판매내역</a>
 
 				</div>
-				<div class="card-body"></div>
+				<div class="card-body" style="padding: 0;">
+					<%
+					for (BillsVO bvo : sellList) {
+					%>
+					<div class="progress-table">
+						<div class="table-head">
+							<div class="serial">이미지</div>
+							<div class="serial" style="width: 300px;">아이템 이름</div>
+							<div class="serial">결제금액</div>
+							<div class="serial">처리경과</div>
+
+						</div>
+						<div class="table-row">
+							<div class="serial">
+								<img src="image/<%=bvo.getImage()%>" />
+							</div>
+							<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
+							<div class="serial"><%=bvo.getTotal()%></div>
+							<div class="serial1" style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
+
+
+						</div>
+					</div>
+					<%
+					}
+					%>
+				</div>
 			</div>
 		</div>
-
-
+	</div>
 	</div>
 
-	<%
-	}
-	%>
+
 
 
 
@@ -172,6 +298,12 @@
 		</div>
 	</form>
 
+
+
+
+
+
+
 	<!-- 회원정보 수정 Modal -->
 	<form action="myPage.do" class="joinForm" method="get">
 		<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -226,7 +358,7 @@
 										<p>
 									</td>
 									<td>
-										<p><%=mvo.getBirth()%>
+										<p><%=mvo.getBirth().substring(0,10)%>
 										<p>
 									</td>
 								</tr>
@@ -257,52 +389,60 @@
 		</div>
 	</form>
 
-	<form action="myPage.do" class="joinForm" method="get">
-		<%
-		for (MemberVO mvo : list) {
-		%>
+	<form action="myPage.do" class="joinForm" method="post">
+		<div class="col">
+			<div class="card mb-4 rounded-3 shadow-sm">
+				<div class="card-header py-3">
+					<p style="color: black">회원정보</p>
 
-		<h3 class="mb-30">회원정보</h3>
-		<div class="progress-table">
+				</div>
+				<div class="card-body" style="padding: 0;">
+					<%
+					for (MemberVO mvo : list) {
+					%>
 
-			<div class="table-row">
-				<div class="serial">아이디</div>
-				<div class="country"><%=mvo.getMemberId()%></div>
+					<div class="progress-table">
+
+						<div class="table-row">
+							<div class="serial">아이디</div>
+							<div class="country"><%=mvo.getMemberId()%></div>
 
 
+						</div>
+						<div class="table-row">
+							<div class="serial">이름</div>
+							<div class="country">
+								<%=mvo.getMemberName()%></div>
+
+						</div>
+						<div class="table-row">
+							<div class="serial">비밀번호</div>
+							<div class="country">
+								<%=mvo.getPassword()%></div>
+
+						</div>
+						<div class="table-row">
+							<div class="serial">생년월일</div>
+							<div class="country">
+								<%=mvo.getBirth().substring(0,10)%></div>
+
+						</div>
+						<div class="table-row">
+							<div class="serial">휴대폰번호</div>
+							<div class="country">
+								<%=mvo.getPhone()%></div>
+
+						</div>
+
+					</div>
+				</div>
 			</div>
-			<div class="table-row">
-				<div class="serial">이름</div>
-				<div class="country">
-					<%=mvo.getMemberName()%></div>
-
-			</div>
-			<div class="table-row">
-				<div class="serial">비밀번호</div>
-				<div class="country">
-					<%=mvo.getPassword()%></div>
-
-			</div>
-			<div class="table-row">
-				<div class="serial">생년월일</div>
-				<div class="country">
-					<%=mvo.getBirth()%></div>
-
-			</div>
-			<div class="table-row">
-				<div class="serial">휴대폰번호</div>
-				<div class="country">
-					<%=mvo.getPhone()%></div>
-
-			</div>
-
 		</div>
-
 
 		<%
 		}
 		%>
-		<div>
+		<div style="padding-left: 13px;">
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 				data-bs-target="#exampleModal">수정</button>
@@ -345,8 +485,10 @@
 	</form>
 
 
-
-
+	<script>
+		const paystep = document.querySelectorAll(".serial1")
+	</script>
+	<script src="js/mypage.js"></script>
+	</div>
 </body>
 </html>
-

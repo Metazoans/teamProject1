@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class BillsVO {
+	private int billsNumber;
 	private String seller;	//판매자
 	private String buyer;	//구매자
 	private int itemNumber;	//상품번호

@@ -69,11 +69,12 @@ function confirmFnc() {
 		console.log('confirm btn start');
 		
 		btn.addEventListener('click', function(e) {
+			console.log('sellList confirm btn click');
 			let billsNumber = $(e.target).parent().parent().find('input').val();
 			let payStep = $(e.target).parent().parent().find('.buyPayStep').text();
 			let logId = $('#logId').val();
 			
-			if(payStep == 'processing') {
+			if(payStep == '거래 신청') {
 				$.ajax({
 					url: 'payStepUpdate.do',
 					data: {

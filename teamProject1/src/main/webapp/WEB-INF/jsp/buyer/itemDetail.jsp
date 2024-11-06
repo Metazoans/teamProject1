@@ -66,7 +66,7 @@
 		
 		<div class="col-sm-3">
 			<div class="form-group">
-				<p class="form-control valid">${item.seller }</p>
+				<p id="seller" class="form-control valid">${item.seller }</p>
 			</div>
 		</div>
 		<div class="col-sm-3">

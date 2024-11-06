@@ -55,7 +55,7 @@ function buyListPrt() {
 			});
 			confirmFnc();
 			cancelFnc();
-//			chatFnc();
+			chatFnc();
 		})
 		.fail(function(err) {
 			console.log('buyListPrt err');

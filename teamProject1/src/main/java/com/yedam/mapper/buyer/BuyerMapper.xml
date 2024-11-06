@@ -19,7 +19,9 @@
 					     categories = #{categories} 
 					     and trade = #{trade} 
 					     and game = #{game}
-					     and servers = #{servers}
+					     <if test="servers != null">
+						     and servers = #{servers}
+					     </if>
 					     
 					     <if test="searchData != null">
 						     and ${searchType} like '%'||#{searchData}||'%'

@@ -14,6 +14,9 @@
 	width: 80%;	
 	padding-bottom: 50px;
 }
+/* .progress-table{
+	margin-bottom: 20px;
+} */
 </style>
 </head>
 <body>
@@ -28,45 +31,99 @@
 
 	<%
 	List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
+	List<ItemVO> listBuy = (List<ItemVO>) request.getAttribute("myBuyList");
 	%>
 
-<div>
-	<div class="progress-table">
-		<div class="table-head">
-			<div class="serial">이미지</div>
-			<div class="serial">아이템 이름</div>
-			<div class="serial">상품수량</div>
-			<div class="serial">판매금액(수량1개당가격)</div>
-			<div class="serial">등록시간</div>
-		</div>
-	<%
-	for (ItemVO ivo : list) {
-	%>
-		<form method="post" id="myListModify">
-			<div class="table-row">
-				<div class="serial"><img src="images/<%=ivo.getImage() %>" width="100px"></div>
-				<div class="serial"><%=ivo.getItemName()%></div>
-				<div class="serial"><%=ivo.getCount()%></div>
-				<div class="serial"><%=ivo.getPrice()%></div>
-				<div class="serial"><%=ivo.getUpDate()%></div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" value="<%=ivo.getItemNumber()%>" id="inlineCheckbox2" name="itemNum"
-					onclick="Modal('<%=ivo.getItemNumber()%>','<%=ivo.getItemName()%>', '<%=ivo.getItemInfo()%>', '<%=ivo.getCount()%>', '<%=ivo.getPrice()%>', '<%=ivo.getImage()%>');" >
-					<label class="form-check-label" for="inlineCheckbox2"></label>
-				</div>
-			</div>
-	<%
-	}
-	%>
-		</div>
+<div id="container">
+	
+<div class="progress-table">
+<table class="table" style="text-align: center;">
+  <thead>
+    <tr>
+      <th scope="col">이미지</th>
+      <th scope="col">아이템이름</th>
+      <th scope="col">상품수량</th>
+      <th scope="col">판매금액</th>
+      <th scope="col">판매/구매</th>
+      <th scope="col">등록시간</th>
+    </tr>
+  </thead>
+  <%
+  	for(ItemVO vo : list){
+  %>
+  <tbody>
+    <tr>
+      <td>
+      	<img src="images/<%=vo.getImage() %>" width="100px">
+      </td>
+      <td><%=vo.getItemName() %></td>
+      <td><%=vo.getCount() %></td>
+      <td><%=vo.getPrice() %></td>
+      <td><%=vo.getTrade() %></td>
+      <td><%=vo.getUpDate() %></td>
+      <form method="post" id="myListModify">
+		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
+		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=vo.getItemNumber()%>','<%=vo.getItemName()%>', 
+		'<%=vo.getItemInfo()%>', '<%=vo.getCount()%>', '<%=vo.getPrice()%>', '<%=vo.getImage()%>');">수정</button></td>
+		</form>
+		<td>
+		<form method="post" action="myItemDelete.do">
+		<input type="hidden" name="itemNum" value="<%=vo.getItemNumber()%>">
+		<button type="submit" class="btn btn head-btn1" id="deleteBtn">삭제</button>
+		</form>
+		</td>
+    </tr>
+  </tbody>
+  <% } %>
+</table>
+</div>
 
-	</div>
+<hr>
 
-	<button type="button" class="btn btn head-btn2" id="updateBtn" data-bs-whatever="@fat" onClick="return check(1);">수정</button>
-	<button type="button" class="btn btn head-btn1" id="deleteBtn" onClick="return check(2);">삭제</button>
-	</form>
-
-	<div class="modal fade" id="exampleModal" tabindex="-1"
+<div class="progress-table">
+<table class="table" style="text-align: center;">
+  <thead>
+    <tr>
+      <th scope="col">이미지</th>
+      <th scope="col">아이템이름</th>
+      <th scope="col">상품수량</th>
+      <th scope="col">판매금액</th>
+      <th scope="col">판매/구매</th>
+      <th scope="col">등록시간</th>
+    </tr>
+  </thead>
+  <%
+  	for(ItemVO bvo : listBuy){
+  %>
+  <tbody>
+    <tr>
+      <td>
+      	<img src="images/<%=bvo.getImage() %>" width="100px">
+      </td>
+      <td><%=bvo.getItemName() %></td>
+      <td><%=bvo.getCount() %></td>
+      <td><%=bvo.getPrice() %></td>
+      <td><%=bvo.getTrade() %></td>
+      <td><%=bvo.getUpDate() %></td>
+      <form method="post" id="myListModify">
+		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
+		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=bvo.getItemNumber()%>','<%=bvo.getItemName()%>', 
+		'<%=bvo.getItemInfo()%>', '<%=bvo.getCount()%>', '<%=bvo.getPrice()%>', '<%=bvo.getImage()%>');">수정</button></td>
+		</form>
+		<td>
+		<form method="post" action="myItemDelete.do">
+		<input type="hidden" name="itemNum" value="<%=bvo.getItemNumber()%>">
+		<button type="submit" class="btn btn head-btn1" id="deleteBtn">삭제</button>
+		</form>
+		</td>
+    </tr>
+  </tbody>
+  <% } %>
+</table>
+</div>
+	
+	
+<div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -114,38 +171,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-<div class="progress-table">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">이미지</th>
-      <th scope="col">아이템이름</th>
-      <th scope="col">상품수량</th>
-      <th scope="col">판매금액</th>
-      <th scope="col">등록시간</th>
-    </tr>
-  </thead>
-  <%
-  	for(ItemVO vo : list){
-  %>
-  <tbody>
-    <tr>
-      <td><%=vo.getImage() %></td>
-      <td><%=vo.getItemName() %></td>
-      <td><%=vo.getCount() %></td>
-      <td><%=vo.getPrice() %></td>
-      <td><%=vo.getUpDate() %></td>
-    </tr>
-  </tbody>
-  <% } %>
-</table>
-</div>
-	
-	
-
 
 	<script>
 	
@@ -156,34 +181,8 @@
 			document.getElementById("modalCount").value = count;
 			document.getElementById("modalPrice").value = price;
 			document.getElementById("modalImage").value = image;
-		}
-		
-		
-		function check(a){
-			var arrSelect = document.getElementsByName("itemNum");
-			var ck;
-			var count = 0;
-			for(var i = 0; i < arrSelect.length; i++){
-				if(arrSelect[i].checked){
-					ck = arrSelect[i].checked;
-					count++;
-				}
-			}
-			if(count > 1){
-				alert("하나의 항목만 선택하세요");
-				return null;
-			}
 			
-			if(a==1 && ck==true){
-				 const model = new bootstrap.Modal("#exampleModal");
-				 model.show();
-				}else if(a==2 && ck==true){
-					var test = document.getElementById("myListModify");
-					test.action ="myItemDelete.do";
-					test.submit();
-				}else{
-				 alert("하나의 항목을 선택하세요");
-				}
+			console.log(itemNumber)
 		}
 		
 	</script>

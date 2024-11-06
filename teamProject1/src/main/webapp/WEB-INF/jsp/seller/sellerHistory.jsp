@@ -25,9 +25,6 @@
 		List<BillsVO> list = (List<BillsVO>)request.getAttribute("sellerHistory");
 	%>
 	
-	<%
-		for(BillsVO bvo : list){
-	%>
 	<div class="progress-table">
 		<div class="table-head">
 			<div class="serial">이미지</div>
@@ -36,6 +33,9 @@
 			<div class="serial">총금액</div>
 			<div class="serial">처리상태</div>
 		</div>
+	<%
+		for(BillsVO bvo : list){
+	%>
 		<div class="table-row">
 			<div class="serial"><img src="images/<%=bvo.getImage() %>"></div>
 			<div class="serial"><%=bvo.getItemName() %></div>
@@ -55,13 +55,14 @@
 			</form>
 			</div>
 			<div class="serial">
-  			<button type="button" class="btn head-btn1" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=bvo.getBuyer()%>');">채팅창가기</button>
+  			<button type="button" class="btn head-btn1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">채팅창가기</button>
+  			<button type="hidden" class="buyer" value="<%=bvo.getBuyer()%>"></button>
 			</div>
 			</div>			
+	<% } %>
 		</div>
 	
 	
-	<% } %>
  </div><!-- main div -->
 
 	<!-- Modal -->

@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#container{
+	padding-top: 50px;
+	margin: 0 auto;
+	width: 80%;	
+	padding-bottom: 50px;
+}
+</style>
 </head>
 <body>
 <script>
@@ -17,6 +25,7 @@
         location.href = "itemList.do";
 <% } %>
 </script>
+<div id="container">
 <form action="addItem.do" method="post" onsubmit="return checkField();" enctype="multipart/form-data">
 <%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
 <table class="table">
@@ -77,6 +86,7 @@
 
 
 </form>
+</div>
 <script>
 
 	function categoryChange(e){

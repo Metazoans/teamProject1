@@ -30,11 +30,7 @@
 	List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
 	%>
 
-	<%
-	for (ItemVO ivo : list) {
-	%>
-<div class="main">
-<div class="section-top-border">
+<div>
 	<div class="progress-table">
 		<div class="table-head">
 			<div class="serial">이미지</div>
@@ -43,6 +39,9 @@
 			<div class="serial">판매금액(수량1개당가격)</div>
 			<div class="serial">등록시간</div>
 		</div>
+	<%
+	for (ItemVO ivo : list) {
+	%>
 		<form method="post" id="myListModify">
 			<div class="table-row">
 				<div class="serial"><img src="images/<%=ivo.getImage() %>" width="100px"></div>
@@ -60,8 +59,8 @@
 	}
 	%>
 		</div>
+
 	</div>
-</div>
 
 	<button type="button" class="btn btn head-btn2" id="updateBtn" data-bs-whatever="@fat" onClick="return check(1);">수정</button>
 	<button type="button" class="btn btn head-btn1" id="deleteBtn" onClick="return check(2);">삭제</button>
@@ -115,6 +114,44 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+<div class="progress-table">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">이미지</th>
+      <th scope="col">아이템이름</th>
+      <th scope="col">상품수량</th>
+      <th scope="col">판매금액</th>
+      <th scope="col">등록시간</th>
+    </tr>
+  </thead>
+  <%
+  	
+  %>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 	
 	
 

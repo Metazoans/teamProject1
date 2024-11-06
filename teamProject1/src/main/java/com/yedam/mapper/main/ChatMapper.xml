@@ -6,8 +6,8 @@
 	<select id="select" resultType="com.yedam.vo.ChatVO" parameterType="String">
 	select *
 	from team_chat
-	where from_id in (#{buyer}, #{seller})
-	and to_id in (#{buyer}, #{seller})
+	where from_id in (#{fromId}, #{toId})
+	and to_id in (#{fromId}, #{toId})
 	order by timeline
 	</select>
 	<insert id="insert" parameterType="com.yedam.vo.ChatVO">

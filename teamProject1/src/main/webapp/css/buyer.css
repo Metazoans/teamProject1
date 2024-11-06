@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+#searchDiv {
+	width: 100%;
+}
+.searchHeight {
+	height: 100% !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;;
+}
+
+.default-select {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.borderCont {
+	border: 1px solid rgba(0, 0, 0, .1);
+	margin-right: 2px;
+}
+
+.progress-table-wrap {
+	overflow-x: hidden;
+	width: 100%;
+}
+
+.itemList {
+	min-width: 100%;
+}
+
+.itemList .table-head, .table-row {
+	width: 100%;
+	color: #415094;
+	line-height: 40px;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: #415094
+}
+
+.itemList .table-head div, .table-row div {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding: 0 5px;
+}
+
+.table-head {
+	height: 41px;
+}
+
+.table-row {
+	height: 71px;
+}
+
+
+/* itemList width */
+.listTitle {
+	width: 65%;
+}
+.listPrice {
+	width: 10%;
+}
+.listSeller {
+	width: 10%;
+}
+.listDate {
+	width: 15%;
+}
+
+
+/* buyList width */
+.buyTitle {
+	width: 40%;
+}
+.buyCount {
+	width: 10%;
+}
+.buyPrice {
+	width: 15%;
+}
+.buyPayStep {
+	width: 15%;
+}
+.buyBtnDiv {
+	width: 20%;
+}
+
+.buyBtnDiv button {
+	padding: 0 5px;
+	margin: 3px;
+	line-height: 20px;
+}

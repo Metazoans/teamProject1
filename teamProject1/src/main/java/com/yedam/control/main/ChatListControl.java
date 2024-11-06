@@ -10,19 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
-import com.yedam.service.main.ItemService;
-import com.yedam.service.main.ItemServiceImpl;
-import com.yedam.vo.ItemVO;
+import com.yedam.service.main.ChatService;
+import com.yedam.service.main.ChatServiceImpl;
+import com.yedam.vo.ChatVO;
 
 public class ChatListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/json;charset=utf-8");
-		String game = req.getParameter("game");
+		String fromId = req.getParameter("fromId");
+		String toId = req.getParameter("toId");
+		
 
-		ItemService svc = new ItemServiceImpl();
-		List<ItemVO> list = svc.randomList();
+		ChatService svc = new ChatServiceImpl();
+		List<ChatVO> list = svc.chatList(fromId, toId);
+		
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list); // 자바객체 -> json문자열로 변경

@@ -14,15 +14,12 @@ public class AppTest {
 		ItemService svc = new ItemServiceImpl();
 		
 
-//		
-//		ItemService svc = new ItemServiceImpl();
-//		
+		if(svc.payStepDelete("1")) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
 
-//		if(svc.payStepUpdate("deal","1")) {
-//			System.out.println("성공");
-//		}else {
-//			System.out.println("실패");
-//		}
 		
 		
 		

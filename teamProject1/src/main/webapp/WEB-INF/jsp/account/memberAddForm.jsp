@@ -165,7 +165,7 @@ height:700px;
 }
 </style>
 <div id="joindiv">
-<form action="memberAdd.do"class="joinForm">
+<form action="memberAdd.do"class="joinForm" method="get">
                                                                                                
       <h2>회원가입</h2>
       <div class="textForm">

@@ -1,6 +1,7 @@
 package com.yedam.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,8 +18,10 @@ import com.yedam.control.Item.AddItemForm;
 import com.yedam.control.Item.ItemDeleteControl;
 import com.yedam.control.Item.ItemUpdateControl;
 import com.yedam.control.Item.MySellListControl;
+import com.yedam.control.Item.PayStepDeleteControl;
 import com.yedam.control.Item.PayStepUpdateControl;
 import com.yedam.control.Item.SellerHistoryControl;
+
 import com.yedam.control.account.GradeControl;
 import com.yedam.control.account.LogOutControl;
 import com.yedam.control.account.LoginControl;
@@ -40,10 +43,13 @@ import com.yedam.control.buyer.DealItemCont;
 import com.yedam.control.buyer.ItemDetailCont;
 import com.yedam.control.buyer.ItemListChangeCont;
 import com.yedam.control.buyer.ItemListCont;
+import com.yedam.control.main.ChatControl;
+import com.yedam.control.main.ChatListControl;
+import com.yedam.control.main.ChatUpdateControl;
 import com.yedam.control.main.GameListControl;
 import com.yedam.control.main.PopularControl;
-import com.yedam.control.main.serverListControl;
-
+import com.yedam.control.main.RandomListControl;
+import com.yedam.control.main.ServerListControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -81,8 +87,11 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/popular.do", new PopularControl());
 		map.put("/gameList.do", new GameListControl());
-		map.put("/serverList.do", new serverListControl());
-		
+		map.put("/serverList.do", new ServerListControl());
+		map.put("/randomList.do", new RandomListControl());
+		map.put("/chat.do", new ChatControl());
+		map.put("/chatList.do", new ChatListControl());
+		map.put("/chatUpdate.do", new ChatUpdateControl());
 		
 		
 
@@ -102,6 +111,8 @@ public class FrontController extends HttpServlet {
 		// 판매내역
 		map.put("/sellerHistory.do", new SellerHistoryControl());
 		map.put("/payStepUpdate.do", new PayStepUpdateControl());
+		map.put("/payStepDelete.do", new PayStepDeleteControl());
+		
 		
 		
 		
@@ -134,6 +145,7 @@ public class FrontController extends HttpServlet {
 		
 		
 	
+		
 
 	}
 	

@@ -1,6 +1,7 @@
 package com.yedam.control.account;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -16,7 +17,9 @@ public class MemberAddControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		resp.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
 		
 
 		String id = req.getParameter("member_id");
@@ -36,9 +39,11 @@ public class MemberAddControl implements Control {
 		MemberService svc = new MemberServiceImpl();
 		try {
 			svc.addMember(mvo);
-			resp.sendRedirect("testBuyer.do");
+			req.getRequestDispatcher("account/loginForm.tiles").forward(req, resp);
+			//resp.sendRedirect("testBuyer.do");
 		} catch(Exception e) {
-			resp.sendRedirect("memberAddForm.do");
+			out.println("<script>alert('아이디가 중복입니다.'); history.back(); </script>");
+			//resp.sendRedirect("memberAddForm.do");
 		}
 	}
 

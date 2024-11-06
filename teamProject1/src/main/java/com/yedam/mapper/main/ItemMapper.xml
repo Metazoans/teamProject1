@@ -29,7 +29,11 @@
 	order by servers
 	</select>
 	<select id="randomList" resultType="com.yedam.vo.ItemVO">
-	select *
-	from team_item;
+	select * from ( select * 
+                from team_item 
+                order by DBMS_RANDOM.RANDOM)
+	<![CDATA[
+	where rownum <= 4
+	]]>
 	</select>	
 </mapper>

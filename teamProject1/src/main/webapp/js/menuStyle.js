@@ -45,29 +45,27 @@ function serverMenuList(game) {
 
 
 subMenuLi.forEach((li) => {
-	li.addEventListener('mouseover', function(e) {
+	li.addEventListener('mouseover', function() {
 		li.querySelector(".gamemenu").style.cssText = "display: block";
 		li.querySelectorAll(".gamemenu>ul>li").forEach((inLi) => {
-			inLi.addEventListener('mouseover', function(e) {
+			inLi.addEventListener('mouseover', function() {
 				inLi.querySelector(".servermenu").style.cssText = "display: block";
 			})
-			inLi.addEventListener('mouseout', function(e) {
+			inLi.addEventListener('mouseout', function() {
 				inLi.querySelector(".servermenu").style.cssText = "display: none";
 			})
 		})
 	})
-	li.addEventListener('mouseout', function(e) {
+	li.addEventListener('mouseout', function() {
 		li.querySelector(".gamemenu").style.cssText = "display: none";
 	})
 })
 
-
-
-myPage.addEventListener('mouseover', function(e) {
+myPage.addEventListener('mouseover', function() {
 	hiddenList.style.cssText = "display: block";
 
 })
-myPage.addEventListener('mouseout', function(e) {
+myPage.addEventListener('mouseout', function() {
 	hiddenList.style.cssText = "display: none";
 })
 

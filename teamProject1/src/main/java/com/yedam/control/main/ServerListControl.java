@@ -13,7 +13,7 @@ import com.yedam.common.Control;
 import com.yedam.service.main.ItemService;
 import com.yedam.service.main.ItemServiceImpl;
 
-public class serverListControl implements Control {
+public class ServerListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

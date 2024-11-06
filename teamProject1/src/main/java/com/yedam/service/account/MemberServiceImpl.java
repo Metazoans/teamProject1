@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
 import com.yedam.mapper.account.MemberMapper;
+import com.yedam.vo.BillsVO;
 import com.yedam.vo.MemberVO;
 
 public class MemberServiceImpl implements MemberService{
@@ -49,8 +50,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean removeMember(MemberVO member) {
-		return mapper.deleteMember(member)==1;
+	public boolean removeMember(String logId) {
+		return mapper.deleteMember(logId)==1;
 	}
 
 	@Override
@@ -61,6 +62,16 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public boolean updateGrade(String grade, String name) {
 		return mapper.updateGrade(grade, name)==1;
+	}
+
+	@Override
+	public List<BillsVO> sellList(String logId) {
+		return mapper.selectSell(logId);
+	}
+
+	@Override
+	public List<BillsVO> purchaseList(String logId) {
+		return mapper.selectPurchase(logId);
 	}
 	
 }

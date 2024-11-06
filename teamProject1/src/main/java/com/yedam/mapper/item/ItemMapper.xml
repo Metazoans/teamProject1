@@ -12,15 +12,15 @@
 	<select id="mySellList" resultType="item" parameterType="String">
 		select *
 		from team_item
-		where seller = #{mid}
-		and trade = #{sell}
+		where seller = #{logId}
+		and trade = 'sell'
 	</select>
 	
-	<select id="sellerHistory" resultType="item" parameterType="String">
+	<select id="sellerHistory" resultType="com.yedam.vo.BillsVO" parameterType="String">
 		select *
 		from team_bills
 		where seller = #{logId}
-		and pay_step = #{payStep}
+		and pay_step = 'processing'
 	</select>
 	
 	
@@ -51,6 +51,17 @@
 		where item_number = #{itemNumber}
 	</delete>
 	
+	<update id="payStepUpdate" parameterType="String">
+		update 	team_bills
+		set		pay_step = #{payStep}
+		where	item_number = #{itemNum}
+	</update>
+	
+	<delete id="payStepDelete" parameterType="String">
+		delete from
+		team_bills
+		where item_number = #{itemNum}
+	</delete>
 
 
 </mapper>

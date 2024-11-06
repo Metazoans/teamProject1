@@ -22,8 +22,9 @@ public class AddItemControl implements Control {
 		ItemService svc = new ItemServiceImpl();
 		ItemVO ivo = new ItemVO();
 		String savePath = req.getServletContext().getRealPath("images");
+		//String savePath = "C:\\Users\\wngus\\git\\teamProject1\\teamProject1\\src\\main\\webapp\\images";
 		int maxSize = 1024 * 1025 * 100;
-		
+		System.out.println(savePath);
 		MultipartRequest mr = new MultipartRequest(
 				req
 				,savePath

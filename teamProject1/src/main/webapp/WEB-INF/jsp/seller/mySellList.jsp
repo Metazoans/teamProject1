@@ -7,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#container{
+	padding-top: 50px;
+	margin: 0 auto;
+	width: 80%;	
+	padding-bottom: 50px;
+}
+</style>
 </head>
 <body>
 	<script>
@@ -14,7 +22,7 @@
 			String msg = (String)request.getAttribute("msg");
 			if(msg != null){	
 		%>
-			alert(msg);-
+			alert(msg);
 		<% } %>
 	</script>
 
@@ -22,11 +30,7 @@
 	List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
 	%>
 
-	<%
-	for (ItemVO ivo : list) {
-	%>
-<div class="main">
-<div class="section-top-border">
+<div>
 	<div class="progress-table">
 		<div class="table-head">
 			<div class="serial">이미지</div>
@@ -35,34 +39,31 @@
 			<div class="serial">판매금액(수량1개당가격)</div>
 			<div class="serial">등록시간</div>
 		</div>
-		<form method="post">
+	<%
+	for (ItemVO ivo : list) {
+	%>
+		<form method="post" id="myListModify">
 			<div class="table-row">
-				
 				<div class="serial"><img src="images/<%=ivo.getImage() %>" width="100px"></div>
 				<div class="serial"><%=ivo.getItemName()%></div>
 				<div class="serial"><%=ivo.getCount()%></div>
 				<div class="serial"><%=ivo.getPrice()%></div>
 				<div class="serial"><%=ivo.getUpDate()%></div>
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox"
-						value="<%=ivo.getItemNumber()%>" id="flexCheckDefault"
-						name="itemNum"
-						onclick="Modal('<%=ivo.getItemNumber()%>','<%=ivo.getItemName()%>', '<%=ivo.getItemInfo()%>', '<%=ivo.getCount()%>', '<%=ivo.getPrice()%>', '<%=ivo.getImage()%>'); checkOnlyOne(this)" >
-					<label class="form-check-label" for="flexCheckDefault">
-						Default checkbox </label>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" value="<%=ivo.getItemNumber()%>" id="inlineCheckbox2" name="itemNum"
+					onclick="Modal('<%=ivo.getItemNumber()%>','<%=ivo.getItemName()%>', '<%=ivo.getItemInfo()%>', '<%=ivo.getCount()%>', '<%=ivo.getPrice()%>', '<%=ivo.getImage()%>');" >
+					<label class="form-check-label" for="inlineCheckbox2"></label>
 				</div>
 			</div>
 	<%
 	}
 	%>
 		</div>
-	</div>
-</div>
 
-	<button type="button" class="btn btn head-btn2" data-bs-toggle="modal"
-		data-bs-target="#exampleModal" data-bs-whatever="@fat" onClick="return check();">수정</button>
-	<button type="submit" class="btn btn head-btn1"
-		formaction="myItemDelete.do" onClick="return check();">삭제</button>
+	</div>
+
+	<button type="button" class="btn btn head-btn2" id="updateBtn" data-bs-whatever="@fat" onClick="return check(1);">수정</button>
+	<button type="button" class="btn btn head-btn1" id="deleteBtn" onClick="return check(2);">삭제</button>
 	</form>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -76,7 +77,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form action="myItemUpdate.do" method="post">
+					<form action="myItemUpdate.do" method="post" enctype="multipart/form-data" id="test">
 						<input type="hidden" id="modalItemNumber" name="itemNum" value="">
 						<div class="mb-3">
 							<label for="modalItemName" class="col-form-label">아이템이름</label> <input
@@ -116,8 +117,47 @@
 	
 	
 	
+<div class="progress-table">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">이미지</th>
+      <th scope="col">아이템이름</th>
+      <th scope="col">상품수량</th>
+      <th scope="col">판매금액</th>
+      <th scope="col">등록시간</th>
+    </tr>
+  </thead>
+  <%
+  	
+  %>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+	
+	
+
 
 	<script>
+	
 		function Modal(itemNumber, itemName, itemInfo, count, price, image) {
 			document.getElementById("modalItemNumber").value = itemNumber;
 			document.getElementById("modalItemName").value = itemName;
@@ -128,26 +168,33 @@
 		}
 		
 		
-		function check(){
+		function check(a){
 			var arrSelect = document.getElementsByName("itemNum");
-			
+			var ck;
+			var count = 0;
 			for(var i = 0; i < arrSelect.length; i++){
 				if(arrSelect[i].checked){
-					return true;
+					ck = arrSelect[i].checked;
+					count++;
 				}
 			}
-			alert("하나의 항목을 선택하세요");
-			return false;
+			if(count > 1){
+				alert("하나의 항목만 선택하세요");
+				return null;
+			}
+			
+			if(a==1 && ck==true){
+				 const model = new bootstrap.Modal("#exampleModal");
+				 model.show();
+				}else if(a==2 && ck==true){
+					var test = document.getElementById("myListModify");
+					test.action ="myItemDelete.do";
+					test.submit();
+				}else{
+				 alert("하나의 항목을 선택하세요");
+				}
 		}
 		
-		
-		function checkOnlyOne(element){
-			const checkboxes = document.getElementsByName("itemNum");
-			checkboxes.forEach((cb) => {
-				cb.checked = false;
-			})
-			element.checked = true;
-		} 
 	</script>
 
 </body>

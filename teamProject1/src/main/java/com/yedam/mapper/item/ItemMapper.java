@@ -4,15 +4,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.yedam.vo.BillsVO;
 import com.yedam.vo.ItemVO;
 
 public interface ItemMapper {
 
 	List<ItemVO> select();
 	
-	List<ItemVO> mySellList(@Param("mid")String id, @Param("sell") String sell);
+	List<ItemVO> mySellList(String id);
 	
-	List<ItemVO> sellerHistory(@Param("logId")String logId, @Param("payStep")String payStep);
+	List<BillsVO> sellerHistory(String logId);
 	
 	List<ItemVO> ItemNumSelect(String itemNum);
 
@@ -22,7 +23,9 @@ public interface ItemMapper {
 	
 	int itemDelete(ItemVO item);
 	
-	int payStepUpdate();
+	int payStepUpdate(@Param("payStep")String payStep, @Param("itemNum")String itemNum);
+	
+	int payStepDelete(String itemNum);
 	
 	
 }

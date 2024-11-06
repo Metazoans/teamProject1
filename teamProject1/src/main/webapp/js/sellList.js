@@ -44,7 +44,7 @@ function buyListPrt() {
 						$('<div />').addClass('buyTitle').text(item.itemName),
 						$('<div />').addClass('buyCount').text(item.count),
 						$('<div />').addClass('buyPrice').text(item.total),
-						$('<div />').addClass('buyPayStep').text(item.payStep),
+						$('<div />').addClass('buyPayStep').text('거래 신청'),
 						$('<div />').addClass('buyBtnDiv').append(
 							confirmBtn,
 							cancelBtn,

@@ -21,6 +21,10 @@ function buyListPrt() {
 				let cancelBtn = $('<button />').addClass('genric-btn danger-border cancelBtn').text('거래취소');
 				let chatBtn = $('<button />').addClass('genric-btn warning-border chatBtn').text('채팅');
 
+				let payStep;
+				if(item.payStep == 'processing') payStep = '거래 신청';
+				else if(item.payStep == 'deal') payStep = '거래 승인';
+
 				if (item.trade == 'sell') { //판매글이었으면 구매 요청
 					$(divRow).append(
 						$('<input>').attr('type', 'hidden').val(item.billsNumber),
@@ -28,7 +32,7 @@ function buyListPrt() {
 						$('<div />').addClass('buyTitle').text(item.itemName),
 						$('<div />').addClass('buyCount').text(item.count),
 						$('<div />').addClass('buyPrice').text(item.total),
-						$('<div />').addClass('buyPayStep').text(item.payStep),
+						$('<div />').addClass('buyPayStep').text(payStep),
 						$('<div />').addClass('buyBtnDiv').append(
 							confirmBtn,
 							cancelBtn,

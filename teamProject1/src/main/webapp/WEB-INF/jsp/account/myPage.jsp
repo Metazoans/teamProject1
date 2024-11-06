@@ -1,6 +1,7 @@
 <%@page import="com.yedam.vo.BillsVO"%>
 <%@page import="com.yedam.vo.MemberVO"%>
 <%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -60,6 +61,7 @@
 	margin: 0 auto !important;
 	width: 80% !important;
 }
+
 </style>
 </head>
 <body>
@@ -151,7 +153,7 @@
 						<h3 class="card-title pricing-card-title"><%=mvo.getMileage()%>원
 						</h3>
 
-						<button type="button" class="w-100 btn btn-lg btn-primary"
+						<button type="button" class="w-100 btn btn-lg btn-dark"
 							data-bs-toggle="modal" data-bs-target="#mileageModal">충전
 						</button>
 
@@ -168,7 +170,7 @@
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm">
 					<div class="card-header py-3" style="background: #fb246a;">
-						<a href="job_listing.html" style="color: black">최근구매내역</a>
+						<a href="mySellList.do" style="color: black">최근구매내역</a>
 
 					</div>
 					<div class="card-body" style="padding: 0;">
@@ -186,7 +188,11 @@
 							</div>
 							<div class="table-row">
 								<div class="serial">
+								<%if(bvo.getImage()==null) {%>
+								<p>이미지 없음</p>
+								<%}else{ %>
 									<img src="image/<%=bvo.getImage()%>" />
+									<%}%>
 								</div>
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
 								<div class="serial"><%=bvo.getTotal()%></div>
@@ -208,7 +214,7 @@
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm">
 					<div class="card-header py-3">
-						<a href="job_listing.html" style="color: black">판매내역</a>
+						<a href="mySellList.do#kanghyeon" style="color: black">판매내역</a>
 
 					</div>
 					<div class="card-body" style="padding: 0;">
@@ -225,7 +231,11 @@
 							</div>
 							<div class="table-row">
 								<div class="serial">
+								<%if(bvo.getImage()==null) {%>
+								<p>이미지 없음</p>
+								<%}else{ %>
 									<img src="image/<%=bvo.getImage()%>" />
+								<%}%>
 								</div>
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
 								<div class="serial"><%=bvo.getTotal()%></div>
@@ -301,7 +311,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary" href="loginForm.do">Save
+							<button type="submit" class="btn btn-dark" href="loginForm.do">Save
 								changes</button>
 						</div>
 					</div>
@@ -391,7 +401,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">취소</button>
-							<button type="submit" class="btn btn-primary" src="logOut.do">수정</button>
+							<button type="submit" class="btn btn-dark" src="logOut.do">수정</button>
 						</div>
 					</div>
 				</div>
@@ -453,12 +463,12 @@
 			%>
 			<div style="padding-left: 13px;">
 				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+				<button type="button" class="btn btn-dark" data-bs-toggle="modal"
 					data-bs-target="#exampleModal">수정</button>
 		</form>
 
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+		<button type="button" class="btn btn-dark" data-bs-toggle="modal"
 			data-bs-target="#deleteModal">회원탈퇴</button>
 		<form action="memberDelete.do" class="joinForm" method="get">
 
@@ -483,7 +493,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">취소</button>
-							<button type="submit" class="btn btn-primary" src="loginForm.do">회원탈퇴</button>
+							<button type="submit" class="btn btn-dark" src="loginForm.do">회원탈퇴</button>
 						</div>
 					</div>
 				</div>
@@ -494,7 +504,7 @@
 		</form>
 
 		<a href="#" style="position: fixed; bottom: 5px; right: 5px;"
-			class="btn btn-primary">맨위로</a>
+			class="btn btn-dark">맨위로</a>
 
 
 

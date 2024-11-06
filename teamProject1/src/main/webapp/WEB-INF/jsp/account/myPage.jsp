@@ -506,8 +506,6 @@
 		<a href="#" style="position: fixed; bottom: 5px; right: 5px;"
 			class="btn btn-dark">맨위로</a>
 
-
-
 		<script>
 			const paystep = document.querySelectorAll(".serial1")
 			function phonePrompt() {

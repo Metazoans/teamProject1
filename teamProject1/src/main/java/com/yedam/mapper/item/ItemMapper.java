@@ -13,6 +13,8 @@ public interface ItemMapper {
 
 	List<ItemVO> mySellList(String id);
 
+	List<ItemVO> mySellListBuy(String id);
+	
 	List<BillsVO> sellerHistory(String logId);
 
 	List<ItemVO> ItemNumSelect(String itemNum);

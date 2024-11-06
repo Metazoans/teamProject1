@@ -29,6 +29,11 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.mySellList(mid);
 	}
 	
+	@Override
+	public List<ItemVO> mySellListBuy(String mid) {
+		return mapper.mySellListBuy(mid);
+	}
+	
 	
 	@Override
 	public List<BillsVO> sellerHistory(String logId) {

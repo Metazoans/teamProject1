@@ -32,6 +32,7 @@ import com.yedam.control.account.MemberDeleteControl;
 import com.yedam.control.account.MileageControl;
 import com.yedam.control.account.MyPageControl;
 import com.yedam.control.account.MyPageFormControl;
+import com.yedam.control.account.PhoneControl;
 import com.yedam.control.account.SearchIdControl;
 import com.yedam.control.account.SearchIdFormControl;
 import com.yedam.control.account.SearchPwdControl;
@@ -146,7 +147,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/grade.do", new GradeControl());
 		
-		
+		map.put("/phone.do", new PhoneControl());
 	
 		
 

@@ -11,6 +11,8 @@ public interface ItemService {
 	
 	List<ItemVO> mySellList(String mid);
 	
+	List<ItemVO> mySellListBuy(String mid);
+	
 	List<BillsVO> sellerHistory(String logId);
 	
 	boolean addItem(ItemVO item);

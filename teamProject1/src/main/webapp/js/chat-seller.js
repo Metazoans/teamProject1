@@ -6,7 +6,7 @@
 //버튼당 클릭했을때 모달창 열기
 document.querySelectorAll('.seller').forEach((seller) => {
 	seller.addEventListener('click', function(e) {
-	toId = document.querySelector('#seller').innerHTML
+	toId = $(e.target).parent().find('.sellerVal').val()
 	modalOpen();
 	})
 })

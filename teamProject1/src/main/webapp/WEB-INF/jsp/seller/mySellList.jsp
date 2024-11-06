@@ -86,7 +86,7 @@
       <td><%=vo.getItemName() %></td>
       <td><%=vo.getCount() %></td>
       <td><%=vo.getPrice() %></td>
-      <td><%=vo.getTrade() %></td>
+      <td class="trade"><%=vo.getTrade() %></td>
       <td><%=vo.getUpDate() %></td>
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
@@ -133,7 +133,7 @@
       <td><%=bvo.getItemName() %></td>
       <td><%=bvo.getCount() %></td>
       <td><%=bvo.getPrice() %></td>
-      <td><%=bvo.getTrade() %></td>
+      <td class="trade"><%=bvo.getTrade() %></td>
       <td><%=bvo.getUpDate() %></td>
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
@@ -212,9 +212,19 @@
 			document.getElementById("modalCount").value = count;
 			document.getElementById("modalPrice").value = price;
 			document.getElementById("modalImage").value = image;
-			
-			console.log(itemNumber)
 		}
+		
+		 window.onload=function(){
+			 var traeSell = document.querySelectorAll(".trade");
+			 traeSell.forEach((td) => {
+		         if(td.innerText == 'sell'){
+		        	 td.innerText = '판매';
+		         }else{
+		        	 td.innerText = '구매';
+		         }
+		      })
+		      
+		   }
 		
 	</script>
 

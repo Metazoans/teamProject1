@@ -68,6 +68,8 @@
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
+						<div class="listGame">게임명</div>
+						<div class="listServer">서버명</div>
 						<div class="listTitle">제목</div>
 						<div class="listPrice">가격</div>
 						<div class="listSeller">판매자</div>
@@ -78,6 +80,8 @@
 			</div>
 		</div>
 	</div>
+	<a href="#" style="position: fixed; bottom: 5px; right: 5px;"
+			class="btn btn-dark">맨위로</a>
 	<!-- footer -->
 	<footer>
 		<jsp:include page="/WEB-INF/layouts/footer.jsp"></jsp:include>

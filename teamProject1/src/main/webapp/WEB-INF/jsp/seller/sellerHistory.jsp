@@ -55,8 +55,8 @@
 			</form>
 			</div>
 			<div class="serial">
-  			<button type="button" class="btn head-btn1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">채팅창가기</button>
-  			<button type="hidden" class="buyer" value="<%=bvo.getBuyer()%>"></button>
+  			<button type="button" class="btn head-btn1 buyer">채팅창가기</button>
+  			<input type="hidden" class="buyerVal" value="<%=bvo.getBuyer()%>">
 			</div>
 			</div>			
 	<% } %>

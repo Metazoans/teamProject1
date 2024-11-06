@@ -1,10 +1,8 @@
 package com.yedam.test;
 
-import java.util.List;
-
+import com.yedam.common.PageDTO;
 import com.yedam.service.item.ItemService;
 import com.yedam.service.item.ItemServiceImpl;
-import com.yedam.vo.ItemVO;
 
 public class AppTest {
 
@@ -13,15 +11,8 @@ public class AppTest {
 		
 		ItemService svc = new ItemServiceImpl();
 		
-
-		if(svc.payStepDelete("1")) {
-			System.out.println("성공");
-		}else {
-			System.out.println("실패");
-		}
-
 		
-		
+		PageDTO dto = new PageDTO(1, svc.totalSell("test1"));
 		
 	}
 	

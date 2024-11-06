@@ -14,6 +14,7 @@
 		from team_item
 		where seller = #{logId}
 		and trade = 'sell'
+		order by up_date desc
 	</select>
 	
 	<select id="mySellListBuy" resultType="item" parameterType="String">
@@ -21,6 +22,7 @@
 		from team_item
 		where seller = #{logId}
 		and trade = 'buy'
+		order by up_date desc
 	</select>
 	
 	<select id="sellerHistory" resultType="com.yedam.vo.BillsVO" parameterType="String">
@@ -48,6 +50,7 @@
 				<if test="image != null">
 					,image = #{image}
 				</if>
+				,up_date = sysdate
 		where	item_number = #{itemNumber}
 					
 	</update>
@@ -70,12 +73,59 @@
 		where item_number = #{itemNum}
 	</delete>
 
-
 	<!-- 수정 -->
 	<update id="updatePayStep" parameterType="int">
 		update team_bills
 		set pay_step = 'deal'
 		where bills_number = #{billsNumber}
 	</update>
+	
+	<select id="totalCnt">
+		select count (*)
+		from team_item
+		where seller = #{logId}
+		and trade = 'sell'
+	</select>
+	
+	<select id="sellListPage" resultType="item" parameterType="com.yedam.common.SearchDTO">
+		select a.*
+		from (	select rownum rn, r.*
+       			from team_item r
+        		where seller = #{keyword}
+        		and trade = 'sell'
+        		order by up_date desc) a
+		where a.rn > (#{page} -1) * 5
+		<![CDATA[	
+		and a.rn <= #{page} * 5
+		]]>
+	</select>
+	
+	<select id="buyListPage" resultType="item" parameterType="com.yedam.common.SearchDTO">
+		select a.*
+		from (	select rownum rn, r.*
+       			from team_item r
+        		where seller = #{keyword}
+        		and trade = 'buy'
+        		order by up_date desc) a
+		where a.rn > (#{page} -1) * 5
+		<![CDATA[	
+		and a.rn <= #{page} * 5
+		]]>
+	</select>
+	
+	
+	<select id="totalSell" parameterType="String">
+	select count(*)
+	from team_item
+	where seller = #{logId}
+	and trade = 'sell'
+	</select>
+	
+	<select id="totalBuy" parameterType="String">
+	select count(*)
+	from team_item
+	where seller = #{logId}
+	and trade = 'buy'
+	</select>
 
 </mapper>

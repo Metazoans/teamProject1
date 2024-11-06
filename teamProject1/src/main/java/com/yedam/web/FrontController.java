@@ -104,12 +104,12 @@ public class FrontController extends HttpServlet {
 		
 		
 		// item  상품 등록, 수량/가격 변경, 판매 상품 삭제, 거래 완료 버튼 관련
-		map.put("/addItem.do", new AddItemControl());
-		map.put("/addItemForm.do", new AddItemForm());
+		map.put("/addItem.do", new AddItemControl()); 	//상품등록처리
+		map.put("/addItemForm.do", new AddItemForm());	//상품등록화면	
 		// 판매상품 목록, 수정, 삭제
-		map.put("/mySellList.do", new MySellListControl());
-		map.put("/myItemUpdate.do", new ItemUpdateControl());
-		map.put("/myItemDelete.do", new ItemDeleteControl());
+		map.put("/mySellList.do", new MySellListControl());		//구매/판매 리스트
+		map.put("/myItemUpdate.do", new ItemUpdateControl());	//구매/판매 리스트 수정
+		map.put("/myItemDelete.do", new ItemDeleteControl());	//구매/판매 리스트 삭제
 		// 판매내역
 		map.put("/sellerHistory.do", new SellerHistoryControl());
 		map.put("/payStepUpdate.do", new PayStepUpdateControl());

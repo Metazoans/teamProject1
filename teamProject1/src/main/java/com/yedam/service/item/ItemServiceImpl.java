@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
+import com.yedam.common.SearchDTO;
 import com.yedam.mapper.item.ItemMapper;
 import com.yedam.vo.BillsVO;
 import com.yedam.vo.ItemVO;
@@ -65,5 +66,27 @@ public class ItemServiceImpl implements ItemService{
 	public boolean changePayStep(int billsNumber) {
 		return mapper.updatePayStep(billsNumber) == 1;
 	}
+	
+	@Override
+	public List<ItemVO> sellListPage(SearchDTO dto) {
+		return mapper.sellListPage(dto);
+	}
+	
+	@Override
+	public int totalSell(String logId) {
+		return mapper.totalSell(logId);
+	}
+	
+	@Override
+	public int totalBuy(String logId) {
+		return mapper.totalBuy(logId);
+	}
+	
+	@Override
+	public List<ItemVO> buyListPage(SearchDTO dto) {
+		return mapper.buyListPage(dto);
+	}
+	
+
 }
 

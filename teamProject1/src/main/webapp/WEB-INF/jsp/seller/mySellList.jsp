@@ -1,7 +1,10 @@
+<%@page import="com.yedam.common.PageDTO"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.yedam.vo.ItemVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +45,28 @@
     border: 0;
     overflow: hidden;
 }
-
-
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.pagination li a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    color: #000;
+}
+.pagination li a:hover {
+    background-color: #ddd;
+}
+.pagination li.active a {
+    background-color: #fb246a;
+    color: white;
+}
 </style>
 </head>
 <body>
@@ -57,8 +80,11 @@
 	</script>
 
 	<%
-		List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
-		List<ItemVO> listBuy = (List<ItemVO>) request.getAttribute("myBuyList");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		PageDTO pdto = (PageDTO)request.getAttribute("page");
+		PageDTO bdto = (PageDTO)request.getAttribute("bpage");
+		List<ItemVO> SellListPage = (List<ItemVO>)request.getAttribute("SellListPage");
+		List<ItemVO> BuyListPage = (List<ItemVO>)request.getAttribute("BuyListPage");
 	%>
 
 <div id="container">
@@ -73,10 +99,12 @@
       <th scope="col">판매금액</th>
       <th scope="col">판매/구매</th>
       <th scope="col">등록시간</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <%
-  	for(ItemVO vo : list){
+  	for(ItemVO vo : SellListPage){
   %>
   <tbody>
     <tr>
@@ -87,7 +115,7 @@
       <td><%=vo.getCount() %></td>
       <td><%=vo.getPrice() %></td>
       <td class="trade"><%=vo.getTrade() %></td>
-      <td><%=vo.getUpDate() %></td>
+      <td><%=sdf.format(vo.getUpDate()) %></td>
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
 		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=vo.getItemNumber()%>','<%=vo.getItemName()%>', 
@@ -103,15 +131,64 @@
   </tbody>
   <% } %>
 </table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    
+    <!-- 이전 페이지 여부 -->
+    <c:choose>
+      <c:when test="${page.prev}">
+        <li class="page-item">
+          <a class="page-link" href="mySellList.do?page=${page.startPage - 1}">Previous</a>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li class="page-item disabled">
+          <a class="page-link" href="#">Previous</a>
+        </li>
+      </c:otherwise>
+    </c:choose>
+
+    <!-- 페이지 번호 출력 -->
+    <c:forEach var="p" begin="${page.startPage}" end="${page.endPage}" step="1">
+      <c:choose>
+        <c:when test="${page.page == p}">
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">${p}</span>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="page-item">
+            <a class="page-link" href="mySellList.do?page=${p}">${p}</a>
+          </li>
+        </c:otherwise>
+      </c:choose>
+    </c:forEach>
+
+    <!-- 다음 페이지 여부 -->
+    <c:choose>
+      <c:when test="${page.next}">
+        <li class="page-item">
+          <a class="page-link" href="mySellList.do?page=${page.endPage + 1}">Next</a>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li class="page-item disabled">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </c:otherwise>
+    </c:choose>
+
+  </ul>
+</nav>
+
 </div>
 
 <hr>
 
-
 <h3 class="table-name1">구매리스트</h3>
 <div class="progress-table" id="kanghyeon">
 <table class="table" style="text-align: center;">
-
   <thead>
     <tr>
       <th scope="col">이미지</th>
@@ -120,10 +197,12 @@
       <th scope="col">판매금액</th>
       <th scope="col">판매/구매</th>
       <th scope="col">등록시간</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <%
-  	for(ItemVO bvo : listBuy){
+  	for(ItemVO bvo : BuyListPage){
   %>
   <tbody>
     <tr>
@@ -134,7 +213,7 @@
       <td><%=bvo.getCount() %></td>
       <td><%=bvo.getPrice() %></td>
       <td class="trade"><%=bvo.getTrade() %></td>
-      <td><%=bvo.getUpDate() %></td>
+      <td><%=sdf.format(bvo.getUpDate()) %></td>
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
 		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=bvo.getItemNumber()%>','<%=bvo.getItemName()%>', 
@@ -150,6 +229,56 @@
   </tbody>
   <% } %>
 </table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <!-- 이전 페이지 여부 -->
+      <c:choose>
+        <c:when test="${bpage.prev}">
+          <li class="page-item">
+            <a class="page-link" href="mySellList.do?bpage=${bpage.startPage - 1}">Previous</a>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Previous</a>
+          </li>
+        </c:otherwise>
+      </c:choose>
+
+      <!-- 페이지 번호 출력 -->
+      <c:forEach var="p" begin="${bpage.startPage}" end="${bpage.endPage}" step="1">
+        <c:choose>
+          <c:when test="${bpage.page == p}">
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">${p}</span>
+            </li>
+          </c:when>
+          <c:otherwise>
+            <li class="page-item">
+              <a class="page-link" href="mySellList.do?bpage=${p}">${p}</a>
+            </li>
+          </c:otherwise>
+        </c:choose>
+      </c:forEach>
+
+      <!-- 다음 페이지 여부 -->
+      <c:choose>
+        <c:when test="${bpage.next}">
+          <li class="page-item">
+            <a class="page-link" href="mySellList.do?bpage=${bpage.endPage + 1}">Next</a>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </c:otherwise>
+      </c:choose>
+
+    </ul>
+  </nav>
+</div>
+
 </div>
 
 	

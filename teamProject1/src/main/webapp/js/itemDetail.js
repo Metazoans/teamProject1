@@ -18,7 +18,10 @@ $('#dealBtn').on('click', function(e) {
 		dataType: 'json'
 	}) 
 		.done(function(result) {
-			if(result.retCode == 'OK') {
+			if(result.retCode == 'LACK') {
+				alert('마일리지 부족');
+			}
+			else if(result.retCode == 'OK') {
 				console.log('성공');
 				$('#dealCount').val('');
 				$('#dealCount').focus();

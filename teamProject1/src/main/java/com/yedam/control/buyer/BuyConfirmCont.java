@@ -25,6 +25,10 @@ public class BuyConfirmCont implements Control {
 		BillsVO bills = svc.getBills(Integer.parseInt(billsNumber));
 
 		int mileage = svc.mileageCheck(logId);
+		
+		System.out.println("\n\n\n-------------------------------------\n\n\n");
+		System.out.println(mileage);
+		System.out.println("\n\n\n-------------------------------------\n\n\n");
 
 		if(bills.getTrade().equals("sell") && mileage < bills.getTotal()) {
 			resp.getWriter().print("{\"retCode\": \"LACK\"}");

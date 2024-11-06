@@ -11,6 +11,8 @@ public interface ItemService {
 	
 	List<ItemVO> mySellList(String mid);
 	
+	List<ItemVO> mySellListBuy(String mid);
+	
 	List<BillsVO> sellerHistory(String logId);
 	
 	boolean addItem(ItemVO item);
@@ -23,5 +25,6 @@ public interface ItemService {
 	
 	boolean payStepDelete(String itemNum);
 
-	
+	//추가
+	boolean changePayStep(int billsNumber);
 }

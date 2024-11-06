@@ -26,8 +26,10 @@ public class MySellListControl implements Control {
 		String logId = (String) session.getAttribute("logId");
 		
 		List<ItemVO> list = (List<ItemVO>)svc.mySellList(logId);
-		
 		req.setAttribute("mySellList", list);
+		
+		List<ItemVO> listBuy = (List<ItemVO>)svc.mySellListBuy(logId);
+		req.setAttribute("myBuyList", listBuy);
 		
 		req.getRequestDispatcher("seller/mySellList.tiles").forward(req, resp);
 		

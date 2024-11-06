@@ -81,6 +81,7 @@
 		select *
 		from team_bills
 		where buyer = #{buyer}
+		and pay_step != 'completed'
 	</select>
 	
 	<!-- 구매 목록 단건 조회 -->
@@ -136,7 +137,7 @@
 	</delete>
 
 	<!-- 구매 마일리지 체크 -->
-	<select id="buyMileageCheck" resultType="int">
+	<select id="buyMileageCheck" resultType="int" parameterType="string">
 		select mileage
 		from team_member
 		where member_id = #{logId}

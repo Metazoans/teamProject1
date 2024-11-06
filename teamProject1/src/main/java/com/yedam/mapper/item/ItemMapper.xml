@@ -16,6 +16,13 @@
 		and trade = 'sell'
 	</select>
 	
+	<select id="mySellListBuy" resultType="item" parameterType="String">
+		select *
+		from team_item
+		where seller = #{logId}
+		and trade = 'buy'
+	</select>
+	
 	<select id="sellerHistory" resultType="com.yedam.vo.BillsVO" parameterType="String">
 		select *
 		from team_bills
@@ -63,5 +70,12 @@
 		where item_number = #{itemNum}
 	</delete>
 
+
+	<!-- 수정 -->
+	<update id="updatePayStep" parameterType="int">
+		update team_bills
+		set pay_step = 'deal'
+		where bills_number = #{billsNumber}
+	</update>
 
 </mapper>

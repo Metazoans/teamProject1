@@ -30,22 +30,27 @@ public class DealItemCont implements Control {
 
 		ItemVO item = new ItemVO();
 		item = svc.getItem(Integer.parseInt(itemNumber));
+		
+		int total = item.getPrice() * Integer.parseInt(dealCount);
 
+		int mileage = svc.mileageCheck(logId);
+		if(item.getTrade().equals("sell") && mileage < total) {
+			resp.getWriter().print("{\"retCode\": \"LACK\"}");
+		}
+		
 		BillsVO bills = new BillsVO();
 		bills.setSeller(item.getSeller());
 		bills.setBuyer(logId);
 		bills.setItemNumber(item.getItemNumber());
 		bills.setItemName(item.getItemName());
 		bills.setCount(Integer.parseInt(dealCount));
-		bills.setTotal((item.getPrice() * Integer.parseInt(dealCount)));
+		bills.setTotal(total);
 		bills.setImage(item.getImage());
 		bills.setTrade(item.getTrade());
 
 		Map<String, Object> result = new HashMap();
 
 		Gson gson = new GsonBuilder().create();
-		
-		if()
 		
 		// 아이템 카운트 확인
 		if (svc.modifyItemCount(bills)) {

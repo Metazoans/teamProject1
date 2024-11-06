@@ -82,13 +82,14 @@ function confirmFnc() {
 					dataType: 'json'
 				}).done(function(result) {
 					if(result.retCode == 'LACK') { //마일리지 부족
-						
+						alert('마일리지 부족');
 					}
 					else if (result.retCode == 'OK') {
 						buyListPrt();
-						console.log('구매 확정 성공');
-					} else if (result.retCode == 'FAIL') {
-						console.log('구매 확정 실패');
+						alert('구매 확정 성공');
+					}
+					else if (result.retCode == 'FAIL') {
+						alert('구매 확정 실패');
 					}
 				}).fail(function(err) {
 					console.log(err);

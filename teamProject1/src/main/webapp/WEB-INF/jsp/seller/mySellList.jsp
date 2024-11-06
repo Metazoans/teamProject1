@@ -80,7 +80,7 @@
 
 <hr>
 
-<div class="progress-table">
+<div class="progress-table" id="kanghyeon">
 <table class="table" style="text-align: center;">
   <thead>
     <tr>

@@ -64,7 +64,7 @@
 		<c:if test="${item.image != null }">
 			<div class="col-sm-12">
 				<div class="form-group">
-					<p class="form-control valid">image : ${item.image }</p>
+					<img alt="이미지" src="images/${item.image }">
 				</div>
 			</div>
 		</c:if>

@@ -11,7 +11,7 @@ $('#dealBtn').on('click', function(e) {
 		url: 'dealItem.do',
 		data: {
 			itemNumber: $('#itemNumber').val(),
-			buyCount: $('#dealCount').val(),
+			dealCount: $('#dealCount').val(),
 			logId: $('#logId').val()
 		},
 		method: 'GET',

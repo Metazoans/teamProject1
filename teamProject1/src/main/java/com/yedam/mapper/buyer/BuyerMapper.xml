@@ -70,8 +70,8 @@
 	</update>
 	<!-- 상품 구매 - bills 추가 -->
 	<insert id="insertBillsItem" parameterType="com.yedam.vo.BillsVO">
-		insert into team_bills ( bills_number, seller, buyer, item_number, item_name, count, total, image )
-		values ( bills_seq.nextval, #{seller}, #{buyer}, #{itemNumber}, #{itemName}, #{count}, #{total}, #{image} )
+		insert into team_bills ( bills_number, seller, buyer, item_number, item_name, count, total, image, trade )
+		values ( bills_seq.nextval, #{seller}, #{buyer}, #{itemNumber}, #{itemName}, #{count}, #{total}, #{image}, #{trade} )
 	</insert>
 	
 	
@@ -82,6 +82,7 @@
 		from team_bills
 		where buyer = #{buyer}
 	</select>
+	
 	<!-- 구매 목록 단건 조회 -->
 	<select id="selectBills" resultType="com.yedam.vo.BillsVO" parameterType="int">
 		select *
@@ -134,5 +135,10 @@
 		where bills_number = #{billsNumber}
 	</delete>
 
-
+	<!-- 구매 마일리지 체크 -->
+	<select id="buyMileageCheck" resultType="int">
+		select mileage
+		from team_member
+		where member_id = #{logId}
+	</select>
 </mapper>

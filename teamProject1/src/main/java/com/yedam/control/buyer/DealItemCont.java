@@ -25,7 +25,6 @@ public class DealItemCont implements Control {
 		String itemNumber = req.getParameter("itemNumber");
 		String dealCount = req.getParameter("dealCount");
 		String logId = req.getParameter("logId");
-		String trade = req.getParameter("trade");
 		
 		BuyerService svc = new BuyerServiceImpl();
 
@@ -40,10 +39,14 @@ public class DealItemCont implements Control {
 		bills.setCount(Integer.parseInt(dealCount));
 		bills.setTotal((item.getPrice() * Integer.parseInt(dealCount)));
 		bills.setImage(item.getImage());
-		bills.setTrade(trade);
+		bills.setTrade(item.getTrade());
 
 		Map<String, Object> result = new HashMap();
 
+		Gson gson = new GsonBuilder().create();
+		
+		if()
+		
 		// 아이템 카운트 확인
 		if (svc.modifyItemCount(bills)) {
 			if (svc.registerBillsItem(bills)) {
@@ -58,7 +61,6 @@ public class DealItemCont implements Control {
 		int newItemCnt = svc.getItem(Integer.parseInt(itemNumber)).getCount();
 		result.put("newCnt", newItemCnt);
 		
-		Gson gson = new GsonBuilder().create();
 		resp.getWriter().print(gson.toJson(result));
 
 	}

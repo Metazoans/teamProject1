@@ -6,7 +6,7 @@
 buyListPrt();
 function buyListPrt() {
 	let buyer = $('#buyer').val();
-	$('.itemList .table-row').remove();
+	$('.table-row').remove();
 	$.ajax({
 		url: 'buyListChange.do',
 		data: { buyer: buyer },
@@ -15,27 +15,46 @@ function buyListPrt() {
 	})
 		.done(function(result) {
 			result.forEach(item => {
-				let confirmBtn = $('<button />').addClass('genric-btn primary-border').attr('id', 'confirmBtn').text('구매확정');
-				let cancelBtn = $('<button />').addClass('genric-btn danger-border').attr('id', 'cancelBtn').text('구매취소');
+				let divRow = $('<div />').addClass('table-row');
+				
+				let confirmBtn = $('<button />').addClass('genric-btn primary-border').attr('id', 'confirmBtn').text('거래확정');
+				let cancelBtn = $('<button />').addClass('genric-btn danger-border').attr('id', 'cancelBtn').text('거래취소');
 				let chatBtn = $('<button />').addClass('genric-btn warning-border').attr('id', 'chatBtn').text('채팅');
-				$('<div />').addClass('table-row').append(
-					$('<input>').attr('type', 'hidden').val(item.billsNumber),
-					$('<input>').attr('type', 'hidden').addClass('seller').val(item.seller),
-					$('<div />').addClass('buyTitle').text(item.itemName),
-					$('<div />').addClass('buyCount').text(item.count),
-					$('<div />').addClass('buyPrice').text(item.total),
-					$('<div />').addClass('buyPayStep').text(item.payStep),
-					$('<div />').addClass('buyBtnDiv').append(
-						confirmBtn,
-						cancelBtn,
-						chatBtn
-					)
-					//desc 생성 제거 --> 추가
-				).appendTo($('.itemList'));
+
+				if (item.trade == 'sell') { //판매글이었으면 구매 요청
+					$(divRow).append(
+						$('<input>').attr('type', 'hidden').val(item.billsNumber),
+						$('<input>').attr('type', 'hidden').addClass('seller').val(item.seller),
+						$('<div />').addClass('buyTitle').text(item.itemName),
+						$('<div />').addClass('buyCount').text(item.count),
+						$('<div />').addClass('buyPrice').text(item.total),
+						$('<div />').addClass('buyPayStep').text(item.payStep),
+						$('<div />').addClass('buyBtnDiv').append(
+							confirmBtn,
+							cancelBtn,
+							chatBtn
+						)
+					).appendTo('#buyList')
+				}
+				else if (item.trade == 'buy') { //구매글이었으면 판매 요청
+					$(divRow).append(
+						$('<input>').attr('type', 'hidden').val(item.billsNumber),
+						$('<input>').attr('type', 'hidden').addClass('seller').val(item.seller),
+						$('<div />').addClass('buyTitle').text(item.itemName),
+						$('<div />').addClass('buyCount').text(item.count),
+						$('<div />').addClass('buyPrice').text(item.total),
+						$('<div />').addClass('buyPayStep').text(item.payStep),
+						$('<div />').addClass('buyBtnDiv').append(
+							confirmBtn,
+							cancelBtn,
+							chatBtn
+						)
+					).appendTo('#sellList')
+				}
 			});
 			confirmFnc();
 			cancelFnc();
-			chatFnc();
+//			chatFnc();
 		})
 		.fail(function(err) {
 			console.log('buyListPrt err');
@@ -48,24 +67,33 @@ function confirmFnc() {
 	document.querySelectorAll('#confirmBtn').forEach(btn => {
 		btn.addEventListener('click', function(e) {
 			let billsNumber = $(e.target).parent().parent().find('input').val();
-			console.log(billsNumber);
-			$.ajax({
-				url: 'buyConfirm.do',
-				data: {
-					billsNumber: billsNumber
-				},
-				method: 'GET',
-				dataType: 'json'
-			}).done(function(result) {
-				if (result.retCode == 'OK') {
-					buyListPrt();
-					console.log('구매 확정 성공');
-				} else if (result.retCode == 'FAIL') {
-					console.log('구매 확정 실패');
-				}
-			}).fail(function(err) {
-				console.log(err);
-			})
+			let payStep = $(e.target).parent().parent().find('.buyPayStep').text();
+			
+			if(payStep == 'processing') {
+				alert('거래 확인중입니다.');
+			}
+			else if(payStep == 'deal') {
+				$.ajax({
+					url: 'buyConfirm.do',
+					data: {
+						billsNumber: billsNumber
+					},
+					method: 'GET',
+					dataType: 'json'
+				}).done(function(result) {
+					if(result.retCode == 'LACK') { //마일리지 부족
+						
+					}
+					else if (result.retCode == 'OK') {
+						buyListPrt();
+						console.log('구매 확정 성공');
+					} else if (result.retCode == 'FAIL') {
+						console.log('구매 확정 실패');
+					}
+				}).fail(function(err) {
+					console.log(err);
+				})
+			}
 		})
 	})
 }
@@ -85,9 +113,9 @@ function cancelFnc() {
 			}).done(function(result) {
 				if (result.retCode == 'OK') {
 					buyListPrt();
-					console.log('구매 취소 성공');
+					console.log('거래 취소 성공');
 				} else if (result.retCode == 'FAIL') {
-					console.log('구매 취소 실패');
+					console.log('거래 취소 실패');
 				}
 			}).fail(function(err) {
 				console.log(err);

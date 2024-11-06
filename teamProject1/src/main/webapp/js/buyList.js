@@ -65,9 +65,12 @@ function buyListPrt() {
 //구매 확정
 function confirmFnc() {
 	document.querySelectorAll('.confirmBtn').forEach(btn => {
+		console.log('confirm btn start');
+		
 		btn.addEventListener('click', function(e) {
 			let billsNumber = $(e.target).parent().parent().find('input').val();
 			let payStep = $(e.target).parent().parent().find('.buyPayStep').text();
+			let buyer = $('#buyer').val();
 			
 			if(payStep == 'processing') {
 				alert('거래 확인중입니다.');
@@ -76,7 +79,8 @@ function confirmFnc() {
 				$.ajax({
 					url: 'buyConfirm.do',
 					data: {
-						billsNumber: billsNumber
+						billsNumber: billsNumber,
+						logId: buyer
 					},
 					method: 'GET',
 					dataType: 'json'

@@ -65,28 +65,4 @@
 </div>
 
 
-<!-- 임시 div -->
-<div id='buyList'>
-	<c:forEach var="list" items="${buyList }">
-		<div id="buyItem">
-			<input type="hidden" value="${list.billsNumber }">
-			<input type="hidden" class="seller" value="${list.seller }">
-			<div>${list.image }image</div>
-			<div>${list.itemName }item_name</div>
-			<div>${list.count }count</div>
-			<div>${list.total }total</div>
-			<div>${list.payStep }pay_step</div>
-			<div id="buyBtnDiv">
-				<button class="genric-btn primary-border" id="confirmBtn">거래확정</button>
-				<button class="genric-btn danger-border" id="cancelBtn">거래취소</button>
-				<button class="genric-btn warning-border" id="chatBtn">채팅</button>
-			</div>
-			<div>
-			</div>
-			<div >
-			</div>
-		</div>
-	</c:forEach>
-</div>
-
 <script src="js/buyList.js"></script>

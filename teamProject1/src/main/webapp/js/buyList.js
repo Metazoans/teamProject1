@@ -17,9 +17,9 @@ function buyListPrt() {
 			result.forEach(item => {
 				let divRow = $('<div />').addClass('table-row');
 				
-				let confirmBtn = $('<button />').addClass('genric-btn primary-border').attr('id', 'confirmBtn').text('거래확정');
-				let cancelBtn = $('<button />').addClass('genric-btn danger-border').attr('id', 'cancelBtn').text('거래취소');
-				let chatBtn = $('<button />').addClass('genric-btn warning-border').attr('id', 'chatBtn').text('채팅');
+				let confirmBtn = $('<button />').addClass('genric-btn primary-border confirmBtn').text('거래확정');
+				let cancelBtn = $('<button />').addClass('genric-btn danger-border cancelBtn').text('거래취소');
+				let chatBtn = $('<button />').addClass('genric-btn warning-border chatBtn').text('채팅');
 
 				if (item.trade == 'sell') { //판매글이었으면 구매 요청
 					$(divRow).append(
@@ -54,7 +54,7 @@ function buyListPrt() {
 			});
 			confirmFnc();
 			cancelFnc();
-//			chatFnc();
+			chatFnc();
 		})
 		.fail(function(err) {
 			console.log('buyListPrt err');

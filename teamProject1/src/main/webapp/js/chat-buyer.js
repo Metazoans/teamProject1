@@ -1,5 +1,5 @@
 /**
- * chat.js
+ * chat-buyer.js
  */
 
 

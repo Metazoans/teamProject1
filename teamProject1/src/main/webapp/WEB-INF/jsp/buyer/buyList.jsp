@@ -4,7 +4,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-
+<link rel="stylesheet" href="css/chat.css">
 <link rel="stylesheet" href="css/buyer.css">
 
 
@@ -65,28 +65,38 @@
 </div>
 
 
-<!-- 임시 div -->
-<div id='buyList'>
-	<c:forEach var="list" items="${buyList }">
-		<div id="buyItem">
-			<input type="hidden" value="${list.billsNumber }">
-			<input type="hidden" class="seller" value="${list.seller }">
-			<div>${list.image }image</div>
-			<div>${list.itemName }item_name</div>
-			<div>${list.count }count</div>
-			<div>${list.total }total</div>
-			<div>${list.payStep }pay_step</div>
-			<div id="buyBtnDiv">
-				<button class="genric-btn primary-border" id="confirmBtn">거래확정</button>
-				<button class="genric-btn danger-border" id="cancelBtn">거래취소</button>
-				<button class="genric-btn warning-border" id="chatBtn">채팅</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">채팅</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
-			<div>
+			<div class="modal-body">
+				<div class="modal-chat">
+					<!-- 내용들어갈부분 -->
+				</div>
+				<div class="modal-input">
+					<textarea name="chat-content" cols="40" rows="4"
+						style="resize: none;" class="float-reft" id="message"></textarea>
+					<button type="button" class="btn btn-primary float-reft btnSize"
+						onclick="chatUp()">전송</button>
+				</div>
 			</div>
-			<div >
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
 			</div>
 		</div>
-	</c:forEach>
+	</div>
 </div>
 
 <script src="js/buyList.js"></script>
+<script type="text/javascript">
+	let fromId = "${logId}";
+	let toId = "";
+</script>
+<script src="js/chat-seller.js"></script>

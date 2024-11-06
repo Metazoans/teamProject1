@@ -11,9 +11,9 @@ public interface ItemMapper {
 
 	List<ItemVO> select();
 	
-	List<ItemVO> mySellList(@Param("mid")String id, @Param("sell") String sell);
+	List<ItemVO> mySellList(String id);
 	
-	List<BillsVO> sellerHistory(@Param("logId")String logId);
+	List<BillsVO> sellerHistory(String logId);
 	
 	List<ItemVO> ItemNumSelect(String itemNum);
 
@@ -24,6 +24,8 @@ public interface ItemMapper {
 	int itemDelete(ItemVO item);
 	
 	int payStepUpdate(@Param("payStep")String payStep, @Param("itemNum")String itemNum);
+	
+	int payStepDelete(String itemNum);
 	
 	
 }

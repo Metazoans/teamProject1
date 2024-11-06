@@ -7,17 +7,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+#container{
+	padding-top: 50px;
+	margin: 0 auto;
+	width: 80%;	
+	padding-bottom: 50px;
+}
+
+</style>
+
 </head>
 <body>
-
+	<div id="container">
 	<%
 		List<BillsVO> list = (List<BillsVO>)request.getAttribute("sellerHistory");
 	%>
 	
-	<%
-		for(BillsVO bvo : list){
-	%>
-	<form action="post">
 	<div class="progress-table">
 		<div class="table-head">
 			<div class="serial">이미지</div>
@@ -26,21 +33,37 @@
 			<div class="serial">총금액</div>
 			<div class="serial">처리상태</div>
 		</div>
+	<%
+		for(BillsVO bvo : list){
+	%>
 		<div class="table-row">
 			<div class="serial"><img src="images/<%=bvo.getImage() %>"></div>
 			<div class="serial"><%=bvo.getItemName() %></div>
 			<div class="serial"><%=bvo.getCount() %></div>
 			<div class="serial"><%=bvo.getTotal() %></div>
-			<div class="serial1" id="PayStep"><%=bvo.getPayStep() %></div>
-  			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=bvo.getItemNumber()%>');">아이템전송확인</button>
-  			<button type="button" class="btn btn-primary" formaction="payStepDelete.do");">거래취소</button>
-  			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal2('<%=bvo.getBuyer()%>');">아이템전송확인</button>
+			<div class="serial" id="PayStep"><%=bvo.getPayStep() %></div>
+			<div class="serial">
+  			<form method="post" action="payStepUpdate.do">
+  				<input type="hidden" name="itemNum" value="<%=bvo.getItemNumber()%>">
+  				<button type="submit" class="btn head-btn1" onclick="return confirm('아이템을 전송하시겠습니까?')">아이템전송확인</button>
+			</form>
+			</div>
+			<div class="serial">
+			<form method="post" action="payStepDelete.do">
+				<input type="hidden" name="itemNum" value="<%=bvo.getItemNumber()%>">
+	  			<button type="submit" class="btn head-btn1" onclick="return confirm('거래를 취소하시겠습니까?')">거래취소</button>
+			</form>
+			</div>
+			<div class="serial">
+  			<button type="button" class="btn head-btn1 buyer">채팅창가기</button>
+  			<input type="hidden" class="buyerVal" value="<%=bvo.getBuyer()%>">
+			</div>
 			</div>			
-		</div>
-	</div>
-	
 	<% } %>
-
+		</div>
+	
+	
+ </div><!-- main div -->
 
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -50,7 +73,7 @@
 	        <h1 class="modal-title fs-5" id="staticBackdropLabel">거래처리</h1>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
-	      	<input type="hidden" id="modalItemNumber" name="itemNum" value="">
+	      	<input type="hidden" id="modalBuyer" name="buyer" value="">
 	        <span>거래처리를 완료하시겠습니까??</span>
 	      <div class="modal-body">
 	      </div>
@@ -64,8 +87,19 @@
 	</form>
 	
 <script>
-	function Modal(itemNumber) {
-		document.getElementById("modalItemNumber").value = itemNumber;
+	function Modal(buyer) {
+		console.log(buyer);
+		document.getElementById("modalBuyer").value = buyer;
+	}
+	
+	window.onload = function() {
+	    let pSteps = document.querySelectorAll(".serial");
+
+	    pSteps.forEach(function(pStep) {
+	        if (pStep.innerText === "processing") {
+	            pStep.innerText = '처리중';
+	        }
+	  })
 	}
 	
 </script>

@@ -7,9 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#container{
+	padding-top: 50px;
+	margin: 0 auto;
+	width: 80%;	
+	padding-bottom: 50px;
+}
+</style>
 </head>
 <body>
-	<h3>ItemList.jsp</h3>
+	<div id="container">
+	
 	<%
 		List<ItemVO> list = (List<ItemVO>)  request.getAttribute("ItemList");
 	%>
@@ -35,5 +44,6 @@
 	
 	
 	<% } %>
+	</div>
 </body>
 </html>

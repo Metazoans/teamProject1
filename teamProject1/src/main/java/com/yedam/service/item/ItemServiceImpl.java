@@ -11,7 +11,7 @@ import com.yedam.vo.ItemVO;
 
 public class ItemServiceImpl implements ItemService{
 
-	SqlSession sqlSession = DataSource.getInstance().openSession(true);
+	SqlSession sqlSession = DataSource.getInstance().openSession();
 	ItemMapper mapper = sqlSession.getMapper(ItemMapper.class);
 	
 	@Override
@@ -25,8 +25,8 @@ public class ItemServiceImpl implements ItemService{
 	}
 	
 	@Override
-	public List<ItemVO> mySellList(String mid, String sell) {
-		return mapper.mySellList(mid,sell);
+	public List<ItemVO> mySellList(String mid) {
+		return mapper.mySellList(mid);
 	}
 	
 	
@@ -48,6 +48,11 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public boolean payStepUpdate(String payStep, String itemNum) {
 		return mapper.payStepUpdate(payStep, itemNum) == 1;
+	}
+	
+	@Override
+	public boolean payStepDelete(String itemNum) {
+		return mapper.payStepDelete(itemNum) == 1;
 	}
 	
 }

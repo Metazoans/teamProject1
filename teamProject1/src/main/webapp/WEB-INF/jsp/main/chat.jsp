@@ -8,10 +8,10 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
 	data-bs-target="#exampleModal" id="seller">test2</button>
-	<button type="button" class="seller">button</button>
-	<input type="hidden" class="sellerVal" value="test2">
-	<button type="button" class="buyer">button</button>
-	<input type="hidden" class="buyerVal" value="test2">
+<button type="button" class="seller">button</button>
+<input type="hidden" class="sellerVal" value="test2">
+<button type="button" class="buyer">button</button>
+<input type="hidden" class="buyerVal" value="test2">
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script type="text/javascript">
-let fromId = "${logId}";
-let toId = "";
+	let fromId = "${logId}";
+	let toId = "";
 </script>
 <script src="js/chat-seller.js"></script>

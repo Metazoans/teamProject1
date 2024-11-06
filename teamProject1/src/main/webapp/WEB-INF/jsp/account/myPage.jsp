@@ -92,10 +92,10 @@
 						onmouseout="$('#credit_condition').hide();">승급조건</div> -->
 						<span class="hovertext"
 							data-hover="
-							거래건수 5건 C등급<br />
-							거래건수 10건 B등급<br />
-							거래건수 15건 A급<br />
-							거래건수 20건 S등급">승급조건
+							거래건수 5건 :C등급
+							거래건수 10건 :B등급
+							거래건수 15건 :A등급
+							거래건수 20건 :S등급">승급조건
 						</span>
 					</div>
 				</div>
@@ -112,8 +112,8 @@
 			<form id="phonePrompt">
 				<div class="col">
 					<div class="card mb-4 rounded-3 shadow-sm"
-						style="border-color: gray">
-						<div class="card-header py-3">
+						style="border-color: gray; width:250px ">
+						<div class="card-header py-3 permission">
 							<h4 class="my-0 fw-normal">인증상태</h4>
 						</div>
 						<div class="card-body" style="padding: 0;">
@@ -508,6 +508,7 @@
 				if (permissionText === '인증완료') {
 
 					alert('이미 인증된 번호입니다.');
+					
 					return;
 				}
 				const inputString = prompt('휴대폰 번호를 입력하세요');

@@ -76,10 +76,10 @@ function confirmFnc() {
 			let payStep = $(e.target).parent().parent().find('.buyPayStep').text();
 			let buyer = $('#buyer').val();
 			
-			if(payStep == 'processing') {
+			if(payStep == '거래 신청') {
 				alert('거래 확인중입니다.');
 			}
-			else if(payStep == 'deal') {
+			else if(payStep == '거래 승인') {
 				$.ajax({
 					url: 'buyConfirm.do',
 					data: {

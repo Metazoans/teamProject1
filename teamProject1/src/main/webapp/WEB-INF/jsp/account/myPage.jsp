@@ -191,7 +191,7 @@
 								<%if(bvo.getImage()==null) {%>
 								<p>이미지 없음</p>
 								<%}else{ %>
-									<img src="image/<%=bvo.getImage()%>" />
+									<img src="images/<%=bvo.getImage()%>" />
 									<%}%>
 								</div>
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
@@ -234,7 +234,7 @@
 								<%if(bvo.getImage()==null) {%>
 								<p>이미지 없음</p>
 								<%}else{ %>
-									<img src="image/<%=bvo.getImage()%>" />
+									<img src="images/<%=bvo.getImage()%>" />
 								<%}%>
 								</div>
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
@@ -505,8 +505,6 @@
 
 		<a href="#" style="position: fixed; bottom: 5px; right: 5px;"
 			class="btn btn-dark">맨위로</a>
-
-
 
 		<script>
 			const paystep = document.querySelectorAll(".serial1")

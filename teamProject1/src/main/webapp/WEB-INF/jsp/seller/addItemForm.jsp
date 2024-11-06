@@ -12,6 +12,25 @@
 	width: 80%;	
 	padding-bottom: 50px;
 }
+.table-name1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    background: #fb246a;
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    line-height: 0;
+    padding: 27px 44px;
+    border-radius: 0px;
+    position: relative;
+    z-index: -1;
+    border: 0;
+    overflow: hidden;
+}
 </style>
 </head>
 <body>
@@ -28,6 +47,7 @@
 <div id="container">
 <form action="addItem.do" method="post" onsubmit="return checkField();" enctype="multipart/form-data">
 <%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
+<h3 class="table-name1">구매리스트</h3>
 <table class="table">
 		<input type="hidden" name="logId" value="${logId}">
 		<tr>
@@ -41,6 +61,7 @@
   				<option value="메이플스토리">메이플스토리</option>
  				<option value="던전엔파이터">던전엔파이터</option>
   				<option value="서든어택">서든어택</option>
+  				<option value="로스트아크">로스트아크</option>
 			</select></td>
 			<td><p>서버</p>
 			<select class="form-select" aria-label="Default select example" id="server" name="servers" id="servers">
@@ -92,10 +113,12 @@
 	function categoryChange(e){
 		var sMstory = ["루나","스카니아","엘리시움","크로아","오로라","베라","레드","유니온","제니스","이노시스","아케인","노바"];
 		var sDnf = ["카인","디레지에","시로코","프레이","카시아스","힐더","안톤","바칼"];
+		var loa = ["루페온","실리안","아만","카마인","카제로스","아브렐슈드","카단"];
 		var target = document.getElementById("server");
 		
 		if(e.value == "메이플스토리") var d = sMstory;
 		else if(e.value == "던전엔파이터") var d = sDnf;
+		else if(e.value == "로스트아크") var d = loa;
 		
 		target.options.length = 0;
 

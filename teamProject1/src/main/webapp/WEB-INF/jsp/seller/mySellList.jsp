@@ -14,9 +14,36 @@
 	width: 80%;	
 	padding-bottom: 50px;
 }
-/* .progress-table{
-	margin-bottom: 20px;
-} */
+.table th{
+	padding: 0.5rem;
+}
+.table td{
+	vertical-align: middle;
+}
+.table{
+	text-align: center;
+}
+.table-name1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    background: #fb246a;
+    color: #fff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    line-height: 0;
+    padding: 27px 44px;
+    border-radius: 0px;
+    position: relative;
+    z-index: -1;
+    border: 0;
+    overflow: hidden;
+}
+
+
 </style>
 </head>
 <body>
@@ -30,14 +57,14 @@
 	</script>
 
 	<%
-	List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
-	List<ItemVO> listBuy = (List<ItemVO>) request.getAttribute("myBuyList");
+		List<ItemVO> list = (List<ItemVO>) request.getAttribute("mySellList");
+		List<ItemVO> listBuy = (List<ItemVO>) request.getAttribute("myBuyList");
 	%>
 
 <div id="container">
-	
+<h3 class="table-name1">판매리스트</h3>
 <div class="progress-table">
-<table class="table" style="text-align: center;">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">이미지</th>
@@ -59,7 +86,7 @@
       <td><%=vo.getItemName() %></td>
       <td><%=vo.getCount() %></td>
       <td><%=vo.getPrice() %></td>
-      <td><%=vo.getTrade() %></td>
+      <td class="trade"><%=vo.getTrade() %></td>
       <td><%=vo.getUpDate() %></td>
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
@@ -80,8 +107,11 @@
 
 <hr>
 
+
+<h3 class="table-name1">구매리스트</h3>
 <div class="progress-table" id="kanghyeon">
 <table class="table" style="text-align: center;">
+
   <thead>
     <tr>
       <th scope="col">이미지</th>
@@ -103,7 +133,7 @@
       <td><%=bvo.getItemName() %></td>
       <td><%=bvo.getCount() %></td>
       <td><%=bvo.getPrice() %></td>
-      <td><%=bvo.getTrade() %></td>
+      <td class="trade"><%=bvo.getTrade() %></td>
       <td><%=bvo.getUpDate() %></td>
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
@@ -121,8 +151,9 @@
   <% } %>
 </table>
 </div>
+
 	
-	
+<!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -181,9 +212,19 @@
 			document.getElementById("modalCount").value = count;
 			document.getElementById("modalPrice").value = price;
 			document.getElementById("modalImage").value = image;
-			
-			console.log(itemNumber)
 		}
+		
+		 window.onload=function(){
+			 var traeSell = document.querySelectorAll(".trade");
+			 traeSell.forEach((td) => {
+		         if(td.innerText == 'sell'){
+		        	 td.innerText = '판매';
+		         }else{
+		        	 td.innerText = '구매';
+		         }
+		      })
+		      
+		   }
 		
 	</script>
 

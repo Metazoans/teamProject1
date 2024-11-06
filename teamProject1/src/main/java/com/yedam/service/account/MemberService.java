@@ -30,4 +30,6 @@ public interface MemberService {
 	List<BillsVO> sellList(String logId);
 
 	List<BillsVO> purchaseList(String logId);
+	
+	boolean modifyPhone(MemberVO member);
 }

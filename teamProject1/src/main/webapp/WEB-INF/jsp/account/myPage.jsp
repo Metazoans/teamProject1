@@ -58,13 +58,12 @@
 
 #container {
 	margin: 0 auto !important;
-	width:80% !important;
-	
+	width: 80% !important;
 }
 </style>
 </head>
 <body>
-	<div id="container" >
+	<div id="container">
 		<%
 		List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
 		List<BillsVO> sellList = (List<BillsVO>) request.getAttribute("sellList");
@@ -110,30 +109,35 @@
 			</div>
 
 
-
-			<div class="col">
-				<div class="card mb-4 rounded-3 shadow-sm"
-					style="border-color: gray">
-					<div class="card-header py-3">
-						<h4 class="my-0 fw-normal">인증상태</h4>
-					</div>
-					<div class="card-body" style="padding: 0;">
-						<h3 class="card-title pricing-card-title">
+			<form id="phonePrompt">
+				<div class="col">
+					<div class="card mb-4 rounded-3 shadow-sm"
+						style="border-color: gray">
+						<div class="card-header py-3">
+							<h4 class="my-0 fw-normal">인증상태</h4>
+						</div>
+						<div class="card-body" style="padding: 0;">
+							<h3 class="card-title pricing-card-title" onclick="phonePrompt()">
+								<input name="phone" id="phone_input" type="hidden" class="id" />
+								<input name="member_id" id="id_input" type="hidden" class="id"
+									value=<%=mvo.getMemberId()%>>
+								<%
+								if (mvo.getPhone() == null) {
+								%>미인증
+							</h3>
 							<%
-							if (mvo.getPhone() == null) {
-							%>미인증
-						</h3>
-						<%
-						} else {
-						%>
-						<p>인증완료</p>
-						<%
-						}
-						%>
-
+							} else {
+							%>
+							<p id="permission" >인증완료</p>
+							<%
+							}
+							%>
+						</div>
 					</div>
 				</div>
-			</div>
+			</form>
+
+
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm"
 					style="border-color: gray">
@@ -141,10 +145,11 @@
 						<h4 class="my-0 fw-normal">마일리지</h4>
 					</div>
 					<div class="card-body" style="padding: 0;">
-					<ul class="list-unstyled mt-3 mb-4">
+						<ul class="list-unstyled mt-3 mb-4">
 							<li><%=mvo.getMemberName()%>님의 사용가능 마일리지는</li>
 						</ul>
-						<h3 class="card-title pricing-card-title"><%=mvo.getMileage()%>원</h3>
+						<h3 class="card-title pricing-card-title"><%=mvo.getMileage()%>원
+						</h3>
 
 						<button type="button" class="w-100 btn btn-lg btn-primary"
 							data-bs-toggle="modal" data-bs-target="#mileageModal">충전
@@ -237,268 +242,289 @@
 				</div>
 			</div>
 		</div>
-	
 
 
 
 
 
 
-	<form action="grade.do" method="get">
-		<%
-		for (MemberVO mvo : list) {
-		%>
-		<input name="member_id" id="id_input" type="hidden" class="id"
-			value=<%=mvo.getMemberId()%>>
-		<%
-		}
-		%>
-	</form>
 
-	<!-- 마일리지 충전 Modal -->
-	<form action="mileage.do" class="joinForm" method="get">
+		<form action="grade.do" method="get">
+			<%
+			for (MemberVO mvo : list) {
+			%>
+			<input name="member_id" id="id_input" type="hidden" class="id"
+				value=<%=mvo.getMemberId()%>>
+			<%
+			}
+			%>
+		</form>
 
-		<div class="modal fade" id="mileageModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">충전 금액</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
+		<!-- 마일리지 충전 Modal -->
+		<form action="mileage.do" class="joinForm" method="get">
+
+			<div class="modal fade" id="mileageModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">충전 금액</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<%
+							for (MemberVO mvo : list) {
+							%>
+							<p><%=mvo.getMemberName()%></p>
+							<input name="member_name" id="id_input" type="hidden" class="id"
+								value=<%=mvo.getMemberName()%>>
+							<p>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>
+											<p>마일리지
+											<p>
+										</td>
+										<td><input name="mileage" id="id_input" type="text"
+											class="id" placeholder=<%=mvo.getMileage()%>>
+											<p></td>
+									</tr>
+
+									<%
+									}
+									%>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary" href="loginForm.do">Save
+								changes</button>
+						</div>
 					</div>
-					<div class="modal-body">
+				</div>
+			</div>
+		</form>
+
+
+
+
+
+
+
+		<!-- 회원정보 수정 Modal -->
+		<form action="myPage.do" class="joinForm" method="get">
+			<div class="modal fade" id="exampleModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">회원정보 수정</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<%
+							for (MemberVO mvo : list) {
+							%>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>
+											<p>아이디
+											<p>
+										</td>
+										<td><input name="member_id" id="id_input" type="text"
+											class="id" value=<%=mvo.getMemberId()%>>
+											<p></td>
+									</tr>
+									<tr>
+										<td>
+											<p>이름
+											<p>
+										</td>
+										<td>
+											<p><%=mvo.getMemberName()%></p> <input name="member_name"
+											id="id_input" type="hidden" class="id"
+											value=<%=mvo.getMemberName()%>>
+											<p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p>비밀번호
+											<p>
+										</td>
+										<td><input name="password" id="id_input" type="text"
+											class="pwd" value=<%=mvo.getPassword()%>>
+											<p></td>
+									</tr>
+									<tr>
+										<td>
+											<p>생년월일
+											<p>
+										</td>
+										<td>
+											<p><%=mvo.getBirth().substring(0, 10)%>
+											<p>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p>휴대폰번호
+											<p>
+										</td>
+										<td>
+											<p id="phoneNumber"><%=mvo.getPhone()%>
+											<p>
+										</td>
+									</tr>
+									<%
+									}
+									%>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">취소</button>
+							<button type="submit" class="btn btn-primary" src="logOut.do">수정</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<form action="myPage.do" class="joinForm" method="post">
+			<div class="col">
+				<div class="card mb-4 rounded-3 shadow-sm">
+					<div class="card-header py-3">
+						<p style="color: black">회원정보</p>
+
+					</div>
+					<div class="card-body" style="padding: 0;">
 						<%
 						for (MemberVO mvo : list) {
 						%>
-						<p><%=mvo.getMemberName()%></p>
-						<input name="member_name" id="id_input" type="hidden" class="id"
-							value=<%=mvo.getMemberName()%>>
-						<p>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>
-										<p>마일리지
-										<p>
-									</td>
-									<td><input name="mileage" id="id_input" type="text"
-										class="id" placeholder=<%=mvo.getMileage()%>>
-										<p></td>
-								</tr>
 
-								<%
-								}
-								%>
-							</tbody>
-						</table>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary" src="loginForm.do">Save
-							changes</button>
+						<div class="progress-table">
+
+							<div class="table-row">
+								<div class="serial">아이디</div>
+								<div class="country"><%=mvo.getMemberId()%></div>
+
+
+							</div>
+							<div class="table-row">
+								<div class="serial">이름</div>
+								<div class="country">
+									<%=mvo.getMemberName()%></div>
+
+							</div>
+							<div class="table-row">
+								<div class="serial">비밀번호</div>
+								<div class="country">
+									<%=mvo.getPassword()%></div>
+
+							</div>
+							<div class="table-row">
+								<div class="serial">생년월일</div>
+								<div class="country">
+									<%=mvo.getBirth().substring(0, 10)%></div>
+
+							</div>
+							<div class="table-row">
+								<div class="serial">휴대폰번호</div>
+								<div class="country">
+									<%=mvo.getPhone()%></div>
+
+							</div>
+
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
 
+			<%
+			}
+			%>
+			<div style="padding-left: 13px;">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+					data-bs-target="#exampleModal">수정</button>
+		</form>
 
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+			data-bs-target="#deleteModal">회원탈퇴</button>
+		<form action="memberDelete.do" class="joinForm" method="get">
 
-
-
-
-
-	<!-- 회원정보 수정 Modal -->
-	<form action="myPage.do" class="joinForm" method="get">
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
-							title</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<%
-						for (MemberVO mvo : list) {
-						%>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>
-										<p>아이디
-										<p>
-									</td>
-									<td><input name="member_id" id="id_input" type="text"
-										class="id" placeholder=<%=mvo.getMemberId()%>>
-										<p></td>
-								</tr>
-								<tr>
-									<td>
-										<p>이름
-										<p>
-									</td>
-									<td>
-										<p><%=mvo.getMemberName()%></p> <input name="member_name"
-										id="id_input" type="hidden" class="id"
-										value=<%=mvo.getMemberName()%>>
-										<p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>비밀번호
-										<p>
-									</td>
-									<td><input name="password" id="id_input" type="text"
-										class="pwd" placeholder=<%=mvo.getPassword()%>>
-										<p></td>
-								</tr>
-								<tr>
-									<td>
-										<p>생년월일
-										<p>
-									</td>
-									<td>
-										<p><%=mvo.getBirth().substring(0, 10)%>
-										<p>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<p>휴대폰번호
-										<p>
-									</td>
-									<td>
-										<p><%=mvo.getPhone()%>
-										<p>
-									</td>
-								</tr>
-								<%
-								}
-								%>
-							</tbody>
-						</table>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-primary" src="logOut.do">Save
-							changes</button>
+			<%
+			for (MemberVO mvo : list) {
+			%>
+			<!-- 회원탈퇴 Modal -->
+			<div class="modal fade" id="deleteModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<h3>정말 회원탈퇴 하시겠습니까</h3>
+							<input name="member_name" id="id_input" type="hidden" class="id"
+								value=<%=mvo.getMemberName()%>>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">취소</button>
+							<button type="submit" class="btn btn-primary" src="loginForm.do">회원탈퇴</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
+			<%
+			}
+			%>
+		</form>
 
-	<form action="myPage.do" class="joinForm" method="post">
-		<div class="col">
-			<div class="card mb-4 rounded-3 shadow-sm">
-				<div class="card-header py-3">
-					<p style="color: black">회원정보</p>
-
-				</div>
-				<div class="card-body" style="padding: 0;">
-					<%
-					for (MemberVO mvo : list) {
-					%>
-
-					<div class="progress-table">
-
-						<div class="table-row">
-							<div class="serial">아이디</div>
-							<div class="country"><%=mvo.getMemberId()%></div>
+		<a href="#" style="position: fixed; bottom: 5px; right: 5px;"
+			class="btn btn-primary">맨위로</a>
 
 
-						</div>
-						<div class="table-row">
-							<div class="serial">이름</div>
-							<div class="country">
-								<%=mvo.getMemberName()%></div>
 
-						</div>
-						<div class="table-row">
-							<div class="serial">비밀번호</div>
-							<div class="country">
-								<%=mvo.getPassword()%></div>
+		<script>
+			const paystep = document.querySelectorAll(".serial1")
+			function phonePrompt() {
+				var permissionText = document.getElementById("permission") ? document
+						.getElementById("permission").innerText
+						: 'a';
 
-						</div>
-						<div class="table-row">
-							<div class="serial">생년월일</div>
-							<div class="country">
-								<%=mvo.getBirth().substring(0, 10)%></div>
+				if (permissionText === '인증완료') {
 
-						</div>
-						<div class="table-row">
-							<div class="serial">휴대폰번호</div>
-							<div class="country">
-								<%=mvo.getPhone()%></div>
+					alert('이미 인증된 번호입니다.');
+					return;
+				}
+				const inputString = prompt('휴대폰 번호를 입력하세요');
 
-						</div>
+				console.log(inputString);
+				var phonePrompt = document.getElementById("phonePrompt");
+				var phoneInput = document.getElementById("phone_input")
+				phoneInput.value = inputString;
+				phonePrompt.action = "phone.do";
+				phonePrompt.submit();
+				//document.addEventListener("DOMContentLoaded", phonePrompt);
 
-					</div>
-				</div>
-			</div>
-		</div>
+			}
+		</script>
+		<script src="js/mypage.js"></script>
 
-		<%
-		}
-		%>
-		<div style="padding-left: 13px;">
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-				data-bs-target="#exampleModal">수정</button>
-	</form>
-
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-		data-bs-target="#deleteModal">회원탈퇴</button>
-	<form action="memberDelete.do" class="joinForm" method="get">
-		
-		<%
-		for (MemberVO mvo : list) {
-		%>
-		<!-- 회원탈퇴 Modal -->
-		<div class="modal fade" id="deleteModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<h3>정말 회원탈퇴 하시겠습니까</h3>
-						<input name="member_name" id="id_input" type="hidden" class="id"
-							value=<%=mvo.getMemberName()%>>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">취소</button>
-						<button type="submit" class="btn btn-primary" src="loginForm.do">회원탈퇴</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<%
-		}
-		%>
-	</form>
-	
-		<a href="#" style="position: fixed; bottom: 5px; right: 5px;" class="btn btn-primary" >맨위로</a>
-		
-
-
-	<script>
-		const paystep = document.querySelectorAll(".serial1")
-		const topBtn = document.querySeletor(".moveTopBtn")
-	</script>
-	<script src="js/mypage.js"></script>
 	</div>
 </body>
 </html>
+

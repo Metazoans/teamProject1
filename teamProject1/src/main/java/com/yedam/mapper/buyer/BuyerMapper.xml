@@ -70,18 +70,19 @@
 	</update>
 	<!-- 상품 구매 - bills 추가 -->
 	<insert id="insertBillsItem" parameterType="com.yedam.vo.BillsVO">
-		insert into team_bills ( bills_number, seller, buyer, item_number, item_name, count, total, image )
-		values ( bills_seq.nextval, #{seller}, #{buyer}, #{itemNumber}, #{itemName}, #{count}, #{total}, #{image} )
+		insert into team_bills ( bills_number, seller, buyer, item_number, item_name, count, total, image, trade )
+		values ( bills_seq.nextval, #{seller}, #{buyer}, #{itemNumber}, #{itemName}, #{count}, #{total}, #{image}, #{trade} )
 	</insert>
 	
 	
-	<!-- 구매 목록 -->
+	<!-- 구매 목록 -> 거래 신청 목록 -->
 	<select id="selectBuyList" resultType="com.yedam.vo.BillsVO"
 		parameterType="string">
 		select *
 		from team_bills
 		where buyer = #{buyer}
 	</select>
+	
 	<!-- 구매 목록 단건 조회 -->
 	<select id="selectBills" resultType="com.yedam.vo.BillsVO" parameterType="int">
 		select *
@@ -89,16 +90,30 @@
 		where bills_number = #{billsNumber}
 	</select>
 	
+	<!-- trade:sell -> buyer(구매 신청자) 마일리지 감소 -->
+	<!-- trade:buy -> buyer(판매 신청자) 마일리지 증가 -->
 	<!-- 구매 확인 : 마일리지 감소 -->
 	<update id="updateBuyConfirm" parameterType="com.yedam.vo.BillsVO">
 		update team_member
-		set mileage = mileage - #{total}
+		<if test='trade.equals("sell")'>
+			set mileage = mileage - #{total}
+		</if>
+		<if test='trade.equals("buy")'>
+			set mileage = mileage + #{total}
+		</if>
 		where member_id = #{buyer}
 	</update>
+	<!-- trade:sell -> seller(판매 작성자) 마일리지 증가 -->
+	<!-- trade:buy -> seller(구매 작성자) 마일리지 감소 -->
 	<!-- 구매 확인 : 마일리지 증가 -->
 	<update id="updateSellConfirm" parameterType="com.yedam.vo.BillsVO">
 		update team_member
-		set mileage = mileage + #{total}
+		<if test='trade.equals("sell")'>
+			set mileage = mileage + #{total}
+		</if>
+		<if test='trade.equals("buy")'>
+			set mileage = mileage - #{total}
+		</if>
 		where member_id = #{seller}
 	</update>
 	<!-- 구매 확인 : 거래 완료 -->
@@ -120,5 +135,10 @@
 		where bills_number = #{billsNumber}
 	</delete>
 
-
+	<!-- 구매 마일리지 체크 -->
+	<select id="buyMileageCheck" resultType="int">
+		select mileage
+		from team_member
+		where member_id = #{logId}
+	</select>
 </mapper>

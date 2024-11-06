@@ -9,7 +9,7 @@
  -->
 
 <style>
-#buyCount::-webkit-inner-spin-button {
+#dealCount::-webkit-inner-spin-button {
   -webkit-appearance:none;
   margin: 0;
 }
@@ -17,10 +17,12 @@
 </style>
 
 <p>login : ${logId }</p>
+<p>itemNum : ${item.itemNumber }</p>
 
 <div id="itemDetailData">
 	<input type="hidden" id="logId" value="${logId }">
 	<input type="hidden" id="itemNumber" value="${item.itemNumber }">
+	<input type="hidden" id="trade" value="${item.trade }">
 </div>
 
 <!-- 템플릿 -->
@@ -76,12 +78,17 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group">
-				<input class="form-control" type="number" id="buyCount" max="${item.count }" placeholder="최대 : ${item.count }">
+				<input class="form-control" type="number" id="dealCount" max="${item.count }" placeholder="최대 : ${item.count }">
 			</div>
 		</div>
 		<div class="form-group">
 			<c:if test="${logId != null }">
-				<a id="buyBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+				<c:if test="${item.trade == 'sell' }">
+					<a id="dealBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+				</c:if>
+				<c:if test="${item.trade == 'buy' }">
+					<a id="dealBtn" href="#" class="genric-btn danger-border circle" >판매</a>
+				</c:if>
 			</c:if>
 		</div>
 	</div>

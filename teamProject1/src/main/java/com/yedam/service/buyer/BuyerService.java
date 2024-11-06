@@ -35,4 +35,6 @@ public interface BuyerService {
 	boolean resetItemCount(BillsVO buyItem); //item에서 아이템 넘버 검색 후 count 증가
 	boolean removeBills(BillsVO buyItem); //bills 삭제
 
+	//마일리지 체크
+	int mileageCheck(String logId);
 }

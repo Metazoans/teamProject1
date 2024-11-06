@@ -43,4 +43,4 @@
 let fromId = "${logId}";
 let toId = "";
 </script>
-<script src="js/chat-buyer.js"></script>
+<script src="js/chat-seller.js"></script>

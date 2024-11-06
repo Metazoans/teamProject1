@@ -11,7 +11,7 @@ import com.yedam.vo.ItemVO;
 
 public class ItemServiceImpl implements ItemService{
 
-	SqlSession sqlSession = DataSource.getInstance().openSession();
+	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	ItemMapper mapper = sqlSession.getMapper(ItemMapper.class);
 	
 	@Override
@@ -55,4 +55,10 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.payStepDelete(itemNum) == 1;
 	}
 	
+	//추가
+	@Override
+	public boolean changePayStep(int billsNumber) {
+		return mapper.updatePayStep(billsNumber) == 1;
+	}
 }
+

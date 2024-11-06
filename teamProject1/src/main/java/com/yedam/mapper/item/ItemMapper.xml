@@ -64,4 +64,11 @@
 	</delete>
 
 
+	<!-- 수정 -->
+	<update id="updatePayStep" parameterType="int">
+		update team_bills
+		set pay_step = 'deal'
+		where bills_number = #{billsNumber}
+	</update>
+
 </mapper>

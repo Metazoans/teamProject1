@@ -23,5 +23,6 @@ public interface ItemService {
 	
 	boolean payStepDelete(String itemNum);
 
-	
+	//추가
+	boolean changePayStep(int billsNumber);
 }

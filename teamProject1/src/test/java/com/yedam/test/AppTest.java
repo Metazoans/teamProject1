@@ -9,14 +9,17 @@ import com.yedam.vo.ItemVO;
 public class AppTest {
 
 	public static void main(String[] args) {
+
 		
 		ItemService svc = new ItemServiceImpl();
 		
+
 		if(svc.payStepDelete("1")) {
 			System.out.println("성공");
 		}else {
 			System.out.println("실패");
 		}
+
 		
 		
 		

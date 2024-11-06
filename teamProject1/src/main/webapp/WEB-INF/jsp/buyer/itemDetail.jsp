@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
 <!-- itemDetail.do -->
 <!-- 
 	화면 css 적용
@@ -9,7 +11,7 @@
  -->
 
 <style>
-#buyCount::-webkit-inner-spin-button {
+#dealCount::-webkit-inner-spin-button {
   -webkit-appearance:none;
   margin: 0;
 }
@@ -17,10 +19,12 @@
 </style>
 
 <p>login : ${logId }</p>
+<p>itemNum : ${item.itemNumber }</p>
 
 <div id="itemDetailData">
 	<input type="hidden" id="logId" value="${logId }">
 	<input type="hidden" id="itemNumber" value="${item.itemNumber }">
+	<input type="hidden" id="trade" value="${item.trade }">
 </div>
 
 <!-- 템플릿 -->
@@ -53,20 +57,21 @@
 		<!-- 내용 -->
 		<div class="col-sm-12">
 			<div class="form-group">
-				<p class="form-control w-100">${item.itemInfo }</p>
-			</div>
-		</div>
-
-		<div class="col-sm-12">
-			<div class="form-group">
-				<p class="form-control valid">image : ${item.image }</p>
+				<textarea readonly class="form-control w-100" rows="15" style="background-color: white">${item.itemInfo }</textarea>
 			</div>
 		</div>
 		
+		<c:if test="${item.image != null }">
+			<div class="col-sm-12">
+				<div class="form-group">
+					<p class="form-control valid">image : ${item.image }</p>
+				</div>
+			</div>
+		</c:if>
 		
 		<div class="col-sm-3">
 			<div class="form-group">
-				<p class="form-control valid">${item.seller }</p>
+				<p id="seller" class="form-control valid">${item.seller }</p>
 			</div>
 		</div>
 		<div class="col-sm-3">
@@ -76,19 +81,23 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group">
-				<input class="form-control" type="number" id="buyCount" max="${item.count }" placeholder="최대 : ${item.count }">
+				<input type="hidden" id="maxCount" value="${item.count }">
+				<input class="form-control" type="number" id="dealCount" placeholder="최대 : ${item.count }">
 			</div>
 		</div>
 		<div class="form-group">
 			<c:if test="${logId != null }">
-				<a id="buyBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+				<c:if test="${item.trade == 'sell' }">
+					<a id="dealBtn" href="#" class="genric-btn danger-border circle" >구입</a>
+				</c:if>
+				<c:if test="${item.trade == 'buy' }">
+					<a id="dealBtn" href="#" class="genric-btn danger-border circle" >판매</a>
+				</c:if>
 			</c:if>
 		</div>
 	</div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	
 <script src="js/itemDetail.js"></script>
 
 

@@ -80,5 +80,10 @@ public class BuyerServiceImpl implements BuyerService {
 	public boolean removeBills(BillsVO buyItem) {
 		return buyMapper.deleteBills(buyItem) == 1;
 	}
-	
+
+	//마일리지 체크
+	@Override
+	public int mileageCheck(String logId) {
+		return buyMapper.buyMileageCheck(logId);
+	}
 }

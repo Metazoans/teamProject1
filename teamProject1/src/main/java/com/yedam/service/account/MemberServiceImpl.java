@@ -73,5 +73,10 @@ public class MemberServiceImpl implements MemberService{
 	public List<BillsVO> purchaseList(String logId) {
 		return mapper.selectPurchase(logId);
 	}
+
+	@Override
+	public boolean modifyPhone(MemberVO member) {
+		return mapper.updatePhone(member)==1;
+	}
 	
 }

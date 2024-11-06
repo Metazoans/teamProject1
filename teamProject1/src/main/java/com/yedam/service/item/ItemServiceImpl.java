@@ -60,4 +60,10 @@ public class ItemServiceImpl implements ItemService{
 		return mapper.payStepDelete(itemNum) == 1;
 	}
 	
+	//추가
+	@Override
+	public boolean changePayStep(int billsNumber) {
+		return mapper.updatePayStep(billsNumber) == 1;
+	}
 }
+

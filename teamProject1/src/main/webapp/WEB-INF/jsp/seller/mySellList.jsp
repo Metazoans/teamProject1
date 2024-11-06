@@ -107,9 +107,11 @@
 
 <hr>
 
+
 <h3 class="table-name1">구매리스트</h3>
-<div class="progress-table">
-<table class="table" >
+<div class="progress-table" id="kanghyeon">
+<table class="table" style="text-align: center;">
+
   <thead>
     <tr>
       <th scope="col">이미지</th>

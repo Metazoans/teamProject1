@@ -20,6 +20,7 @@ import com.yedam.control.Item.ItemUpdateControl;
 import com.yedam.control.Item.MySellListControl;
 import com.yedam.control.Item.PayStepDeleteControl;
 import com.yedam.control.Item.PayStepUpdateControl;
+import com.yedam.control.Item.SellListCont;
 import com.yedam.control.Item.SellerHistoryControl;
 
 import com.yedam.control.account.GradeControl;
@@ -31,15 +32,16 @@ import com.yedam.control.account.MemberDeleteControl;
 import com.yedam.control.account.MileageControl;
 import com.yedam.control.account.MyPageControl;
 import com.yedam.control.account.MyPageFormControl;
+import com.yedam.control.account.PhoneControl;
 import com.yedam.control.account.SearchIdControl;
 import com.yedam.control.account.SearchIdFormControl;
 import com.yedam.control.account.SearchPwdControl;
 import com.yedam.control.account.SearchPwdFormControl;
 import com.yedam.control.buyer.BuyCancelCont;
 import com.yedam.control.buyer.BuyConfirmCont;
-import com.yedam.control.buyer.BuyItemCont;
 import com.yedam.control.buyer.BuyListChangeCont;
 import com.yedam.control.buyer.BuyListCont;
+import com.yedam.control.buyer.DealItemCont;
 import com.yedam.control.buyer.ItemDetailCont;
 import com.yedam.control.buyer.ItemListChangeCont;
 import com.yedam.control.buyer.ItemListCont;
@@ -72,7 +74,7 @@ public class FrontController extends HttpServlet {
 		map.put("/itemListChange.do", new ItemListChangeCont()); //상품 목록 출력 변화
 		
 		map.put("/itemDetail.do", new ItemDetailCont()); //상품 상세
-		map.put("/buyItem.do", new BuyItemCont()); //상품 구매
+		map.put("/dealItem.do", new DealItemCont()); //상품 거래 신청
 		
 		map.put("/buyList.do", new BuyListCont()); //구매 내역
 		map.put("/buyListChange.do", new BuyListChangeCont());
@@ -113,6 +115,8 @@ public class FrontController extends HttpServlet {
 		map.put("/payStepUpdate.do", new PayStepUpdateControl());
 		map.put("/payStepDelete.do", new PayStepDeleteControl());
 		
+		map.put("/sellList.do", new SellListCont());
+		
 		
 		
 		
@@ -143,7 +147,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/grade.do", new GradeControl());
 		
-		
+		map.put("/phone.do", new PhoneControl());
 	
 		
 

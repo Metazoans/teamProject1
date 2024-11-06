@@ -35,4 +35,6 @@ public interface BuyerMapper {
 	int cancelItemCount(BillsVO buyItem); //item에서 아이템 넘버 검색 후 count 증가
 	int deleteBills(BillsVO buyItem); //bills 삭제
 	
+	//로그인 아이디의 마일리지 체크
+	int buyMileageCheck(String logId);
 }

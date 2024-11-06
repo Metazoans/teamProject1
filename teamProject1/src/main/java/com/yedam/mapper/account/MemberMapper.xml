@@ -78,7 +78,7 @@
 		select count(*) 
 		from team_bills
 		where seller=#{memberId}
-		and pay_date=completed
+		and pay_date='completed'
 	</select>
 	
 	<update id="updateGrade" parameterType="string" >
@@ -113,4 +113,11 @@
  	]]>
 	and buyer=#{logId}
 	</select>
+	
+	<update id="updatePhone" parameterType="com.yedam.vo.MemberVO">
+    update team_member
+    set
+    phone=#{phone}
+    where member_id=#{memberId}
+</update>
 </mapper>

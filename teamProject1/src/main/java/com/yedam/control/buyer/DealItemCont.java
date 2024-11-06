@@ -16,32 +16,43 @@ import com.yedam.service.buyer.BuyerServiceImpl;
 import com.yedam.vo.BillsVO;
 import com.yedam.vo.ItemVO;
 
-public class BuyItemCont implements Control {
+public class DealItemCont implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/json;charset=utf-8");
 
 		String itemNumber = req.getParameter("itemNumber");
-		String buyCount = req.getParameter("buyCount");
-		String buyer = req.getParameter("logId");
-
+		String dealCount = req.getParameter("dealCount");
+		String logId = req.getParameter("logId");
+		
 		BuyerService svc = new BuyerServiceImpl();
 
 		ItemVO item = new ItemVO();
 		item = svc.getItem(Integer.parseInt(itemNumber));
+		
+		int total = item.getPrice() * Integer.parseInt(dealCount);
 
+		int mileage = svc.mileageCheck(logId);
+		if(item.getTrade().equals("sell") && mileage < total) {
+			resp.getWriter().print("{\"retCode\": \"LACK\"}");
+			return;
+		}
+		
 		BillsVO bills = new BillsVO();
 		bills.setSeller(item.getSeller());
-		bills.setBuyer(buyer);
+		bills.setBuyer(logId);
 		bills.setItemNumber(item.getItemNumber());
 		bills.setItemName(item.getItemName());
-		bills.setCount(Integer.parseInt(buyCount));
-		bills.setTotal((item.getPrice() * Integer.parseInt(buyCount)));
+		bills.setCount(Integer.parseInt(dealCount));
+		bills.setTotal(total);
 		bills.setImage(item.getImage());
+		bills.setTrade(item.getTrade());
 
 		Map<String, Object> result = new HashMap();
 
+		Gson gson = new GsonBuilder().create();
+		
 		// 아이템 카운트 확인
 		if (svc.modifyItemCount(bills)) {
 			if (svc.registerBillsItem(bills)) {
@@ -56,7 +67,6 @@ public class BuyItemCont implements Control {
 		int newItemCnt = svc.getItem(Integer.parseInt(itemNumber)).getCount();
 		result.put("newCnt", newItemCnt);
 		
-		Gson gson = new GsonBuilder().create();
 		resp.getWriter().print(gson.toJson(result));
 
 	}

@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	
 <!-- itemDetail.do -->
 <!-- 
 	화면 css 적용
@@ -55,16 +57,17 @@
 		<!-- 내용 -->
 		<div class="col-sm-12">
 			<div class="form-group">
-				<p class="form-control w-100">${item.itemInfo }</p>
-			</div>
-		</div>
-
-		<div class="col-sm-12">
-			<div class="form-group">
-				<p class="form-control valid">image : ${item.image }</p>
+				<textarea readonly class="form-control w-100" rows="15" style="background-color: white">${item.itemInfo }</textarea>
 			</div>
 		</div>
 		
+		<c:if test="${item.image != null }">
+			<div class="col-sm-12">
+				<div class="form-group">
+					<p class="form-control valid">image : ${item.image }</p>
+				</div>
+			</div>
+		</c:if>
 		
 		<div class="col-sm-3">
 			<div class="form-group">
@@ -78,7 +81,8 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group">
-				<input class="form-control" type="number" id="dealCount" max="${item.count }" placeholder="최대 : ${item.count }">
+				<input type="hidden" id="maxCount" value="${item.count }">
+				<input class="form-control" type="number" id="dealCount" placeholder="최대 : ${item.count }">
 			</div>
 		</div>
 		<div class="form-group">
@@ -94,8 +98,6 @@
 	</div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	
 <script src="js/itemDetail.js"></script>
 
 

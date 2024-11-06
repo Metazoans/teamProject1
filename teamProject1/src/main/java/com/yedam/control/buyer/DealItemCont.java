@@ -36,6 +36,7 @@ public class DealItemCont implements Control {
 		int mileage = svc.mileageCheck(logId);
 		if(item.getTrade().equals("sell") && mileage < total) {
 			resp.getWriter().print("{\"retCode\": \"LACK\"}");
+			return;
 		}
 		
 		BillsVO bills = new BillsVO();

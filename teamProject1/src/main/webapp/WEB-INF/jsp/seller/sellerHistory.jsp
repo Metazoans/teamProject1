@@ -1,108 +1,69 @@
-<%@page import="com.yedam.vo.BillsVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<style>
-#container{
-	padding-top: 50px;
-	margin: 0 auto;
-	width: 80%;	
-	padding-bottom: 50px;
-}
 
-</style>
+<link rel="stylesheet" href="css/buyer.css">
 
-</head>
-<body>
-	<div id="container">
-	<%
-		List<BillsVO> list = (List<BillsVO>)request.getAttribute("sellerHistory");
-	%>
-	
-	<div class="progress-table">
-		<div class="table-head">
-			<div class="serial">이미지</div>
-			<div class="serial">아이템 이름</div>
-			<div class="serial">상품수량</div>
-			<div class="serial">총금액</div>
-			<div class="serial">처리상태</div>
+
+<h1>sellHistory.jsp 1</h1>
+<p>logId = ${logId }</p>
+<p></p>
+
+<!-- 이미지 / 상품명 / 거래 수량 / 결제 금액 / 거래 상태(거래 요청 / 거래 확인) / 결제 확인 버튼(pay_step 체크 후 클릭 가능하게) / 구매 취소 버튼 -->
+
+<input type="hidden" id="logId" value="${logId }">
+
+
+
+<!-- 템플릿 적용 -->
+<div class="job-listing-area">
+	<div class="container">
+		<div class="row">
+			<!-- 리스트 내용 (제목/가격/판매자/작성일) -->
+			<div class="progress-table-wrap center-location">
+				<div class="progress-table itemList">
+					<h3>받은 구매 신청(판매)</h3>
+					<div class="table-head">
+						<div class="buyTitle">제목</div>
+						<div class="buyCount">갯수</div>
+						<div class="buyPrice">결제액</div>
+						<div class="buyPayStep">거래상태</div>
+						<div class="buyBtnDiv">버튼</div>
+					</div>
+
+					<!-- 목록 출력 -->
+					<div id="buyList">
+					
+					</div>
+					
+				</div>
+				
+				<br>
+				<br>
+				
+				<div class="progress-table itemList">
+					<h3>받은 판매 신청(구매)</h3>
+					<div class="table-head">
+						<div class="buyTitle">제목</div>
+						<div class="buyCount">갯수</div>
+						<div class="buyPrice">결제액</div>
+						<div class="buyPayStep">거래상태</div>
+						<div class="buyBtnDiv">버튼</div>
+					</div>
+
+					<!-- 목록 출력 -->
+					<div id="sellList">
+					
+					</div>
+					
+				</div>
+			</div>
 		</div>
-	<%
-		for(BillsVO bvo : list){
-	%>
-		<div class="table-row">
-			<div class="serial"><img src="images/<%=bvo.getImage() %>"></div>
-			<div class="serial"><%=bvo.getItemName() %></div>
-			<div class="serial"><%=bvo.getCount() %></div>
-			<div class="serial"><%=bvo.getTotal() %></div>
-			<div class="serial" id="PayStep"><%=bvo.getPayStep() %></div>
-			<div class="serial">
-  			<form method="post" action="payStepUpdate.do">
-  				<input type="hidden" name="itemNum" value="<%=bvo.getItemNumber()%>">
-  				<button type="submit" class="btn head-btn1" onclick="return confirm('아이템을 전송하시겠습니까?')">아이템전송확인</button>
-			</form>
-			</div>
-			<div class="serial">
-			<form method="post" action="payStepDelete.do">
-				<input type="hidden" name="itemNum" value="<%=bvo.getItemNumber()%>">
-	  			<button type="submit" class="btn head-btn1" onclick="return confirm('거래를 취소하시겠습니까?')">거래취소</button>
-			</form>
-			</div>
-			<div class="serial">
-  			<button type="button" class="btn head-btn1 buyer">채팅창가기</button>
-  			<input type="hidden" class="buyerVal" value="<%=bvo.getBuyer()%>">
-			</div>
-			</div>			
-	<% } %>
-		</div>
-	
-	
- </div><!-- main div -->
-
-	<!-- Modal -->
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h1 class="modal-title fs-5" id="staticBackdropLabel">거래처리</h1>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      	<input type="hidden" id="modalBuyer" name="buyer" value="">
-	        <span>거래처리를 완료하시겠습니까??</span>
-	      <div class="modal-body">
-	      </div>
-	      <div class="modal-footer">
-	        <button type="submit" class="btn btn-primary" formaction="payStepUpdate.do">완료</button>
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	      </div>
-	    </div>
-	  </div>
 	</div>
-	</form>
-	
-<script>
-	function Modal(buyer) {
-		console.log(buyer);
-		document.getElementById("modalBuyer").value = buyer;
-	}
-	
-	window.onload = function() {
-	    let pSteps = document.querySelectorAll(".serial");
+</div>
 
-	    pSteps.forEach(function(pStep) {
-	        if (pStep.innerText === "processing") {
-	            pStep.innerText = '처리중';
-	        }
-	  })
-	}
-	
-</script>
-	
-</body>
-</html>
+
+<script src="js/sellList.js"></script>

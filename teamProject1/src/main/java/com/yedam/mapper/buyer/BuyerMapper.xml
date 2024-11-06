@@ -136,7 +136,7 @@
 	</delete>
 
 	<!-- 구매 마일리지 체크 -->
-	<select id="buyMileageCheck" resultType="int">
+	<select id="buyMileageCheck" resultType="int" parameterType="string">
 		select mileage
 		from team_member
 		where member_id = #{logId}

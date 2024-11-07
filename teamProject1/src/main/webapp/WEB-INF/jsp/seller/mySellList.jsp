@@ -352,9 +352,6 @@
 
 	<script>
 		
-		const id = "${logId}";
-		
-	
 		function Modal(itemNumber, itemName, itemInfo, count, price) {
 			document.getElementById("modalItemNumber").value = itemNumber;
 			document.getElementById("modalItemName").value = itemName;

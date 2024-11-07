@@ -22,6 +22,10 @@ public class ItemListCont implements Control {
 		String game = req.getParameter("game");
 		String servers = req.getParameter("servers");
 		
+		if(servers.equals("")) {
+			servers = null;
+		}
+		
 		ItemListVO ilvo = new ItemListVO();
 		ilvo.setCategories(categories);
 		ilvo.setTrade(trade);
@@ -33,6 +37,7 @@ public class ItemListCont implements Control {
 		} else {
 			ilvo.setPage(Integer.parseInt(page));
 		}
+		
 		
 		BuyerService svc = new BuyerServiceImpl();
 		int listCnt = svc.getSortItemListCnt(ilvo);

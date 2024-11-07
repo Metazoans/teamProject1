@@ -4,12 +4,6 @@
 
 <link rel="stylesheet" href="css/buyer.css">
 
-<p>login ID : ${logId }</p>
-<div id="dataPrt">
-	<p>page : ${ilvo.page }</p>
-
-</div>
-
 <div id="listDataDiv">
 	<input type="hidden" id="page" value="${ilvo.page }">
 	<input type="hidden" id="categories" value="${ilvo.categories }">
@@ -32,14 +26,7 @@
 						<ul class="list">
 							<li data-value="item_name" class="option focus">제목</li>
 							<li data-value="item_info" class="option">내용</li>
-							
-							<!-- 판매자 및 구매자를 작성자로 변경해야 할듯? -->
-							<c:if test="${ilvo.trade == 'sell' }">
-								<li data-value="seller" class="option">판매자</li>
-							</c:if>
-							<c:if test="${ilvo.trade == 'buy' }">
-								<li data-value="seller" class="option">구매자</li>
-							</c:if>
+							<li data-value="seller" class="option">작성자</li>
 						</ul>
 					</div>
 				</div>
@@ -57,7 +44,7 @@
 					<div class="table-head">
 						<div class="listTitle" data-value="item_name">제목</div>
 						<div class="listPrice" data-value="price">가격</div>
-						<div class="listSeller" data-value="seller">판매자</div>
+						<div class="listSeller" data-value="seller">작성자</div>
 						<div class="listDate" data-value="up_date">작성일</div>
 					</div>
 

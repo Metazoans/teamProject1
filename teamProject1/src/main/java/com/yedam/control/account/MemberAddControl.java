@@ -37,14 +37,24 @@ public class MemberAddControl implements Control {
 		mvo.setPhone(phone);
 		
 		MemberService svc = new MemberServiceImpl();
+		
+
+		
+		
+		
 		try {
-			svc.addMember(mvo);
-			req.getRequestDispatcher("account/loginForm.tiles").forward(req, resp);
+			if(svc.addMember(mvo)) {
+			out.println("<script>alert('회원가입 완료'); location.href='loginForm.do';</script>");
+			}
+
 			//resp.sendRedirect("testBuyer.do");
 		} catch(Exception e) {
-			out.println("<script>alert('아이디가 중복입니다.'); history.back(); </script>");
+			out.println("<script>alert('다시 작성해주세요'); history.back(); </script>");
 			//resp.sendRedirect("memberAddForm.do");
 		}
+		
+		
+		
 	}
 
 }

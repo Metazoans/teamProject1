@@ -95,10 +95,10 @@ function checkField() {
       <input name="member_name" type="text" class="inputField" placeholder="이름">
     </div>
     <div class="textForm">
-      <input name="phone" type="text" class="inputField" placeholder="휴대폰 번호">
+      <input name="phone" type="text" class="inputField" placeholder="휴대폰 번호(010-XXXX-XXXX)">
     </div>
     <div class="textForm">
-      <input name="birth" type="text" class="inputField" placeholder="생년월일">
+      <input name="birth" type="text" class="inputField" placeholder="생년월일(YYYYMMDD)">
     </div>
 
     <input type="submit" class="btn2" value="입력"/><br>

@@ -33,4 +33,6 @@ public interface MemberMapper {
 	public List<BillsVO> selectPurchase(@Param("logId") String id);
 	
 	public int updatePhone(MemberVO member);
+	
+	
 }

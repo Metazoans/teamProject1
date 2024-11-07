@@ -179,10 +179,10 @@ height:700px;
         <input name="member_name" type="text" class="name" placeholder="이름">
       </div>
       <div class="textForm">
-        <input name="birth" type="text" class="birth" placeholder="생년월일">
+        <input name="birth" type="text" class="birth" placeholder="생년월일(YYYYMMDD)">
       </div>
       <div class="textForm">
-        <input name="phone" type="text" class="cellphoneNo" placeholder="전화번호">
+        <input name="phone" type="text" class="cellphoneNo" placeholder="전화번호(010-XXXX-XXXX)">
       </div>
       <input type="submit" class="btn1" value="저장"/>
       <input type="button" class="btn2 btn-primary" onclick="location.href='loginForm.do'" value="취소">

@@ -1,7 +1,6 @@
 package com.yedam.web;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +21,6 @@ import com.yedam.control.Item.PayStepDeleteControl;
 import com.yedam.control.Item.PayStepUpdateControl;
 import com.yedam.control.Item.SellListCont;
 import com.yedam.control.Item.SellerHistoryControl;
-
 import com.yedam.control.account.GradeControl;
 import com.yedam.control.account.LogOutControl;
 import com.yedam.control.account.LoginControl;
@@ -148,6 +146,7 @@ public class FrontController extends HttpServlet {
 		map.put("/grade.do", new GradeControl());
 		
 		map.put("/phone.do", new PhoneControl());
+		
 	
 		
 

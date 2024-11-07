@@ -37,12 +37,12 @@ public class MyPageControl implements Control {
 			out.println("<script>alert('모든 필드를 입력해 주세요.'); history.back();</script>");
 			return;
 		}
-		
+		try {
 		if(svc.modifyMember(mvo)) {
 			out.println("<script>alert('변경성공'); location.href='loginForm.do';</script> ");		
 		
-		}else {
-			out.println("<script>alert('변경 실패'); history.back();</script>");
+		}} catch(Exception e) {
+			out.println("<script>alert('중복되는 아이디가 존재합니다'); history.back();</script>");
 			
 		}
 		

@@ -12,7 +12,7 @@ import com.yedam.vo.ItemVO;
 
 public class ItemServiceImpl implements ItemService{
 
-	SqlSession sqlSession = DataSource.getInstance().openSession(true);
+	SqlSession sqlSession = DataSource.getInstance().openSession();
 	ItemMapper mapper = sqlSession.getMapper(ItemMapper.class);
 	
 	@Override

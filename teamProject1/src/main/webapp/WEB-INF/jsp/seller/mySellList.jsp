@@ -356,16 +356,16 @@
 		
 	
 		function Modal(itemNumber, itemName, itemInfo, count, price) {
+			document.getElementById("modalItemNumber").value = itemNumber;
+			document.getElementById("modalItemName").value = itemName;
+			document.getElementById("modalCount").value = count;
+			document.getElementById("modalPrice").value = price;
 			if(itemInfo == null){
 				document.getElementById("modalItemInfo").value = itemInfo;
 			}else{
 				document.getElementById("modalItemInfo").value = "";
 				document.getElementById("modalItemInfo").placeholder = "상세내용없음";
 			}
-			document.getElementById("modalItemNumber").value = itemNumber;
-			document.getElementById("modalItemName").value = itemName;
-			document.getElementById("modalCount").value = count;
-			document.getElementById("modalPrice").value = price;
 		}
 		
 		window.onload=function(){
@@ -378,6 +378,8 @@
 		         }
 		      })
 		 }
+		
+	
 		
 		
 		 

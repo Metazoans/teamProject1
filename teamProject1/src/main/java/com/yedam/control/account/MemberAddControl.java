@@ -26,8 +26,7 @@ public class MemberAddControl implements Control {
 		String name = req.getParameter("member_name");
 		String phone = req.getParameter("phone");
 		String birth = req.getParameter("birth");
-		
-		
+
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);
 		mvo.setMemberName(name);
@@ -49,7 +48,6 @@ public class MemberAddControl implements Control {
 			out.println("<script>alert('다시 입력해주세요'); history.back(); </script>");
 			// resp.sendRedirect("memberAddForm.do");
 		}
-
 	}
 
 }

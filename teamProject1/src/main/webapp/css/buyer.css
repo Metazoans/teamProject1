@@ -57,8 +57,15 @@
 
 
 /* itemList width */
+.listImage {
+	width: 5%;
+}
+.listImage img {
+	width: 40px;
+	height: 40px;
+}
 .listTitle {
-	width: 65%;
+	width: 60%;
 }
 .listPrice {
 	width: 10%;
@@ -79,7 +86,7 @@
 	width: 8%;
 }
 .buyPrice {
-	width: 15%;
+	width: 10%;
 }
 .buyPayStep {
 	width: 8%;

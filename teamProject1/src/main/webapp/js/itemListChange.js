@@ -37,7 +37,9 @@ document.querySelectorAll('.table-head div').forEach(div => {
 		}
 		else listData.order = null;
 
-		listData.sort = e.target.dataset.value;
+		if(e.target.dataset.value != 'item_image') {
+			listData.sort = e.target.dataset.value;
+		}
 
 		itemListPrt(listData);
 	});
@@ -65,8 +67,18 @@ function itemListPrt(listData) {
 				let ss = update.getSeconds();
 				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`; 
 				
+				let img;
+				console.log(item.image);
+				if(item.image != undefined) {
+					img = $('<img alt="이미지">').attr('src', 'images/' + item.image);
+				}
+				else {
+					img = $('<img alt="이미지">').attr('src', 'images/noImage.png');
+				}
+				
 				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
 				$('<div />').addClass('table-row').append(
+					$('<div />').addClass('listImage').append(img),
 					$('<div />').addClass('listTitle').append(link),
 					$('<div />').addClass('listPrice').text(item.price),
 					$('<div />').addClass('listSeller').text(item.seller),
@@ -156,22 +168,28 @@ function pageBtnFnc() {
 					if(prev) {
 						startPage = startPage - 5;
 						startPage = startPage < 1 ? 1 : startPage;
-						page = startPage;
 						endPage = startPage + 4;
 						endPage = endPage > realEnd ? realEnd : endPage;
+						page = endPage;
 						prev = startPage > 1;
 						next = endPage < realEnd;
+					}
+					else {
+						page = startPage;
 					}
 					break;
 				case '>':
 					if(next) {
 						endPage = endPage + 5;
-						endPage = endPage > realEnd ? realEnd : endPage;
 						startPage = endPage - 4;
+						endPage = endPage > realEnd ? realEnd : endPage;
 						startPage = startPage < 1 ? 1 : startPage;
 						page = startPage;
 						prev = startPage > 1;
 						next = endPage < realEnd;
+					}
+					else {
+						page = endPage;
 					}
 					break;
 				default:

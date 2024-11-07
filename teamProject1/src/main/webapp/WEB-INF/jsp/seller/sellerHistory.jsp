@@ -19,6 +19,7 @@
 				<div class="progress-table itemList">
 					<h3>받은 구매 신청(판매)</h3>
 					<div class="table-head">
+						<div class="listImage">이미지</div>
 						<div class="buyTitle">제목</div>
 						<div class="dealUser">거래자</div>
 						<div class="buyCount">갯수</div>
@@ -40,6 +41,7 @@
 				<div class="progress-table itemList">
 					<h3>받은 판매 신청(구매)</h3>
 					<div class="table-head">
+						<div class="listImage">이미지</div>
 						<div class="buyTitle">제목</div>
 						<div class="dealUser">거래자</div>
 						<div class="buyCount">갯수</div>

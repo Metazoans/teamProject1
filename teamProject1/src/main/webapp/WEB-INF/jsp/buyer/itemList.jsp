@@ -42,6 +42,7 @@
 				<div class="progress-table itemList">
 					
 					<div class="table-head">
+						<div class="listImage" data-value="item_image">이미지</div>
 						<div class="listTitle" data-value="item_name">제목</div>
 						<div class="listPrice" data-value="price">가격</div>
 						<div class="listSeller" data-value="seller">작성자</div>

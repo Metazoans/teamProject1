@@ -21,6 +21,15 @@ function buyListPrt() {
 				let cancelBtn = $('<button />').addClass('genric-btn danger-border cancelBtn').text('거래취소');
 				let chatBtn = $('<button />').addClass('genric-btn warning-border chatBtn').text('채팅');
 
+				let img;
+				console.log(item.image);
+				if(item.image != undefined) {
+					img = $('<img alt="이미지">').attr('src', 'images/' + item.image);
+				}
+				else {
+					img = $('<img alt="이미지">').attr('src', 'images/noImage.png');
+				}
+
 				let payStep;
 				if(item.payStep == 'processing') payStep = '거래 신청';
 				else if(item.payStep == 'deal') payStep = '거래 승인';
@@ -29,6 +38,7 @@ function buyListPrt() {
 					$(divRow).append(
 						$('<input>').attr('type', 'hidden').val(item.billsNumber),
 						$('<input>').attr('type', 'hidden').addClass('seller').val(item.seller),
+						$('<div />').addClass('listImage').append(img),
 						$('<div />').addClass('buyTitle').text(item.itemName),
 						$('<div />').addClass('dealUser').text(item.seller),
 						$('<div />').addClass('buyCount').text(item.count),
@@ -45,6 +55,7 @@ function buyListPrt() {
 					$(divRow).append(
 						$('<input>').attr('type', 'hidden').val(item.billsNumber),
 						$('<input>').attr('type', 'hidden').addClass('seller').val(item.seller),
+						$('<div />').addClass('listImage').append(img),
 						$('<div />').addClass('buyTitle').text(item.itemName),
 						$('<div />').addClass('dealUser').text(item.seller),
 						$('<div />').addClass('buyCount').text(item.count),

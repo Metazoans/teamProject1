@@ -15,7 +15,6 @@
 	padding: 27px 44px;
     border-radius: 0px;
     position: relative;
-    z-index: -1;
     border: 0;
     overflow: hidden;
 }
@@ -74,7 +73,6 @@
 	padding: 27px 44px;
     border-radius: 0px;
     position: relative;
-    z-index: -1;
     border: 1px solid #fb246a;
     overflow: hidden;
 }
@@ -117,8 +115,14 @@
 	height: 71px;
 }
 
+#randomList .listGame {
+	width: 10%;
+}
+#randomList .listServer {
+	width: 10%;
+}
 #randomList .listTitle {
-	width: 65%;
+	width: 50%;
 }
 
 #randomList .listPrice {

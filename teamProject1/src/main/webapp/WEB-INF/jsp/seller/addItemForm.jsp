@@ -31,6 +31,12 @@
     border: 0;
     overflow: hidden;
 }
+ textarea {
+    width: 100%;
+    height: 6.5em;
+    border: none;
+    resize: none;
+  }
 </style>
 </head>
 <body>

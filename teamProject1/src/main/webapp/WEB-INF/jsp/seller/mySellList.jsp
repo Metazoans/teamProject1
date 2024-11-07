@@ -348,9 +348,11 @@
 			</div>
 		</div>
 	</div>
+	
 
 	<script>
 		
+		const id = "${logId}";
 		
 	
 		function Modal(itemNumber, itemName, itemInfo, count, price) {

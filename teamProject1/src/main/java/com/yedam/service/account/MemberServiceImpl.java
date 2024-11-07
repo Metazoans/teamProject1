@@ -78,5 +78,10 @@ public class MemberServiceImpl implements MemberService{
 	public boolean modifyPhone(MemberVO member) {
 		return mapper.updatePhone(member)==1;
 	}
+
+	@Override
+	public boolean searchDupId(String memberId) {
+		return mapper.selectIdCount(memberId) > 0;
+	}
 	
 }

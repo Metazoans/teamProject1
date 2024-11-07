@@ -34,5 +34,5 @@ public interface MemberMapper {
 	
 	public int updatePhone(MemberVO member);
 	
-	
+	public int selectIdCount(String memberId);
 }

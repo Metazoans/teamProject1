@@ -2,7 +2,7 @@ package com.yedam.control.account;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,41 +20,37 @@ public class MemberAddControl implements Control {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
-		
 
 		String id = req.getParameter("member_id");
 		String pwd = req.getParameter("password");
-		String name = req.getParameter("member_name");		
+		String name = req.getParameter("member_name");
 		String phone = req.getParameter("phone");
 		String birth = req.getParameter("birth");
 		
-
+		phone = phone.replaceAll("-", "");
+		
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);
 		mvo.setMemberName(name);
 		mvo.setPassword(pwd);
 		mvo.setBirth(birth);
 		mvo.setPhone(phone);
-		
-		MemberService svc = new MemberServiceImpl();
-		
 
-		
-		
-		
+		MemberService svc = new MemberServiceImpl();
+
 		try {
-			if(svc.addMember(mvo)) {
-			out.println("<script>alert('회원가입 완료'); location.href='loginForm.do';</script>");
+			if (svc.addMember(mvo)) {
+				out.println("<script>alert('회원가입 완료'); location.href='loginForm.do';</script>");
 			}
 
-			//resp.sendRedirect("testBuyer.do");
-		} catch(Exception e) {
-			out.println("<script>alert('다시 작성해주세요'); history.back(); </script>");
-			//resp.sendRedirect("memberAddForm.do");
+			// resp.sendRedirect("testBuyer.do");
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			out.println("<script>alert('다시 입력해주세요'); history.back(); </script>");
+			// resp.sendRedirect("memberAddForm.do");
 		}
-		
-		
-		
+
 	}
 
 }

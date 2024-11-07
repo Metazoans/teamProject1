@@ -78,7 +78,7 @@
 		select count(*) 
 		from team_bills
 		where seller=#{memberId}
-		and pay_date='completed'
+		and pay_step='completed'
 	</select>
 	
 	<update id="updateGrade" parameterType="string" >
@@ -99,6 +99,7 @@
  	WHERE ROWNUM <= 2
  	]]>
 	and seller=#{logId}
+	and pay_step='completed'
 	</select>
 	
 	<select id="selectPurchase" parameterType="string" resultType="com.yedam.vo.BillsVO">
@@ -112,6 +113,7 @@
  	WHERE ROWNUM <= 2
  	]]>
 	and buyer=#{logId}
+	and pay_step='completed'
 	</select>
 	
 	<update id="updatePhone" parameterType="com.yedam.vo.MemberVO">
@@ -120,4 +122,10 @@
     phone=#{phone}
     where member_id=#{memberId}
 </update>
+
+<select id="selectIdCount" resultType="int" parameterType="String">
+	select count(*)
+	from team_member
+	where member_id=#{memberId}
+</select>
 </mapper>

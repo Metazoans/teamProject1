@@ -32,4 +32,6 @@ public interface MemberService {
 	List<BillsVO> purchaseList(String logId);
 	
 	boolean modifyPhone(MemberVO member);
+	
+	boolean searchDupId(String memberId);
 }

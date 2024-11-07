@@ -83,6 +83,7 @@
 		from team_bills
 		where buyer = #{buyer}
 		and pay_step != 'completed'
+		order by pay_step
 	</select>
 	
 	<!-- 구매 목록 단건 조회 -->

@@ -139,7 +139,7 @@ textarea {
 		    if (itemInfo != null) {
 		        itemInfo = URLEncoder.encode(itemInfo, "UTF-8");
 		    } else {
-		        itemInfo = "";  // null일 경우 빈 문자열로 처리
+		        itemInfo = "";
 		    }
 		%>
 		<td>
@@ -251,7 +251,7 @@ textarea {
 		    if (itemInfo != null) {
 		        itemInfo = URLEncoder.encode(itemInfo, "UTF-8");
 		    } else {
-		        itemInfo = "";  // null일 경우 빈 문자열로 처리
+		        itemInfo = "";
 		    }
 		%>
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 

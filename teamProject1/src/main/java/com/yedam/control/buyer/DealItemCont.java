@@ -49,7 +49,7 @@ public class DealItemCont implements Control {
 		bills.setImage(item.getImage());
 		bills.setTrade(item.getTrade());
 
-		Map<String, Object> result = new HashMap();
+		Map<String, Object> result = new HashMap<>();
 
 		Gson gson = new GsonBuilder().create();
 		

@@ -53,10 +53,8 @@ function randomList() {
 	// jQuery 방식의 Ajax 호출
 	$.ajax('randomList.do')
 		.done(function(result) {
-			console.log(result);
 			$('div#randomList div.progress-table div.table-row').remove()
 			result.forEach((item) => {
-				console.log(item);
 				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
 				$('<div/>').addClass('table-row').append(
 					$('<div/>').addClass('listGame').text(item.game),

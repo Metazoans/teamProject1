@@ -10,7 +10,6 @@ let myPage = document.querySelector("#myPage");
 let floatLeft = document.querySelectorAll(".float-left");
 let subMenuLi = document.querySelectorAll(".submenu li");
 
-
 gameMenuList();
 function gameMenuList() {
 	$.ajax('gameList.do')
@@ -18,9 +17,9 @@ function gameMenuList() {
 			$('div.gamemenu ul li').remove();
 			result.forEach((item) => {
 				let game = item;
-				$('<li/>').addClass('game-' + game).append($('<a/>').text(game),
+				$('<li/>').addClass('game-' + game).append($('<a/>').attr('href', '#').text(game),
 					$('<div/>').addClass('servermenu').append($('<ul/>')
-					.append($('<li/>').append($('<a/>').text('전체').attr("href", "https://www.daum.net/"))))
+						.append($('<li/>').append($('<a/>').addClass('linked').attr('href', '#').text('전체'))))
 				).appendTo($('div.gamemenu>ul'));
 				serverMenuList(game);
 			});
@@ -34,8 +33,9 @@ function serverMenuList(game) {
 	$.ajax('serverList.do?game=' + game)
 		.done(function(result) {
 			result.forEach((item) => {
+				server = item;
 				$('li.game-' + game + '>div.servermenu>ul').append($('<li/>')
-				.append($('<a/>').text(item).attr("href", "https://www.daum.net/")));
+					.append($('<a/>').addClass('linked').attr('href', '#').text(item)));
 			});
 		})
 		.fail(function(err) {
@@ -45,8 +45,9 @@ function serverMenuList(game) {
 
 
 subMenuLi.forEach((li) => {
-	li.addEventListener('mouseover', function() {
+	li.addEventListener('mouseover', function(e) {
 		li.querySelector(".gamemenu").style.cssText = "display: block";
+		$(e.target).parent()
 		li.querySelectorAll(".gamemenu>ul>li").forEach((inLi) => {
 			inLi.addEventListener('mouseover', function() {
 				inLi.querySelector(".servermenu").style.cssText = "display: block";
@@ -69,6 +70,23 @@ myPage.addEventListener('mouseout', function() {
 	hiddenList.style.cssText = "display: none";
 })
 
+setTimeout(clickLinked, 1000);
+function clickLinked() {
+	$('.linked').each(function(index, item) {
+		$(item).on('click', function(e) {
+			console.log(e.target);
+			let categories = $(e.target).closest($('.submenu')).prev().html();
+			let trades = $(e.target).closest($('.gamemenu')).prev().html();
+			if(trades.includes("판매")) trades = "sell"
+			else trades = "buy"
+			let games = $(e.target).closest($('.servermenu')).prev().html();
+			let servers = $(e.target).html();
+			if(servers == "전체") servers = "";
+			
+			location.href = "itemList.do?categories=" + categories + "&trade=" + trades + "&game=" + games + "&servers=" + servers
+		})
+	})
+}
 
 
 /*

@@ -68,6 +68,7 @@
 			<div class="progress-table-wrap">
 				<div class="progress-table">
 					<div class="table-head">
+						<div class="listImage">이미지</div>
 						<div class="listGame">게임명</div>
 						<div class="listServer">서버명</div>
 						<div class="listTitle">제목</div>

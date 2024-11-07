@@ -8,7 +8,7 @@
 					<div class="col-lg-3 col-md-2">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.jsp"><img src="assets/img/logo/logo.png"
+							<a href="index.jsp"><img src="images/logo.png"
 								alt=""></a>
 						</div>
 					</div>

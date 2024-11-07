@@ -11,6 +11,7 @@
 	<input type="hidden" id="game" value="${ilvo.game }">
 	<input type="hidden" id="servers" value="${ilvo.servers }">
 </div>
+
 <!-- 검색 -->
 <div class="job-listing-area">
 

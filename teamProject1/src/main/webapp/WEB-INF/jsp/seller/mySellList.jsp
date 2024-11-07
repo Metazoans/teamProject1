@@ -125,7 +125,7 @@
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
 		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=vo.getItemNumber()%>','<%=vo.getItemName()%>', 
-		'<%=vo.getItemInfo()%>', '<%=vo.getCount()%>', '<%=vo.getPrice()%>', '<%=vo.getImage()%>');">수정</button></td>
+		'<%=vo.getItemInfo()%>', '<%=vo.getCount()%>', '<%=vo.getPrice()%>', '<%=vo.getImage()%>'); info('<%=vo.getItemInfo()%>');">수정</button></td>
 		</form>
 		<td>
 		<form method="post" action="myItemDelete.do">
@@ -228,7 +228,7 @@
       <form method="post" id="myListModify">
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
 		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=bvo.getItemNumber()%>','<%=bvo.getItemName()%>', 
-		'<%=bvo.getItemInfo()%>', '<%=bvo.getCount()%>', '<%=bvo.getPrice()%>', '<%=bvo.getImage()%>');">수정</button></td>
+		'<%=bvo.getItemInfo()%>', '<%=bvo.getCount()%>', '<%=bvo.getPrice()%>', '<%=bvo.getImage()%>'); info('<%=bvo.getItemInfo()%>');">수정</button></td>
 		</form>
 		<td>
 		<form method="post" action="myItemDelete.do">
@@ -312,7 +312,7 @@
 				</div>
 				<div class="modal-body">
 					<form action="myItemUpdate.do" method="post" enctype="multipart/form-data" id="test">
-						<input type="hidden" id="modalItemNumber" name="itemNum" value="">
+						<input type="hidden" id="modalItemNumber" name="itemNum" value="" >
 						<div class="mb-3">
 							<label for="modalItemName" class="col-form-label">아이템이름</label> <input
 								type="text" class="form-control" id="modalItemName"
@@ -354,12 +354,16 @@
 		
 	
 		function Modal(itemNumber, itemName, itemInfo, count, price) {
+			if(itemInfo == null){
+				document.getElementById("modalItemInfo").value = itemInfo;
+			}else{
+				document.getElementById("modalItemInfo").value = "";
+				document.getElementById("modalItemInfo").placeholder = "상세내용없음";
+			}
 			document.getElementById("modalItemNumber").value = itemNumber;
 			document.getElementById("modalItemName").value = itemName;
-			document.getElementById("modalItemInfo").value = itemInfo;
 			document.getElementById("modalCount").value = count;
 			document.getElementById("modalPrice").value = price;
-			
 		}
 		
 		window.onload=function(){
@@ -371,9 +375,9 @@
 		        	 td.innerText = '구매';
 		         }
 		      })
-		     
 		 }
-		 
+		
+		
 		 
 	
 		

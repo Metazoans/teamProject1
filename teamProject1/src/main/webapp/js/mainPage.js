@@ -46,7 +46,7 @@ function rankRight() {
 
 
 
-document.querySelector('.table-name2').addEventListener('click', function(){
+document.querySelector('.table-name2').addEventListener('click', function() {
 	randomList();
 })
 function randomList() {
@@ -56,7 +56,12 @@ function randomList() {
 			$('div#randomList div.progress-table div.table-row').remove()
 			result.forEach((item) => {
 				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
+				let img = item.image
+				if (img == null) {
+					img = "noImage.png"
+				}
 				$('<div/>').addClass('table-row').append(
+					$('<div/>').addClass('listImage').append($('<img>').attr("src", "images/" + img)),
 					$('<div/>').addClass('listGame').text(item.game),
 					$('<div/>').addClass('listServer').text(item.servers),
 					$('<div/>').addClass('listTitle').append(link),

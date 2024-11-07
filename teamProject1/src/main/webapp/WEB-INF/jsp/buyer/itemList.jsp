@@ -11,6 +11,7 @@
 	<input type="hidden" id="game" value="${ilvo.game }">
 	<input type="hidden" id="servers" value="${ilvo.servers }">
 </div>
+
 <!-- 검색 -->
 <div class="job-listing-area">
 
@@ -32,7 +33,7 @@
 				</div>
 			</div>
 				<input type="text" name="search" autofocus class="single-input col-md-7 borderCont">
-				<button type="button" class="btn head-btn1 col-md-2">검색</button>
+				<button type="button" class="btn head-btn1 col-md-2" style="z-index: 0">검색</button>
 			</div>
 
 

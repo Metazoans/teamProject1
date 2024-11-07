@@ -106,6 +106,9 @@
 	overflow-y: hidden;
 	padding: 0 5px;
 }
+.table-head{
+	text-align: center;
+}
 
 #randomList .table-head {
 	height: 41px;
@@ -115,6 +118,13 @@
 	height: 71px;
 }
 
+#randomList .listImage {
+	width: 10%;
+}
+#randomList .listImage img{
+	width: 80px;
+	height: 40px;
+}
 #randomList .listGame {
 	width: 10%;
 }
@@ -122,7 +132,7 @@
 	width: 10%;
 }
 #randomList .listTitle {
-	width: 50%;
+	width: 40%;
 }
 
 #randomList .listPrice {

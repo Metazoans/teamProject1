@@ -82,7 +82,7 @@
 				<div class="card mb-4 rounded-3 shadow-sm"
 					style="border-color: gray">
 					<div class="card-header py-3" style="background: #fb246a;">
-						<h4 class="my-0 fw-normal">등급</h4>
+						<h4 class="my-0 fw-normal" style="color: #fff;">등급</h4>
 					</div>
 					<div class="card-body" style="padding: 0;">
 						<ul class="list-unstyled mt-3 mb-4">
@@ -170,7 +170,7 @@
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm">
 					<div class="card-header py-3" style="background: #fb246a;">
-						<a href="mySellList.do#kanghyeon" style="color: black">최근구매내역</a>
+						<a href="mySellList.do#kanghyeon" style="color: #fff; font-weight: bold !important;">최근구매내역</a>
 
 					</div>
 					<div class="card-body" style="padding: 0;">
@@ -184,7 +184,7 @@
 								<div class="serial" style="width: 300px;">아이템 이름</div>
 								<div class="serial">결제금액</div>
 								<div class="serial">처리 경과</div>
-
+								<div class="serial">구매 시간</div>
 							</div>
 							<div class="table-row">
 								<div class="serial">
@@ -197,9 +197,8 @@
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
 								<div class="serial"><%=bvo.getTotal()%></div>
 								<div class="serial1"
-									style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
-
-
+									style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayStep()%></div>
+								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayDate()%></div>
 							</div>
 						</div>
 						<%
@@ -214,7 +213,7 @@
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm">
 					<div class="card-header py-3">
-						<a href="mySellList.do#" style="color: black">판매내역</a>
+						<a href="mySellList.do#" style="color: black">최근판매내역</a>
 
 					</div>
 					<div class="card-body" style="padding: 0;">
@@ -227,7 +226,7 @@
 								<div class="serial" style="width: 300px;">아이템 이름</div>
 								<div class="serial">결제금액</div>
 								<div class="serial">처리경과</div>
-
+								<div class="serial">판매 시간</div>
 							</div>
 							<div class="table-row">
 								<div class="serial">
@@ -240,8 +239,8 @@
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
 								<div class="serial"><%=bvo.getTotal()%></div>
 								<div class="serial1"
-									style="margin-left: 51px; margin-top: 12px;"><%=bvo.getPayStep()%></div>
-
+									style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayStep()%></div>
+								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayDate()%></div>
 
 							</div>
 						</div>

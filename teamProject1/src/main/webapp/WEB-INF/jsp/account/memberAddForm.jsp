@@ -22,15 +22,17 @@
 		</tr>
 		</table>
 	</form> -->
+	<%
+String msg = (String) request.getAttribute("msg");
+String msg1 = (String) request.getAttribute("msg1");
+ %>
+	
 	<style>
-
-
-
 
 .joinForm {
   position:absolute;
   width:400px;
-  height:400px;
+  height:650px;
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
@@ -164,13 +166,21 @@ display:block;
 height:700px;
 }
 </style>
+
+
 <div id="joindiv">
-<form action="memberAdd.do"class="joinForm" method="get">
+<form class="joinForm" name="memberAdd" >
                                                                                                
       <h2>회원가입</h2>
+
       <div class="textForm">
-        <input name="member_id" type="text" class="id" placeholder="아이디">
-        </input>
+        <input name="member_id" type="text" class="id" placeholder="아이디" id="memberId">
+        
+
+      </div>
+      <div id="msg">
+        <input type="button" value="아이디 중복체크" id="checkBtn">
+               
       </div>
       <div class="textForm">
         <input name="password" type="password" class="pw" placeholder="비밀번호">
@@ -179,13 +189,14 @@ height:700px;
         <input name="member_name" type="text" class="name" placeholder="이름">
       </div>
       <div class="textForm">
-        <input name="birth" type="text" class="birth" placeholder="생년월일">
+        <input name="birth" type="date" class="birth">
       </div>
       <div class="textForm">
-        <input name="phone" type="text" class="cellphoneNo" placeholder="전화번호">
+        <input name="phone" type="tel" class="cellphoneNo" placeholder="전화번호(010-XXXX-XXXX)"  pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>
       </div>
-      <input type="submit" class="btn1" value="저장"/>
+      <input type="submit" formaction="memberAdd.do" class="btn1" value="저장">
       <input type="button" class="btn2 btn-primary" onclick="location.href='loginForm.do'" value="취소">
       
     </form>
 </div>    
+<script src="js/memberAdd.js"></script>

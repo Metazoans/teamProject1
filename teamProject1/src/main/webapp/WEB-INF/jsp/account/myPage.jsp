@@ -189,9 +189,9 @@
 							<div class="table-row">
 								<div class="serial">
 								<%if(bvo.getImage()==null) {%>
-								<p>이미지 없음</p>
+								<img src="images/이미지없음.png" width="100px"/>
 								<%}else{ %>
-									<img src="images/<%=bvo.getImage()%>" />
+									<img src="images/<%=bvo.getImage()%>" width="100px"/>
 									<%}%>
 								</div>
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
@@ -518,7 +518,7 @@
 					
 					return;
 				}
-				const inputString = prompt('휴대폰 번호를 입력하세요');
+				const inputString = prompt('휴대폰 번호를 입력하세요(010-XXXX-XXXX)');
 
 				console.log(inputString);
 				var phonePrompt = document.getElementById("phonePrompt");

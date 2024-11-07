@@ -22,7 +22,6 @@ function buyListPrt() {
 				let chatBtn = $('<button />').addClass('genric-btn warning-border chatBtn').text('채팅');
 
 				let img;
-				console.log(item.image);
 				if(item.image != undefined) {
 					img = $('<img alt="이미지">').attr('src', 'images/' + item.image);
 				}
@@ -82,8 +81,6 @@ function buyListPrt() {
 //구매 확정
 function confirmFnc() {
 	document.querySelectorAll('.confirmBtn').forEach(btn => {
-		console.log('confirm btn start');
-		
 		btn.addEventListener('click', function(e) {
 			let billsNumber = $(e.target).parent().parent().find('input').val();
 			let payStep = $(e.target).parent().parent().find('.buyPayStep').text();

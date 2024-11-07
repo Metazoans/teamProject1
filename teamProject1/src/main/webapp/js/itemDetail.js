@@ -4,7 +4,6 @@
 
 
 $('#dealBtn').on('click', function(e) {
-	console.log('buyBtn click');
 	
 	//최대값 이상의 숫자 입력시 취소 기능
 	if ($('#dealCount').val() > $('#maxCount').val() * 1) {
@@ -39,7 +38,7 @@ $('#dealBtn').on('click', function(e) {
 
 				}
 				else if (result.retCode == 'CFAIL') {
-					console.log('구매 갯수 오류');
+					console.log('거래 갯수 오류');
 				}
 				else if (result.retCode == 'RFAIL') {
 					console.log('bills 추가 실패');

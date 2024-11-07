@@ -24,8 +24,6 @@ let listData = {
 	order: order
 };
 
-console.log('list data : ');
-console.log(listData);
 itemListPrt(listData);
 
 //목록 정렬
@@ -47,8 +45,6 @@ document.querySelectorAll('.table-head div').forEach(div => {
 
 //목록 출력
 function itemListPrt(listData) {
-	console.log(listData);
-
 	$('.itemList .table-row').remove();
 	$.ajax({
 		url: 'itemListChange.do',
@@ -68,7 +64,6 @@ function itemListPrt(listData) {
 				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`; 
 				
 				let img;
-				console.log(item.image);
 				if(item.image != undefined) {
 					img = $('<img alt="이미지">').attr('src', 'images/' + item.image);
 				}
@@ -134,9 +129,6 @@ let next = endPage < realEnd;
 
 pageBtnPrt();
 function pageBtnPrt() {
-	
-	console.log(listCnt, startPage, endPage);
-	
 	$('.page-item').remove();
 	let pageUl = $('.pagination');
 	let pageLi = $('<li />').addClass('page-item');
@@ -162,7 +154,6 @@ function pageBtnPrt() {
 function pageBtnFnc() {
 	document.querySelectorAll('.page-item').forEach(item => {
 		item.addEventListener('click', function(e) {
-			
 			switch(e.target.text) {
 				case '<':
 					if(prev) {
@@ -170,7 +161,7 @@ function pageBtnFnc() {
 						startPage = startPage < 1 ? 1 : startPage;
 						endPage = startPage + 4;
 						endPage = endPage > realEnd ? realEnd : endPage;
-						page = endPage;
+						page = (page * 1) - 5;
 						prev = startPage > 1;
 						next = endPage < realEnd;
 					}
@@ -184,7 +175,7 @@ function pageBtnFnc() {
 						startPage = endPage - 4;
 						endPage = endPage > realEnd ? realEnd : endPage;
 						startPage = startPage < 1 ? 1 : startPage;
-						page = startPage;
+						page = (page * 1) + 5;
 						prev = startPage > 1;
 						next = endPage < realEnd;
 					}

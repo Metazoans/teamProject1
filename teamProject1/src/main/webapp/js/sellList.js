@@ -24,7 +24,6 @@ function buyListPrt() {
 
 
 				let img;
-				console.log(item.image);
 				if(item.image != undefined) {
 					console.log('img not undefined');
 					img = $('<img alt="이미지">').attr('src', 'images/' + item.image);
@@ -82,10 +81,8 @@ function buyListPrt() {
 //거래 확정 deal 상태로 변경
 function confirmFnc() {
 	document.querySelectorAll('.confirmBtn').forEach(btn => {
-		console.log('confirm btn start');
 		
 		btn.addEventListener('click', function(e) {
-			console.log('sellList confirm btn click');
 			let billsNumber = $(e.target).parent().parent().find('input').val();
 			let payStep = $(e.target).parent().parent().find('.buyPayStep').text();
 			let logId = $('#logId').val();

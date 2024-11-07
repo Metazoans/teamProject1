@@ -10,6 +10,7 @@ categories = $('#categories').val();
 trade = $('#trade').val();
 game = $('#game').val();
 servers = $('#servers').val();
+servers = servers == '' ? undefined : servers;
 
 let listData = {
 	page: page,
@@ -23,6 +24,8 @@ let listData = {
 	order: order
 };
 
+console.log('list data : ');
+console.log(listData);
 itemListPrt(listData);
 
 //목록 정렬
@@ -53,12 +56,21 @@ function itemListPrt(listData) {
 	})
 		.done(function(result) {
 			result.forEach(item => {
+				let update = new Date(item.upDate);
+				let year = update.getFullYear();
+				let month = update.getMonth();
+				let day = update.getDate();
+				let hh = update.getHours();
+				let mm = update.getMinutes();
+				let ss = update.getSeconds();
+				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`; 
+				
 				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
 				$('<div />').addClass('table-row').append(
 					$('<div />').addClass('listTitle').append(link),
 					$('<div />').addClass('listPrice').text(item.price),
 					$('<div />').addClass('listSeller').text(item.seller),
-					$('<div />').addClass('listDate').text(item.upDate)
+					$('<div />').addClass('listDate').text(dateFormat)
 					//desc 생성 제거 --> 추가
 				).appendTo($('.itemList'));
 			});

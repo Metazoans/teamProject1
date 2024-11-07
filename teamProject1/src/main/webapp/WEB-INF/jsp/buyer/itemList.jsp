@@ -4,12 +4,6 @@
 
 <link rel="stylesheet" href="css/buyer.css">
 
-<p>login ID : ${logId }</p>
-<div id="dataPrt">
-	<p>page : ${ilvo.page }</p>
-
-</div>
-
 <div id="listDataDiv">
 	<input type="hidden" id="page" value="${ilvo.page }">
 	<input type="hidden" id="categories" value="${ilvo.categories }">

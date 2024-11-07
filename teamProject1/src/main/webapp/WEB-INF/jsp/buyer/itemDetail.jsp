@@ -5,10 +5,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	
 <!-- itemDetail.do -->
-<!-- 
-	화면 css 적용
-	구매 버튼 클릭시 buyCount 초기화 및 재출력
- -->
 
 <style>
 #dealCount::-webkit-inner-spin-button {
@@ -17,9 +13,6 @@
 }
 
 </style>
-
-<p>login : ${logId }</p>
-<p>itemNum : ${item.itemNumber }</p>
 
 <div id="itemDetailData">
 	<input type="hidden" id="logId" value="${logId }">

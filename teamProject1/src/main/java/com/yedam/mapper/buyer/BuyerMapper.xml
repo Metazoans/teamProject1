@@ -45,14 +45,13 @@
 			categories = #{categories}
 			and trade = #{trade}
 		    and game = #{game}
-		    and servers = #{servers}
+		    <if test="servers != null">
+				and servers = #{servers}
+			</if>
 			<if test="searchData != null">
 				and ${searchType} like '%'||#{searchData}||'%'
 			</if>
 		</where>
-		<if test="sort != null">
-			order by ${sort} ${order}
-		</if>
 	</select>
 
 	<!-- 상품 상세 -->
@@ -122,7 +121,7 @@
 	<!-- 구매 확인 : 거래 완료 -->
 	<update id="updateBillsConfirm" parameterType="com.yedam.vo.BillsVO">
 		update team_bills
-		set pay_step = 'completed'
+		set pay_step = 'completed', pay_date = sysdate
 		where bills_number = #{billsNumber}
 	</update>
 	

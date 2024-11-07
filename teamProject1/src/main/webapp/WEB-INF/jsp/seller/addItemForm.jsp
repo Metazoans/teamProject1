@@ -64,7 +64,7 @@
   				<option value="로스트아크">로스트아크</option>
   				<option value="로드나인">로드나인</option>
   				<option value="블레이드 앤 소울">블레이드 앤 소울</option>
-  				<option value="오딘:발할 라라이징">오딘:발할 라라이징</option>
+  				<option value="오딘 발할라 라이징">오딘 발할라 라이징</option>
   				<option value="월드 오브 워크래프트">월드 오브 워크래프트</option>
   				<option value="리니지">리니지</option>
   				<option value="거상">거상</option>
@@ -135,7 +135,7 @@
 		else if(e.value == "로스트아크") var d = loa;
 		else if(e.value == "로드나인") var d = lona;
 		else if(e.value == "블레이드 앤 소울") var d = soul;
-		else if(e.value == "오딘:발할 라라이징") var d = odin;
+		else if(e.value == "오딘 발할라 라이징") var d = odin;
 		else if(e.value == "월드 오브 워크래프트") var d = wow;
 		else if(e.value == "리니지") var d = linea;
 		else if(e.value == "거상") var d = gersang;

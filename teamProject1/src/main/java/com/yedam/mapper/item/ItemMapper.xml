@@ -47,9 +47,7 @@
 				,item_info = #{itemInfo}
 				,price = #{price}
 				,count = #{count}
-				<if test="image != null">
-					,image = #{image}
-				</if>
+				,image = #{image}
 				,up_date = sysdate
 		where	item_number = #{itemNumber}
 					

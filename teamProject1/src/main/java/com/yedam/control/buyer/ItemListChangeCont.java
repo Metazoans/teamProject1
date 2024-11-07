@@ -1,7 +1,9 @@
 package com.yedam.control.buyer;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +53,15 @@ public class ItemListChangeCont implements Control {
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list); // 자바 객체 => json문자열로 변경
 
-		resp.getWriter().print(json);
+		Map<String, Object> result = new HashMap<>();
+		
+		result.put("list", list);
+		
+		int itemCnt = svc.getSortItemListCnt(ilvo);
+		
+		result.put("itemCnt", itemCnt);
+		
+		resp.getWriter().print(gson.toJson(result));
 	}
 
 }

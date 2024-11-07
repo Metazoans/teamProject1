@@ -12,6 +12,18 @@ game = $('#game').val();
 servers = $('#servers').val();
 servers = servers == '' ? undefined : servers;
 
+
+let listCnt = document.querySelector('.pagination').dataset.value
+
+let endPage = Math.ceil(page / 10.0) * 5;
+let startPage = endPage - 4;
+let realEnd = Math.ceil(listCnt / 10.0);
+endPage = endPage > realEnd ? realEnd : endPage;
+
+let prev = startPage > 1;
+let next = endPage < realEnd;
+
+
 let listData = {
 	page: page,
 	categories: categories,
@@ -35,7 +47,7 @@ document.querySelectorAll('.table-head div').forEach(div => {
 		}
 		else listData.order = null;
 
-		if(e.target.dataset.value != 'item_image') {
+		if (e.target.dataset.value != 'item_image') {
 			listData.sort = e.target.dataset.value;
 		}
 
@@ -53,7 +65,10 @@ function itemListPrt(listData) {
 		dataType: 'json'
 	})
 		.done(function(result) {
-			result.forEach(item => {
+
+			listCnt = result.itemCnt;
+
+			result.list.forEach(item => {
 				let update = new Date(item.upDate);
 				let year = update.getFullYear();
 				let month = update.getMonth();
@@ -61,16 +76,16 @@ function itemListPrt(listData) {
 				let hh = update.getHours();
 				let mm = update.getMinutes();
 				let ss = update.getSeconds();
-				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`; 
-				
+				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`;
+
 				let img;
-				if(item.image != undefined) {
+				if (item.image != undefined) {
 					img = $('<img alt="이미지">').attr('src', 'images/' + item.image);
 				}
 				else {
 					img = $('<img alt="이미지">').attr('src', 'images/noImage.png');
 				}
-				
+
 				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
 				$('<div />').addClass('table-row').append(
 					$('<div />').addClass('listImage').append(img),
@@ -81,6 +96,8 @@ function itemListPrt(listData) {
 					//desc 생성 제거 --> 추가
 				).appendTo($('.itemList'));
 			});
+			if(searchCheck == 1) pageReset();
+			pageBtnPrt();
 		})
 		.fail(function(err) {
 			console.log('itemListPrt err');
@@ -112,41 +129,51 @@ $('#searchDiv button').on('click', function() {
 	listData.searchType = document.querySelector('#searchDiv span').dataset.value;
 	listData.searchData = document.querySelector('#searchDiv input').value;
 
+	listData.page = 1;
+	
+	searchCheck = 1;
+	
 	itemListPrt(listData);
 })
 
+let searchCheck = 0;
+function pageReset() {
+	page = 1;
+	endPage = Math.ceil(page / 10.0) * 5;
+	startPage = endPage - 4;
+	realEnd = Math.ceil(listCnt / 10.0);
+	endPage = endPage > realEnd ? realEnd : endPage;
+
+	prev = startPage > 1;
+	next = endPage < realEnd;
+	
+	searchCheck = 0;
+}
+
+
 
 //페이지 버튼 출력
-let listCnt = document.querySelector('.pagination').dataset.value
-
-let endPage = Math.ceil(page / 10.0) * 5;
-let startPage = endPage - 4;
-let realEnd = Math.ceil(listCnt / 10.0);
-endPage = endPage > realEnd ? realEnd : endPage;
-
-let prev = startPage > 1;
-let next = endPage < realEnd;
-
 pageBtnPrt();
 function pageBtnPrt() {
+	console.log('paging : ', startPage , endPage);
 	$('.page-item').remove();
 	let pageUl = $('.pagination');
 	let pageLi = $('<li />').addClass('page-item');
 	let pageA = $('<a />').addClass('page-link');
 	pageUl.append(pageLi.append(pageA.text('<')));
-	
-	for(let i = startPage; i <= endPage; i++) {
+
+	for (let i = startPage; i <= endPage; i++) {
 		pageLi = $('<li />').addClass('page-item');
 		pageA = $('<a />').addClass('page-link').text(i);
-		
+
 		pageLi = (i == page) ? pageLi.addClass('active') : pageLi;
 		pageUl.append(pageLi.append(pageA));
 	}
-	
+
 	pageLi = $('<li />').addClass('page-item');
 	pageA = $('<a />').addClass('page-link');
 	pageUl.append(pageLi.append(pageA.text('>')));
-	
+
 	pageBtnFnc();
 }
 
@@ -154,9 +181,9 @@ function pageBtnPrt() {
 function pageBtnFnc() {
 	document.querySelectorAll('.page-item').forEach(item => {
 		item.addEventListener('click', function(e) {
-			switch(e.target.text) {
+			switch (e.target.text) {
 				case '<':
-					if(prev) {
+					if (prev) {
 						startPage = startPage - 5;
 						startPage = startPage < 1 ? 1 : startPage;
 						endPage = startPage + 4;
@@ -170,7 +197,7 @@ function pageBtnFnc() {
 					}
 					break;
 				case '>':
-					if(next) {
+					if (next) {
 						endPage = endPage + 5;
 						startPage = endPage - 4;
 						endPage = endPage > realEnd ? realEnd : endPage;

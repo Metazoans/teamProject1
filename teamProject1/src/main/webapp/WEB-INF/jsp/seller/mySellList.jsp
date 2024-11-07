@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.yedam.common.PageDTO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.yedam.vo.ItemVO"%>
@@ -68,6 +69,16 @@
     background-color: #fb246a;
     color: white;
 }
+textarea {
+    width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+}
+.pagination {
+    position: relative;
+    z-index: 0;
+}
 </style>
 </head>
 <body>
@@ -123,12 +134,21 @@
       <td class="trade"><%=vo.getTrade() %></td>
       <td><%=sdf.format(vo.getUpDate()) %></td>
       <form method="post" id="myListModify">
-		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
-		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=vo.getItemNumber()%>','<%=vo.getItemName()%>', 
-		'<%=vo.getItemInfo()%>', '<%=vo.getCount()%>', '<%=vo.getPrice()%>', '<%=vo.getImage()%>'); info('<%=vo.getItemInfo()%>');">수정</button></td>
+		<%
+		    String itemInfo = vo.getItemInfo();
+		    if (itemInfo != null) {
+		        itemInfo = URLEncoder.encode(itemInfo, "UTF-8");
+		    } else {
+		        itemInfo = "";
+		    }
+		%>
+		<td>
+		<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
+    	data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+    	onclick="Modal('<%=vo.getItemNumber()%>', '<%=vo.getItemName()%>', '<%=itemInfo%>', '<%=vo.getCount()%>', '<%=vo.getPrice()%>', '<%=vo.getImage()%>');">수정</button></td>
 		</form>
 		<td>
-		<form method="post" action="myItemDelete.do">
+		<form method="post" action="myItemDelete.do" onsubmit="return deleteItem();">
 		<input type="hidden" name="itemNum" value="<%=vo.getItemNumber()%>">
 		<button type="submit" class="btn btn head-btn1" id="deleteBtn">삭제</button>
 		</form>
@@ -226,14 +246,22 @@
       <td class="trade"><%=bvo.getTrade() %></td>
       <td><%=sdf.format(bvo.getUpDate()) %></td>
       <form method="post" id="myListModify">
+		<%
+		    String itemInfo = bvo.getItemInfo();
+		    if (itemInfo != null) {
+		        itemInfo = URLEncoder.encode(itemInfo, "UTF-8");
+		    } else {
+		        itemInfo = "";
+		    }
+		%>
 		<td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn head-btn2" id="updateBtn" 
-		data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="Modal('<%=bvo.getItemNumber()%>','<%=bvo.getItemName()%>', 
-		'<%=bvo.getItemInfo()%>', '<%=bvo.getCount()%>', '<%=bvo.getPrice()%>', '<%=bvo.getImage()%>'); info('<%=bvo.getItemInfo()%>');">수정</button></td>
+    	data-bs-whatever="@fat" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+    	onclick="Modal('<%=bvo.getItemNumber()%>', '<%=bvo.getItemName()%>', '<%=itemInfo%>', '<%=bvo.getCount()%>', '<%=bvo.getPrice()%>', '<%=bvo.getImage()%>');">수정</button></td>
 		</form>
 		<td>
-		<form method="post" action="myItemDelete.do">
+		<form method="post" action="myItemDelete.do" onsubmit="return deleteItem();">
 		<input type="hidden" name="itemNum" value="<%=bvo.getItemNumber()%>">
-		<button type="submit" class="btn btn head-btn1" id="deleteBtn">삭제</button>
+		<button type="submit" class="btn btn head-btn1" id="deleteBtn2">삭제</button>
 		</form>
 		</td>
     </tr>
@@ -318,10 +346,9 @@
 								type="text" class="form-control" id="modalItemName"
 								name="itemName" placeholder="">
 						</div>
-						<div class="mb-3">
+						<div class="mb-3">						
 							<label for="modalItemInfo" class="col-form-label">아이템상세정보</label>
-							<input type="text" class="form-control" id="modalItemInfo"
-								name="itemInfo" placeholder="">
+							<textarea class="form-control" id="modalItemInfo" name="itemInfo" rows="3" cols="30" placeholder=""></textarea>
 						</div>
 						<div class="mb-3">
 							<label for="modalCount" class="col-form-label">상품수량</label> <input
@@ -352,20 +379,15 @@
 
 	<script>
 		
-		const id = "${logId}";
-		
-	
-		function Modal(itemNumber, itemName, itemInfo, count, price) {
-			if(itemInfo == null){
-				document.getElementById("modalItemInfo").value = itemInfo;
-			}else{
-				document.getElementById("modalItemInfo").value = "";
-				document.getElementById("modalItemInfo").placeholder = "상세내용없음";
-			}
+		function Modal(itemNumber, itemName, encodingItemInfo, count, price) {
+			let itemInfo = decodeURIComponent(encodingItemInfo);
+			
 			document.getElementById("modalItemNumber").value = itemNumber;
 			document.getElementById("modalItemName").value = itemName;
 			document.getElementById("modalCount").value = count;
 			document.getElementById("modalPrice").value = price;
+		    document.getElementById("modalItemInfo").value = itemInfo.replace("\r\n","\n");
+		   
 		}
 		
 		window.onload=function(){
@@ -378,6 +400,12 @@
 		         }
 		      })
 		 }
+		
+		function deleteItem(){
+			return confirm("글을 삭제하시겠습니까?");
+		}
+		
+	
 		
 		
 		 

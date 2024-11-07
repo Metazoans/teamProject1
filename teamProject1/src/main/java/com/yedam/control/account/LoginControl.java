@@ -32,7 +32,7 @@ public class LoginControl implements Control {
 			MemberVO member = svc.loginCheck(id, pwd);
 			// 로그인 실패
 			if (member == null) {
-				req.setAttribute("msg", "아이디와비밀번호 확인");
+				req.setAttribute("msg", "아이디와 비밀번호 확인");
 				req.getRequestDispatcher("account/loginForm.tiles").forward(req, resp);
 				return;
 

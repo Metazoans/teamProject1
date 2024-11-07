@@ -112,7 +112,7 @@
     <tr>
       <td class="image">
       <%if(vo.getImage() == null){ %>
-      	<img src="images/KakaoTalk_20241107_123234216.png" width="100px">
+      	<img src="images/이미지없음.png" width="100px">
       <%}else{ %>
       	<img src="images/<%=vo.getImage() %>" width="100px">
 	  <%} %>
@@ -215,7 +215,7 @@
     <tr>
       <td class="image">
       <%if(bvo.getImage() == null){ %>
-      	<img src="images/KakaoTalk_20241107_123234216.png" width="100px">
+      	<img src="images/이미지없음.png" width="100px">
       <%}else{ %>
       	<img src="images/<%=bvo.getImage() %>" width="100px">
 	  <%} %>

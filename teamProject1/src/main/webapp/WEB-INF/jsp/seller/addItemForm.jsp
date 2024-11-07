@@ -41,7 +41,7 @@
     if (msg != null) {
 %>
         alert("<%=msg %>");
-        location.href = "itemList.do";
+        location.href = "addItemForm.do";
 <% } %>
 </script>
 <div id="container">
@@ -62,6 +62,12 @@
  				<option value="던전엔파이터">던전엔파이터</option>
   				<option value="서든어택">서든어택</option>
   				<option value="로스트아크">로스트아크</option>
+  				<option value="로드나인">로드나인</option>
+  				<option value="블레이드 앤 소울">블레이드 앤 소울</option>
+  				<option value="오딘:발할 라라이징">오딘:발할 라라이징</option>
+  				<option value="월드 오브 워크래프트">월드 오브 워크래프트</option>
+  				<option value="리니지">리니지</option>
+  				<option value="거상">거상</option>
 			</select></td>
 			<td><p>서버</p>
 			<select class="form-select" aria-label="Default select example" id="server" name="servers" id="servers">
@@ -71,6 +77,7 @@
 			<select class="form-select" aria-label="Default select example" name="categories" id="categories">
 				<option value="게임머니">게임머니</option>
 				<option value="아이템">아이템</option>
+				<option value="계정">계정</option>
 			</select></td>
 		</tr>
 		<tr>
@@ -97,7 +104,7 @@
 		<tr>
 			<td colspan="2" align="center">
 				<input  class="btn btn-success" type="submit" value="상품등록" >
-				<input class="btn btn-warning" type="button" value="취소" onclick="location.href='itemList.do'">
+				<input class="btn btn-warning" type="button" value="취소" onclick="location.href='index.jsp'">
 			</td>
 		</tr>
 	</table>
@@ -114,11 +121,24 @@
 		var sMstory = ["루나","스카니아","엘리시움","크로아","오로라","베라","레드","유니온","제니스","이노시스","아케인","노바"];
 		var sDnf = ["카인","디레지에","시로코","프레이","카시아스","힐더","안톤","바칼"];
 		var loa = ["루페온","실리안","아만","카마인","카제로스","아브렐슈드","카단"];
+		var lona = ["라엘","로웨인","모리안","바르테스","엘드리히","아퀼라","마레크","라디언트"];
+		var soul = ["반달","태록","비옥","해룡","백사","열풍","풍백-풍백문주 아랑","풍백-수라 송사국"]
+		var odin = ["오딘","토르","로키","프레이야","헤임달","티르","발두르","이둔","미미르","수르트","에기르"]
+		var wow = ["가로나","굴단","노르간논","달라란","데스윙","듀로탄","렉사르","말퓨리온","불타는 군단","세나리우스","스톰레이지","아즈샤라","알렉스트라자","와일드해머","윈드러너","줄진","하이잘","헬스크림"]
+		var linea = ["지그","리오","거스","아리","테온","아이","바츠","카인","에리","카스","드비","에르","오필","바이","안타","파푸","린드","에덴","일본","엘모아덴"]
+		var gersang = ["백호","주작","현무","청룡","봉황","해태","단군","태극","비호","화랑","세종","태왕","신구"]
+		
 		var target = document.getElementById("server");
 		
 		if(e.value == "메이플스토리") var d = sMstory;
 		else if(e.value == "던전엔파이터") var d = sDnf;
 		else if(e.value == "로스트아크") var d = loa;
+		else if(e.value == "로드나인") var d = lona;
+		else if(e.value == "블레이드 앤 소울") var d = soul;
+		else if(e.value == "오딘:발할 라라이징") var d = odin;
+		else if(e.value == "월드 오브 워크래프트") var d = wow;
+		else if(e.value == "리니지") var d = linea;
+		else if(e.value == "거상") var d = gersang;
 		
 		target.options.length = 0;
 

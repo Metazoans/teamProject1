@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/buyer.css">
 <style>
 #container{
 	padding-top: 50px;
@@ -87,6 +88,7 @@
 		List<ItemVO> BuyListPage = (List<ItemVO>)request.getAttribute("BuyListPage");
 	%>
 
+
 <div id="container">
 <h3 class="table-name1">판매리스트</h3>
 <div class="progress-table">
@@ -108,8 +110,12 @@
   %>
   <tbody>
     <tr>
-      <td>
+      <td class="image">
+      <%if(vo.getImage() == null){ %>
+      	<img src="images/KakaoTalk_20241107_123234216.png" width="100px">
+      <%}else{ %>
       	<img src="images/<%=vo.getImage() %>" width="100px">
+	  <%} %>
       </td>
       <td><%=vo.getItemName() %></td>
       <td><%=vo.getCount() %></td>
@@ -131,7 +137,8 @@
   </tbody>
   <% } %>
 </table>
-
+</div>
+<div class="pagination-area pb-115 text-center">
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     
@@ -139,12 +146,12 @@
     <c:choose>
       <c:when test="${page.prev}">
         <li class="page-item">
-          <a class="page-link" href="mySellList.do?page=${page.startPage - 1}">Previous</a>
+          <a class="page-link" href="mySellList.do?page=${page.startPage - 1}">&lt;</a>
         </li>
       </c:when>
       <c:otherwise>
         <li class="page-item disabled">
-          <a class="page-link" href="#">Previous</a>
+          <a class="page-link" href="#">&lt;</a>
         </li>
       </c:otherwise>
     </c:choose>
@@ -169,12 +176,12 @@
     <c:choose>
       <c:when test="${page.next}">
         <li class="page-item">
-          <a class="page-link" href="mySellList.do?page=${page.endPage + 1}">Next</a>
+          <a class="page-link" href="mySellList.do?page=${page.endPage + 1}">&gt;</a>
         </li>
       </c:when>
       <c:otherwise>
         <li class="page-item disabled">
-          <a class="page-link" href="#">Next</a>
+          <a class="page-link" href="#">&gt;</a>
         </li>
       </c:otherwise>
     </c:choose>
@@ -206,8 +213,12 @@
   %>
   <tbody>
     <tr>
-      <td>
+      <td class="image">
+      <%if(bvo.getImage() == null){ %>
+      	<img src="images/KakaoTalk_20241107_123234216.png" width="100px">
+      <%}else{ %>
       	<img src="images/<%=bvo.getImage() %>" width="100px">
+	  <%} %>
       </td>
       <td><%=bvo.getItemName() %></td>
       <td><%=bvo.getCount() %></td>
@@ -229,18 +240,21 @@
   </tbody>
   <% } %>
 </table>
+</div>
+	
+<div class="pagination-area pb-115 text-center">
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
       <!-- 이전 페이지 여부 -->
       <c:choose>
         <c:when test="${bpage.prev}">
           <li class="page-item">
-            <a class="page-link" href="mySellList.do?bpage=${bpage.startPage - 1}">Previous</a>
+            <a class="page-link" href="mySellList.do?bpage=${bpage.startPage - 1}">&lt;</a>
           </li>
         </c:when>
         <c:otherwise>
           <li class="page-item disabled">
-            <a class="page-link" href="#">Previous</a>
+            <a class="page-link" href="#">&lt;</a>
           </li>
         </c:otherwise>
       </c:choose>
@@ -265,21 +279,24 @@
       <c:choose>
         <c:when test="${bpage.next}">
           <li class="page-item">
-            <a class="page-link" href="mySellList.do?bpage=${bpage.endPage + 1}">Next</a>
+            <a class="page-link" href="mySellList.do?bpage=${bpage.endPage + 1}">&gt;</a>
           </li>
         </c:when>
         <c:otherwise>
           <li class="page-item disabled">
-            <a class="page-link" href="#">Next</a>
+            <a class="page-link" href="#">&gt;</a>
           </li>
         </c:otherwise>
       </c:choose>
 
     </ul>
   </nav>
-</div>
+  </div>
+
 
 </div>
+
+
 
 	
 <!-- modal -->
@@ -333,27 +350,32 @@
 	</div>
 
 	<script>
+		
+		
 	
-		function Modal(itemNumber, itemName, itemInfo, count, price, image) {
+		function Modal(itemNumber, itemName, itemInfo, count, price) {
 			document.getElementById("modalItemNumber").value = itemNumber;
 			document.getElementById("modalItemName").value = itemName;
 			document.getElementById("modalItemInfo").value = itemInfo;
 			document.getElementById("modalCount").value = count;
 			document.getElementById("modalPrice").value = price;
-			document.getElementById("modalImage").value = image;
+			
 		}
 		
-		 window.onload=function(){
-			 var traeSell = document.querySelectorAll(".trade");
-			 traeSell.forEach((td) => {
+		window.onload=function(){
+			var traeSell = document.querySelectorAll(".trade");
+			traeSell.forEach((td) => {
 		         if(td.innerText == 'sell'){
 		        	 td.innerText = '판매';
 		         }else{
 		        	 td.innerText = '구매';
 		         }
 		      })
-		      
-		   }
+		     
+		 }
+		 
+		 
+	
 		
 	</script>
 

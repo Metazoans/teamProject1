@@ -27,7 +27,6 @@ public class MemberAddControl implements Control {
 		String phone = req.getParameter("phone");
 		String birth = req.getParameter("birth");
 		
-		phone = phone.replaceAll("-", "");
 		
 		MemberVO mvo = new MemberVO();
 		mvo.setMemberId(id);

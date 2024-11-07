@@ -189,7 +189,7 @@ height:700px;
         <input name="member_name" type="text" class="name" placeholder="이름">
       </div>
       <div class="textForm">
-        <input name="birth" type="text" class="birth" placeholder="생년월일(YYYYMMDD)">
+        <input name="birth" type="date" class="birth">
       </div>
       <div class="textForm">
         <input name="phone" type="tel" class="cellphoneNo" placeholder="전화번호(010-XXXX-XXXX)"  pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>

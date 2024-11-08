@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.yedam.vo.BillsVO"%>
 <%@page import="com.yedam.vo.MemberVO"%>
 <%@page import="java.util.List"%>
@@ -70,7 +71,7 @@
 		List<MemberVO> list = (List<MemberVO>) request.getAttribute("memberList");
 		List<BillsVO> sellList = (List<BillsVO>) request.getAttribute("sellList");
 		List<BillsVO> purchaseList = (List<BillsVO>) request.getAttribute("purchaseList");
-
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		System.out.println(list);
 		%>
 		<%
@@ -184,12 +185,12 @@
 								<div class="serial" style="width: 300px;">아이템 이름</div>
 								<div class="serial">결제금액</div>
 								<div class="serial">처리 경과</div>
-								<div class="serial">구매 시간</div>
+								<div class="serial" style="padding:0">구매 시간</div>
 							</div>
 							<div class="table-row">
 								<div class="serial">
 								<%if(bvo.getImage()==null) {%>
-								<img src="images/이미지없음.png" width="100px"/>
+								<img src="images/noImage.png" width="100px"/>
 								<%}else{ %>
 									<img src="images/<%=bvo.getImage()%>" width="100px"/>
 									<%}%>
@@ -197,8 +198,8 @@
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
 								<div class="serial"><%=bvo.getTotal()%></div>
 								<div class="serial1"
-									style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayStep()%></div>
-								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayDate()%></div>
+									style="margin-left: 27px; margin-top: 40px;"><%=bvo.getPayStep()%></div>
+								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=sdf.format(bvo.getPayDate()) %></div>
 							</div>
 						</div>
 						<%
@@ -207,7 +208,6 @@
 					</div>
 				</div>
 			</div>
-
 
 
 			<div class="col">
@@ -226,12 +226,12 @@
 								<div class="serial" style="width: 300px;">아이템 이름</div>
 								<div class="serial">결제금액</div>
 								<div class="serial">처리경과</div>
-								<div class="serial">판매 시간</div>
+								<div class="serial" style="padding:0" >판매 시간</div>
 							</div>
 							<div class="table-row">
 								<div class="serial">
 								<%if(bvo.getImage()==null) {%>
-								<p>이미지 없음</p>
+								<img src="images/noImage.png" width="100px"/>
 								<%}else{ %>
 									<img src="images/<%=bvo.getImage()%>" />
 								<%}%>
@@ -239,8 +239,8 @@
 								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
 								<div class="serial"><%=bvo.getTotal()%></div>
 								<div class="serial1"
-									style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayStep()%></div>
-								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=bvo.getPayDate()%></div>
+									style="margin-left: 27px; margin-top: 40px;"><%=bvo.getPayStep()%></div>
+								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=sdf.format(bvo.getPayDate()) %></div>
 
 							</div>
 						</div>

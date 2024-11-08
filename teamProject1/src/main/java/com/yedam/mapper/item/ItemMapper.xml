@@ -86,28 +86,30 @@
 	</select>
 	
 	<select id="sellListPage" resultType="item" parameterType="com.yedam.common.SearchDTO">
-		select a.*
-		from (	select rownum rn, r.*
+		select b.*
+		from (select rownum rn, a.*
+		from (	select  r.*
        			from team_item r
         		where seller = #{keyword}
         		and trade = 'sell'
-        		order by up_date desc) a
-		where a.rn > (#{page} -1) * 5
-		<![CDATA[	
-		and a.rn <= #{page} * 5
+        		order by up_date desc) a) b
+		where rn > (#{page} -1) * 5
+		<![CDATA[
+		and rn <= #{page} * 5
 		]]>
 	</select>
 	
 	<select id="buyListPage" resultType="item" parameterType="com.yedam.common.SearchDTO">
-		select a.*
-		from (	select rownum rn, r.*
+		select b.*
+		from (select rownum rn, a.*
+		from (	select  r.*
        			from team_item r
         		where seller = #{keyword}
         		and trade = 'buy'
-        		order by up_date desc) a
-		where a.rn > (#{page} -1) * 5
-		<![CDATA[	
-		and a.rn <= #{page} * 5
+        		order by up_date desc) a) b
+		where rn > (#{page} -1) * 5
+		<![CDATA[
+		and rn <= #{page} * 5
 		]]>
 	</select>
 	

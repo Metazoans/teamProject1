@@ -529,7 +529,7 @@ text-align: center;
 			class="btn btn-dark">맨위로</a>
 
 		<script>
-			const paystep = document.querySelectorAll(".serial1")
+			const paystep = document.querySelectorAll(".mp-step")
 			function phonePrompt() {
 				var permissionText = document.getElementById("permission") ? document
 						.getElementById("permission").innerText

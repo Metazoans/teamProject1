@@ -5,6 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.yedam.common.PageDTO;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import com.yedam.common.SearchDTO;
 import com.yedam.service.item.ItemService;
 import com.yedam.service.item.ItemServiceImpl;
@@ -14,9 +18,7 @@ public class AppTest {
 
 	public static void main(String[] args) {
 
-		
 
-		
 	}
-	
+
 }

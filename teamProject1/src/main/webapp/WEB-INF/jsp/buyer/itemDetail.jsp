@@ -64,12 +64,12 @@
 		
 		<div class="col-sm-3">
 			<div class="form-group">
-				<p id="seller" class="form-control valid">${item.seller }</p>
+				<p id="seller" class="form-control valid">작성자 : ${item.seller }</p>
 			</div>
 		</div>
 		<div class="col-sm-3">
 			<div class="form-group">
-				<p class="form-control valid">${item.price }</p>
+				<p class="form-control valid">개당 가격 : ${item.price }</p>
 			</div>
 		</div>
 		<div class="col-sm-4">

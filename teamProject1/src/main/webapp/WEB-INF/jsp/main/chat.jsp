@@ -40,7 +40,6 @@
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	let fromId = "${logId}";
 	let toId = "";

@@ -57,6 +57,14 @@ function randomList() {
 			result.forEach((item) => {
 				let link = $('<a />').attr('href', 'itemDetail.do?itemNumber=' + item.itemNumber).text(item.itemName).css('color', '#415094');
 				let img = item.image
+				let update = new Date(item.upDate);
+				let year = String(update.getFullYear());
+				let month = String(update.getMonth() + 1).padStart(2, "0");
+				let day = String(update.getDate()).padStart(2, "0");
+				let hh = String(update.getHours()).padStart(2, "0");
+				let mm = String(update.getMinutes()).padStart(2, "0");
+				let ss = String(update.getSeconds()).padStart(2, "0");
+				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`;
 				if (img == null) {
 					img = "noImage.png"
 				}
@@ -67,7 +75,7 @@ function randomList() {
 					$('<div/>').addClass('listTitle').append(link),
 					$('<div/>').addClass('listPrice').text(item.price),
 					$('<div/>').addClass('listSeller').text(item.seller),
-					$('<div/>').addClass('listDate').text(item.upDate)
+					$('<div/>').addClass('listDate').text(dateFormat)
 				).appendTo($('div#randomList div.progress-table'))
 			});
 		})

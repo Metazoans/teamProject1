@@ -127,9 +127,11 @@
 }
 #randomList .listGame {
 	width: 10%;
+	text-align: center;
 }
 #randomList .listServer {
 	width: 10%;
+	text-align: center;
 }
 #randomList .listTitle {
 	width: 40%;
@@ -137,13 +139,16 @@
 
 #randomList .listPrice {
 	width: 10%;
+	text-align: center;
 }
 
 #randomList .listSeller {
 	width: 10%;
+	text-align: center;
 }
 
 #randomList .listDate {
 	width: 15%;
+	text-align: center;
 }
 

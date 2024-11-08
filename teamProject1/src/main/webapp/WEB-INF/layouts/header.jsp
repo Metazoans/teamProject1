@@ -20,13 +20,13 @@
 									<ul id="navigation">
 										<li><a href="#">게임머니</a>
 											<ul class="submenu">
-												<li><a href="#">게임머니 구매</a>
+												<li><a href="#">구매글</a>
 													<div class="gamemenu">
 														<ul>
 															<!-- 게임리스트 -->
 														</ul>
 													</div></li>
-												<li><a href="#">게임머니 판매</a>
+												<li><a href="#">판매글</a>
 													<div class="gamemenu">
 														<ul>
 															<!-- 게임리스트 -->
@@ -35,13 +35,13 @@
 											</ul></li>
 										<li><a href="#">아이템</a>
 											<ul class="submenu">
-												<li><a href="#">아이템 구매</a>
+												<li><a href="#">구매글</a>
 													<div class="gamemenu">
 														<ul>
 															<!-- 게임리스트 -->
 														</ul>
 													</div></li>
-												<li><a href="#">아이템 판매</a>
+												<li><a href="#">판매글</a>
 													<div class="gamemenu">
 														<ul>
 															<!-- 게임리스트 -->
@@ -50,13 +50,13 @@
 											</ul></li>
 										<li><a href="#">계정</a>
 											<ul class="submenu">
-												<li><a href="#">계정 구매</a>
+												<li><a href="#">구매글</a>
 													<div class="gamemenu">
 														<ul>
 															<!-- 게임리스트 -->
 														</ul>
 													</div></li>
-												<li><a href="#">계정 판매</a>
+												<li><a href="#">판매글</a>
 													<div class="gamemenu">
 														<ul>
 															<!-- 게임리스트 -->

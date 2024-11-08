@@ -123,7 +123,7 @@ textarea {
     <tr>
       <td class="image">
       <%if(vo.getImage() == null){ %>
-      	<img src="images/이미지없음.png" width="100px">
+      	<img src="images/noImage.png" width="100px">
       <%}else{ %>
       	<img src="images/<%=vo.getImage() %>" width="100px">
 	  <%} %>
@@ -235,7 +235,7 @@ textarea {
     <tr>
       <td class="image">
       <%if(bvo.getImage() == null){ %>
-      	<img src="images/이미지없음.png" width="100px">
+      	<img src="images/noImage.png" width="100px">
       <%}else{ %>
       	<img src="images/<%=bvo.getImage() %>" width="100px">
 	  <%} %>

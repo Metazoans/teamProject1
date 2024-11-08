@@ -24,10 +24,7 @@ public class LoginControl implements Control {
 		String id = req.getParameter("logId");
 		String pwd = req.getParameter("logPw");
 
-		if (req.getMethod().equals("GET")) {
-			req.getRequestDispatcher("account/loginForm.tiles").forward(req, resp);
-		} else if (req.getMethod().equals("POST")) {
-
+	
 			MemberService svc = new MemberServiceImpl();
 			MemberVO member = svc.loginCheck(id, pwd);
 			// 로그인 실패
@@ -45,6 +42,6 @@ public class LoginControl implements Control {
 //					resp.sendRedirect("");
 			
 
-		}
+		
 	}
 }

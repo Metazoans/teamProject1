@@ -179,10 +179,20 @@
 	        price.focus();
 	        return false;
 	    }
+	    if(price.value > 2000000000){
+	    	 alert("상품금액은 20억원을 넘길수 없습니다.");
+	         price.focus();
+	         return false;
+	    }
 	    if (!count.value) { 
 	        alert("상품수량을 입력하세요.");
 	        count.focus();
 	        return false;
+	    }
+	    if(count.value > 2000000000){
+	    	 alert("상품수량은 20억개를 넘길수 없습니다.");
+	         price.focus();
+	         return false;
 	    }
 		return true;
 	}

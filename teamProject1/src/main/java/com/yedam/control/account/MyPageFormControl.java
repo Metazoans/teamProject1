@@ -26,7 +26,18 @@ public class MyPageFormControl implements Control {
 		System.out.println(name);
 		MemberService svc = new MemberServiceImpl();
 		List<MemberVO> list = svc.memberList(logId);
-		
+		MemberVO mvo = new MemberVO();
+		mvo.setMemberId(logId);
+		System.out.println(logId);
+		if(svc.grade(mvo)<5) {
+			svc.updateGrade("C", logId);
+		}else if(svc.grade(mvo)<10) {
+			svc.updateGrade("B", logId);
+		}else if(svc.grade(mvo)<15) {
+			svc.updateGrade("A", logId);
+		}else{
+			svc.updateGrade("S", logId);
+		}
 		
 		req.setAttribute("memberList", list);
 		

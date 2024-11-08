@@ -63,6 +63,28 @@
 	width: 80% !important;
 }
 
+.table-head{
+text-align: center;
+}
+.mp-image {
+width: 10%;
+text-align: center;
+}
+.mp-name {
+width: 45%;
+}
+.mp-price {
+width: 10%;
+text-align: center;
+}
+.mp-step {
+width: 10%;
+text-align: center;
+}
+.mp-time {
+width: 15%;
+text-align: center;
+}
 </style>
 </head>
 <body>
@@ -181,25 +203,25 @@
 						%>
 						<div class="progress-table">
 							<div class="table-head">
-								<div class="serial">이미지</div>
-								<div class="serial" style="width: 300px;">아이템 이름</div>
-								<div class="serial">결제금액</div>
-								<div class="serial">처리 경과</div>
-								<div class="serial" style="padding:0">구매 시간</div>
+								<div class="mp-image">이미지</div>
+								<div class="mp-name">아이템 이름</div>
+								<div class="mp-price">결제금액</div>
+								<div class="mp-step">처리 경과</div>
+								<div class="mp-time">구매 시간</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">
+								<div class="mp-image">
 								<%if(bvo.getImage()==null) {%>
 								<img src="images/noImage.png" width="100px"/>
 								<%}else{ %>
 									<img src="images/<%=bvo.getImage()%>" width="100px"/>
 									<%}%>
 								</div>
-								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
-								<div class="serial"><%=bvo.getTotal()%></div>
-								<div class="serial1"
-									style="margin-left: 27px; margin-top: 40px;"><%=bvo.getPayStep()%></div>
-								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=sdf.format(bvo.getPayDate()) %></div>
+								<div class="mp-name"><%=bvo.getItemName()%></div>
+								<div class="mp-price"><%=bvo.getTotal()%></div>
+								<div class="mp-step"
+									><%=bvo.getPayStep()%></div>
+								<div class="mp-time"><%=sdf.format(bvo.getPayDate()) %></div>
 							</div>
 						</div>
 						<%
@@ -222,25 +244,25 @@
 						%>
 						<div class="progress-table">
 							<div class="table-head">
-								<div class="serial">이미지</div>
-								<div class="serial" style="width: 300px;">아이템 이름</div>
-								<div class="serial">결제금액</div>
-								<div class="serial">처리경과</div>
-								<div class="serial" style="padding:0" >판매 시간</div>
+								<div class="mp-image">이미지</div>
+								<div class="mp-name">아이템 이름</div>
+								<div class="mp-price">결제금액</div>
+								<div class="mp-step">처리 경과</div>
+								<div class="mp-time">판매 시간</div>
 							</div>
 							<div class="table-row">
-								<div class="serial">
+								<div class="mp-image">
 								<%if(bvo.getImage()==null) {%>
 								<img src="images/noImage.png" width="100px"/>
 								<%}else{ %>
 									<img src="images/<%=bvo.getImage()%>" />
 								<%}%>
 								</div>
-								<div class="serial" style="width: 300px;"><%=bvo.getItemName()%></div>
-								<div class="serial"><%=bvo.getTotal()%></div>
-								<div class="serial1"
-									style="margin-left: 27px; margin-top: 40px;"><%=bvo.getPayStep()%></div>
-								<div class="serial" style="margin-left: 27px; margin-top: 5px;"><%=sdf.format(bvo.getPayDate()) %></div>
+								<div class="mp-name"><%=bvo.getItemName()%></div>
+								<div class="mp-price"><%=bvo.getTotal()%></div>
+								<div class="mp-step"
+									><%=bvo.getPayStep()%></div>
+								<div class="mp-time"><%=sdf.format(bvo.getPayDate()) %></div>
 
 							</div>
 						</div>

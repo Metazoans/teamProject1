@@ -164,19 +164,19 @@ function pageBtnPrt() {
 	$('.page-item').remove();
 	let pageUl = $('.pagination');
 	let pageLi = $('<li />').addClass('page-item');
-	let pageA = $('<a />').addClass('page-link');
+	let pageA = $('<a />').addClass('page-link').css('z-index', 0);
 	pageUl.append(pageLi.append(pageA.text('<')));
 
 	for (let i = startPage; i <= endPage; i++) {
 		pageLi = $('<li />').addClass('page-item');
-		pageA = $('<a />').addClass('page-link').text(i);
+		pageA = $('<a />').addClass('page-link').css('z-index', 0).text(i);
 
 		pageLi = (i == page) ? pageLi.addClass('active') : pageLi;
 		pageUl.append(pageLi.append(pageA));
 	}
 
 	pageLi = $('<li />').addClass('page-item');
-	pageA = $('<a />').addClass('page-link');
+	pageA = $('<a />').addClass('page-link').css('z-index', 0);
 	pageUl.append(pageLi.append(pageA.text('>')));
 
 	pageBtnFnc();

@@ -71,11 +71,16 @@ function itemListPrt(listData) {
 			result.list.forEach(item => {
 				let update = new Date(item.upDate);
 				let year = update.getFullYear();
-				let month = update.getMonth();
-				let day = update.getDate();
-				let hh = update.getHours();
-				let mm = update.getMinutes();
-				let ss = update.getSeconds();
+
+				let month = String(update.getMonth() + 1).padStart(2, "0");
+				let day = String(update.getDate()).padStart(2, "0");
+
+				let hh = String(update.getHours()).padStart(2, "0");
+				let mm = String(update.getMinutes()).padStart(2, "0");
+				let ss = String(update.getSeconds()).padStart(2, "0");
+
+				console.log(hh, mm, ss);
+				
 				let dateFormat = `${year}-${month}-${day} ${hh}:${mm}:${ss}`;
 
 				let img;

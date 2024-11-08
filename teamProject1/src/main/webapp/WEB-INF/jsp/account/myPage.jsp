@@ -118,10 +118,10 @@ text-align: center;
 						onmouseout="$('#credit_condition').hide();">승급조건</div> -->
 						<span class="hovertext"
 							data-hover="
-							거래건수 5건 :C등급
-							거래건수 10건 :B등급
-							거래건수 15건 :A등급
-							거래건수 20건 :S등급">승급조건
+							판매건수 5건 :C등급
+							판매건수 10건 :B등급
+							판매건수 15건 :A등급
+							판매건수 20건 :S등급">승급조건
 						</span>
 					</div>
 				</div>

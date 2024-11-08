@@ -24,7 +24,7 @@
 						<div class="dealUser">거래자</div>
 						<div class="buyCount">갯수</div>
 						<div class="buyPrice">결제액</div>
-						<div class="buyPayStep">구매상태</div>
+						<div class="buyPayStep">거래상태</div>
 						<div class="buyBtnDiv">버튼</div>
 					</div>
 
@@ -46,7 +46,7 @@
 						<div class="dealUser">거래자</div>
 						<div class="buyCount">갯수</div>
 						<div class="buyPrice">결제액</div>
-						<div class="buyPayStep">구매상태</div>
+						<div class="buyPayStep">거래상태</div>
 						<div class="buyBtnDiv">버튼</div>
 					</div>
 

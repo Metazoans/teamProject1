@@ -85,6 +85,7 @@ text-align: center;
 width: 15%;
 text-align: center;
 }
+
 </style>
 </head>
 <body>
@@ -177,7 +178,7 @@ text-align: center;
 						</h3>
 
 						<button type="button" class="w-100 btn btn-lg btn-dark"
-							data-bs-toggle="modal" data-bs-target="#mileageModal">충전
+							data-bs-toggle="modal" data-bs-target="#mileageModal" style="z-index:0">충전
 						</button>
 
 					</div>
@@ -255,7 +256,7 @@ text-align: center;
 								<%if(bvo.getImage()==null) {%>
 								<img src="images/noImage.png" width="100px"/>
 								<%}else{ %>
-									<img src="images/<%=bvo.getImage()%>" />
+									<img src="images/<%=bvo.getImage()%>" width="100px"/>
 								<%}%>
 								</div>
 								<div class="mp-name"><%=bvo.getItemName()%></div>

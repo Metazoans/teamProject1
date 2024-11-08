@@ -53,7 +53,7 @@
 <div id="container">
 <form action="addItem.do" method="post" onsubmit="return checkField();" enctype="multipart/form-data">
 <%-- <input class="form-control" type="text" name="writer" value="${logId }"> --%>
-<h3 class="table-name1">구매리스트</h3>
+<h3 class="table-name1">상품등록</h3>
 <table class="table">
 		<input type="hidden" name="logId" value="${logId}">
 		<tr>

@@ -208,6 +208,7 @@ function pageBtnFnc() {
 						endPage = endPage > realEnd ? realEnd : endPage;
 						startPage = startPage < 1 ? 1 : startPage;
 						page = (page * 1) + 5;
+						page = page > endPage ? endPage : page;
 						prev = startPage > 1;
 						next = endPage < realEnd;
 					}

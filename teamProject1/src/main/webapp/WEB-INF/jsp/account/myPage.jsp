@@ -118,10 +118,10 @@ text-align: center;
 						onmouseout="$('#credit_condition').hide();">승급조건</div> -->
 						<span class="hovertext"
 							data-hover="
-							거래건수 5건 :C등급
-							거래건수 10건 :B등급
-							거래건수 15건 :A등급
-							거래건수 20건 :S등급">승급조건
+							판매건수 5건 :C등급
+							판매건수 10건 :B등급
+							판매건수 15건 :A등급
+							판매건수 20건 :S등급">승급조건
 						</span>
 					</div>
 				</div>
@@ -529,7 +529,7 @@ text-align: center;
 			class="btn btn-dark">맨위로</a>
 
 		<script>
-			const paystep = document.querySelectorAll(".serial1")
+			const paystep = document.querySelectorAll(".mp-step")
 			function phonePrompt() {
 				var permissionText = document.getElementById("permission") ? document
 						.getElementById("permission").innerText

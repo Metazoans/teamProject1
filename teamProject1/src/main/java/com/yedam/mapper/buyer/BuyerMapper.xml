@@ -16,7 +16,8 @@
 			  from ( select *
 			  		 from team_item
 				     <where>
-					     categories = #{categories} 
+				     	 count != 0
+					     and categories = #{categories} 
 					     and trade = #{trade} 
 					     and game = #{game}
 					     <if test="servers != null">
@@ -42,7 +43,8 @@
 		select count(item_number)
 		from team_item
 		<where>
-			categories = #{categories}
+			count != 0
+			and categories = #{categories}
 			and trade = #{trade}
 		    and game = #{game}
 		    <if test="servers != null">

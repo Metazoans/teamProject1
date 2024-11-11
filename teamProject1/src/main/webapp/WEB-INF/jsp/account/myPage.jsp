@@ -194,7 +194,7 @@ text-align: center;
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm">
 					<div class="card-header py-3" style="background: #fb246a;">
-						<a href="mySellList.do#kanghyeon" style="color: #fff; font-weight: bold !important;">최근구매내역</a>
+						<a href="mySellList.do#kanghyeon" style="color: #fff; font-weight: bold !important;">최근판매내역</a>
 
 					</div>
 					<div class="card-body" style="padding: 0;">
@@ -236,7 +236,7 @@ text-align: center;
 			<div class="col">
 				<div class="card mb-4 rounded-3 shadow-sm">
 					<div class="card-header py-3">
-						<a href="mySellList.do#" style="color: black">최근판매내역</a>
+						<a href="mySellList.do#" style="color: black">최근구매내역</a>
 
 					</div>
 					<div class="card-body" style="padding: 0;">
